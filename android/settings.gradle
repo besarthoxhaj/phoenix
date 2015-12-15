@@ -1,0 +1,3 @@
+rootProject.name = 'phoenix'
+
+include ':app'
