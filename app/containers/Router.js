@@ -1,30 +1,38 @@
 'use strict';
 
-import React, {
-  Component,
-  StyleSheet,
-  PropTypes,
-  View
-} from 'react-native';
+import { connect } from 'react-redux/native';
+import { bindActionCreators } from 'redux';
+import React, { Component, PropTypes } from 'react-native';
 
-class Router extends Component {
+// components
+import Home from '../components/home.js';
+// actions
+import * as StartActions from '../actions/start.js';
+
+const actionCreators = {
+  ...StartActions
+};
+
+export default class Router extends Component {
   constructor(props) {
     super(props);
   }
   render(){
     return (
-      <View style = { styles.container } >
-      </View>
+      <Home {...this.props} />
     )
   }
 }
 
 Router.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = state => {
+  return {
+    text: 'Click here!'
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-  }
-})
+export default connect(mapStateToProps, actionCreators)(Router);
 
-export default Router;

@@ -3,13 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "react-native start",
-    "rn:init": "./init-component.sh"
+    "p:s": "node_modules/react-native/packager/packager.sh",
+    "rn:init": "./init_component.sh"
   },
   "dependencies": {
     "react": "^0.14.3",
     "react-native": "^0.16.0",
-    "react-redux": "^4.0.1",
-    "redux": "^3.0.5"
+    "react-redux": "^3.0.1",
+    "redux": "^3.0.5",
+    "redux-logger": "^2.2.1",
+    "redux-persist": "^1.4.10",
+    "redux-thunk": "^1.0.2"
   }
 }
