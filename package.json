@@ -3,9 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "react-native start"
+    "start": "react-native start",
+    "rn:init": "./init-component.sh"
   },
   "dependencies": {
-    "react-native": "^0.16.0"
+    "react": "^0.14.3",
+    "react-native": "^0.16.0",
+    "react-redux": "^4.0.1",
+    "redux": "^3.0.5"
   }
 }

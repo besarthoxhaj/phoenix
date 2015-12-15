@@ -1,19 +1,23 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
+
 'use strict';
 
-var React = require('react-native');
-var {
+import React, {
   AppRegistry,
+  Component,
   StyleSheet,
   Text,
   View,
-} = React;
+} from 'react-native';
 
-var phoenix = React.createClass({
-  render: function() {
+import { Provider } from 'react-redux/native';
+// import configureStore from './app/store/configureStore.js';
+// const store = configureStore();
+
+class phoenix extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render(){
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -27,11 +31,11 @@ var phoenix = React.createClass({
           Cmd+D or shake for dev menu
         </Text>
       </View>
-    );
+    )
   }
-});
+}
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
