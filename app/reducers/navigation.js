@@ -10,8 +10,8 @@ import {
 } from '../action_types.js';
 
 const routes = [
-  'Login',
   'Home',
+  'Login',
   'Modal/Show',
 ];
 

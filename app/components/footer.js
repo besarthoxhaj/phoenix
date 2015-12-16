@@ -8,7 +8,7 @@ import React, {
   Text,
 } from 'react-native';
 
-export default class header extends Component {
+export default class Feader extends Component {
   constructor(props) {
     super(props);
   }
@@ -16,13 +16,14 @@ export default class header extends Component {
     return (
       <View style={styles.container}>
         <Text>Footer</Text>
-        <Text>Props: {JSON.stringify(this.props)}</Text>
       </View>
     )
   }
 }
 
-header.propTypes = {};
+Feader.propTypes = {
+  navigateTo: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

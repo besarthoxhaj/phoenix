@@ -2,7 +2,7 @@
 
 import { connect } from 'react-redux/native';
 import { bindActionCreators } from 'redux';
-import React, { Component, PropTypes, View } from 'react-native';
+import React, { Component, PropTypes } from 'react-native';
 // components
 import Header from '../components/header.js';
 // actions
@@ -12,20 +12,24 @@ const actionCreators = {
   ...NavigationActions,
 };
 
-class RouterNavBar extends Component {
+class HeaderContainer extends Component {
 
   constructor(props){
     super(props);
   }
   render(){
     return (
-      <Header />
+      <Header {...this.props} />
     );
   }
 }
+
+HeaderContainer.propTypes = {
+  navigateTo: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => {
   return {};
 }
 
-export default connect(mapStateToProps, actionCreators)(RouterNavBar);
+export default connect(mapStateToProps, actionCreators)(HeaderContainer);

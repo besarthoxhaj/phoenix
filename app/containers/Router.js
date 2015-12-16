@@ -5,13 +5,16 @@ import { bindActionCreators } from 'redux';
 import React, { Component, PropTypes, Navigator, View } from 'react-native';
 // container
 import Login from './login.js';
+import Home from './home.js';
 import Header from './header.js';
 import Footer from './footer.js';
 // actions
 import * as StartActions from '../actions/start.js';
+import * as NavigationActions from '../actions/navigation.js';
 
 const actionCreators = {
-  ...StartActions
+  ...StartActions,
+  ...NavigationActions,
 };
 
 class Router extends Component {
@@ -19,10 +22,23 @@ class Router extends Component {
     super(props);
     this.renderScene = this.renderScene.bind(this);
   }
+  componentWillUpdate(nextProps) {
+    const { route : newRoute, stack: newStack} = nextProps;
+    const { route } = this.props;
+
+    if (newRoute.name !== route.name){
+      this.refs.navigator.jumpTo(newStack[newRoute.index]);
+    }
+  }
   renderScene(route,navigator){
-    return (
-      <Login />
-    );
+    switch(route.name){
+      case 'Login':
+        return (<Login />);
+      case 'Home':
+        return (<Home />);
+      default:
+        return (<Login />)
+    }
   }
   render(){
     return (
@@ -31,11 +47,10 @@ class Router extends Component {
         initialRoute={this.props.stack[this.props.route.index]}
         initialRouteStack={this.props.stack}
         renderScene={this.renderScene}
-        navigateTo={this.props.navigateTo}
         history={this.props.history}
         sceneStyle={{
           flexDirection: 'column',
-          flex: 1
+          flex: 2
         }}
         configureScene={(route) => {
           if (route.sceneConfig) {
@@ -45,7 +60,7 @@ class Router extends Component {
           }
         }}
         navigationBar={
-          <View style={{flex:1}}>
+          <View style={{flex:1,flexDirection:'column'}}>
             <Header />
             <Footer />
           </View>
@@ -56,27 +71,16 @@ class Router extends Component {
 }
 
 Router.propTypes = {
-  text: PropTypes.string.isRequired,
   route: PropTypes.object.isRequired,
   history: PropTypes.array.isRequired,
   stack: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = state => {
-
-  const {
-    navigation: {
-      route,
-      history,
-      stack,
-    }
-  } = state;
-
   return {
-    text: 'Click here!',
-    route,
-    history,
-    stack,
+    route: state.navigation.route,
+    history: state.navigation.history,
+    stack: state.navigation.stack,
   }
 }
 

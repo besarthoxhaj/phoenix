@@ -49,7 +49,6 @@ export const navigateTo = (nextRoute) => {
       let newRouteStack;
       let newHistory;
 
-      // what does mean (index < 0)?
       if (index < 0) {
         newRoute      = {...nextRoute, index: stack.length};
         newRouteStack = [...stack, newRoute];
@@ -58,7 +57,7 @@ export const navigateTo = (nextRoute) => {
         newRouteStack = [...stack];
       }
 
-      //if returning to a previous page, remove route from history (i.e. pop)
+      // if returning to a previous page, remove route from history (i.e. pop)
       if (history.length >= 2 && nextRoute.name === history[history.length - 2].name) {
         newHistory = history.slice(0, -1);
       } else {

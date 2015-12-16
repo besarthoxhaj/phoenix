@@ -1,7 +1,6 @@
 'use strict';
 
 export const START = 'START';
-
 // navigation
 export const CHANGE_ROUTE = 'CHANGE_ROUTE';
 export const GO_BACK = 'GO_BACK';

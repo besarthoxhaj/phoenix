@@ -6,6 +6,7 @@ import React, {
   PropTypes,
   View,
   Text,
+  TouchableHighlight,
 } from 'react-native';
 
 export default class Login extends Component {
@@ -15,17 +16,21 @@ export default class Login extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <Text>Login</Text>
+        <TouchableHighlight onPress={this.props.navigateTo.bind(null,{name:'Home'})}>
+          <Text>Go Home</Text>
+        </TouchableHighlight>
       </View>
     )
   }
 }
 
-Login.propTypes = {};
+Login.propTypes = {
+  navigateTo: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {
-    flex: 5,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',

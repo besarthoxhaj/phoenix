@@ -12,20 +12,24 @@ const actionCreators = {
   ...NavigationActions,
 };
 
-class RouterNavBar extends Component {
+class LoginContainer extends Component {
 
   constructor(props){
     super(props);
   }
   render(){
     return (
-      <Login />
+      <Login {...this.props} />
     );
   }
 }
+
+LoginContainer.propTypes = {
+  navigateTo: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => {
   return {};
 }
 
-export default connect(mapStateToProps, actionCreators)(RouterNavBar);
+export default connect(mapStateToProps, actionCreators)(LoginContainer);

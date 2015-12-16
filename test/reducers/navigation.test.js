@@ -5,14 +5,29 @@ import {
   reducer,
   initialState
 } from '../../app/reducers/navigation.js';
+import { CHANGE_ROUTE, SET_INITIAL_ROUTE, RESTART } from '../../app/action_types.js';
 
 test('app:reducers:navigation -> inital state', t => {
 
-  t.deepEquals(reducer(undefined, {}), initialState, 'default state when no action given');
+  t.deepEquals(reducer(undefined, {}), initialState, 'default state');
   t.end();
 });
 
-test('app:reducers:navigation:CHANGE_ROUTE -> return right state', t => {
+test('app:reducers:navigation:CHANGE_ROUTE -> should return right state', t => {
 
+  const newRoute = {name:'In_Play',index:1};
+  const newHistory = [...initialState.history, newRoute];
+  const newRouteStack = initialState.stack;
+
+  const updatedRouteState = {
+    route: newRoute,
+    history: newHistory,
+    stack: initialState.stack
+  };
+
+  const mockAction = {type:CHANGE_ROUTE,newRoute,newRouteStack,newHistory};
+  const reducerState = reducer(initialState, mockAction);
+
+  t.deepEquals(reducerState, updatedRouteState, 'got right state');
   t.end();
 });
