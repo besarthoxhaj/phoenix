@@ -8,7 +8,7 @@
 'use strict';
 
 import { findIndex, propEq } from 'ramda';
-import * as types from '../constants/action_types.js';
+import * as types from '../action_types.js';
 
 /**
  * Sets the new 'route', 'stack' and 'history' states in the navigator reducer
