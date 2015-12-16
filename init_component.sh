@@ -23,7 +23,7 @@ import React, {
   View
 } from 'react-native';
 
-class $ComponentName extends Component {
+export default class $ComponentName extends Component {
   constructor(props) {
     super(props);
   }
@@ -42,6 +42,5 @@ const styles = StyleSheet.create({
   container: {
   }
 })
-
-export default $ComponentName;" > "$ABS_PATH/app/$Output/$ComponentName.js"
+" > "$ABS_PATH/app/$Output/$ComponentName.js"
 fi
