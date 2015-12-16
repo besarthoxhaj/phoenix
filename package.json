@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "test": "tape test/runner.js",
     "p:s": "node_modules/react-native/packager/packager.sh",
     "rn:init": "./init_component.sh"
   },
   "dependencies": {
+    "ramda": "^0.18.0",
     "react": "^0.14.3",
     "react-native": "^0.16.0",
     "react-redux": "^3.0.1",
@@ -14,5 +16,11 @@
     "redux-logger": "^2.2.1",
     "redux-persist": "^1.4.10",
     "redux-thunk": "^1.0.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.3.17",
+    "babel-plugin-transform-object-rest-spread": "^6.1.18",
+    "babel-preset-es2015": "^6.1.18",
+    "tape": "^4.2.2"
   }
 }

@@ -43,5 +43,8 @@ export default () => {
       'login'
     ]
   });
+
+  // console.log('store', store.getState());
+
   return store;
 }
