@@ -52,7 +52,7 @@ class Router extends Component {
           flexDirection: 'column',
           flex: 2
         }}
-        configureScene={(route) => {
+        configureScene={route => {
           if (route.sceneConfig) {
             return route.sceneConfig;
           } else {
