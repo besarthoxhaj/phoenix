@@ -11,7 +11,7 @@ import React, {
 
 import { Provider } from 'react-redux/native';
 import configureStore from './app/configure_store.js';
-import Router from './app/containers/router.js';
+import App from './app/containers/app.js';
 const store = configureStore();
 
 class phoenix extends Component {
@@ -21,7 +21,13 @@ class phoenix extends Component {
   render(){
     return (
       <Provider store={store}>
-        {() => <Router /> }
+        {
+          () => {
+            return (
+              <App />
+            );
+          } 
+        }
       </Provider>
     )
   }
