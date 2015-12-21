@@ -20,9 +20,9 @@ class AppContainer extends Component {
   }
   render(){
     return (
-      <View>
-        <Router />
-        <Alerts />
+      <View style={{flex:1}}>
+        <Router/>
+        <Alerts/>
       </View>
     );
   }
