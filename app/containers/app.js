@@ -1,16 +1,17 @@
 'use strict';
 
 import { connect } from 'react-redux/native';
-import { bindActionCreators } from 'redux';
 import React, { Component, PropTypes, View, PushNotificationIOS, AppStateIOS } from 'react-native';
 // containers
-import Router from './router.js';
+import Router from './Router.js';
 import Alerts from './alerts.js';
 // actions
 import * as NavigationActions from '../actions/navigation.js';
+import * as PushNotificationActions from '../actions/notifications.js';
 
 const actionCreators = {
   ...NavigationActions,
+  ...PushNotificationActions
 };
 
 class AppContainer extends Component {
@@ -20,11 +21,11 @@ class AppContainer extends Component {
   }
 
   componentWillMount(){
-    PushNotificationIOS.addEventListener('register', this.props.registerDeviceToken)
+    PushNotificationIOS.addEventListener('register', this.props.registerDeviceToken(token))
     PushNotificationIOS.addEventListener('notification', this.props.onReceiveNotification.bind(null, AppStateIOS.currentState))
     PushNotificationIOS.setApplicationIconBadgeNumber(this.props.unreadNotificationCount);
 
-    this.props.requestPushPermission && PushNotificationIOS.requestPermissions();
+    PushNotificationIOS.requestPermissions();
   }
 
   componentWillUpdate(props){
@@ -40,9 +41,8 @@ class AppContainer extends Component {
 
   render(){
     return (
-      <View>
-        <Router />
-        <Alerts />
+      <View style={{flex:1}}>
+        <Router/>
       </View>
     );
   }
@@ -50,10 +50,16 @@ class AppContainer extends Component {
 
 AppContainer.propTypes = {
   navigateTo: PropTypes.func.isRequired,
+  registerDeviceToken: PropTypes.func,
+  onReceiveNotification: PropTypes.func,
+  unreadNotificationCount: PropTypes.number,
+  requestPermissions: PropTypes.bool
 };
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    unreadNotificationCount: 1,
+  };
 }
 
 export default connect(mapStateToProps, actionCreators)(AppContainer);
