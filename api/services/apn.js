@@ -18,7 +18,7 @@ var apn = require('apn');
 var path = require('path');
 
 module.exports = {
-  sendSplit: sendSplit
+  sendNotification: sendNotification
 }
 
 var apnConnection = new apn.Connection({
@@ -41,19 +41,17 @@ function getNewApnInstance (device_token) {
 }
 
 /**
- *	Send split bet notification to the receiver of a split bet.
- *	@param {String} - device token from the phone of the receipient
- *	@param {String} - sender first name
- *	@param {??????} - ?? payload
+ *	Send notification to a specific device
+ *	@param (Function) - callback
  *
 **/
-function sendSplit (callback) {
+function sendNotification (callback) {
 
-	var instance = getNewApnInstance(device_token);
+	var instance = getNewApnInstance('c2c5d6c01b98aa4e0b41ec63a9f6ab9de5c48f436a7a87e6383922ebec3d8443');  // hard coded to Niki's iPhone
 
 	instance.note.alert = 'Nikki has split a bet with you!';
 
-	apnConnection.pushNotification(note, instance.device);
+	apnConnection.pushNotification(instance.note, instance.device);
 
 	apnConnection.on('transmitted', function (notification, device){
 		return callback(undefined, {
