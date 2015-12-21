@@ -14,7 +14,7 @@ export default class Feader extends Component {
   }
   render(){
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, this.props.style]}>
         <Text>Footer</Text>
       </View>
     )
@@ -23,6 +23,7 @@ export default class Feader extends Component {
 
 Feader.propTypes = {
   navigateTo: PropTypes.func.isRequired,
+  style: PropTypes.object
 };
 
 const styles = StyleSheet.create({

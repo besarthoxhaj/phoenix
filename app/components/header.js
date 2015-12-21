@@ -14,7 +14,7 @@ export default class Header extends Component {
   }
   render(){
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, this.props.style]}>
         <Text>Header</Text>
       </View>
     )
@@ -23,6 +23,7 @@ export default class Header extends Component {
 
 Header.propTypes = {
   navigateTo: PropTypes.func.isRequired,
+  style: PropTypes.object
 };
 
 const styles = StyleSheet.create({
