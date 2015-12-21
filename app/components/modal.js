@@ -1,3 +1,9 @@
+
+/**
+ * Modal system
+ *
+ */
+
 'use strict';
 
 import React, {
@@ -16,8 +22,8 @@ export default class ModalComponent extends Component {
   }
   render(){
     return (
-      <Modal animated={true} visible={true} transparent={true}>
-        <View style={styles.container}>
+      <Modal animated={this.props.animated} visible={this.props.visible} transparent={true}>
+        <View style={this.props.visible ? styles.containerShow : styles.containerHide }>
           <Text style={styles.text}>Hello, modal!</Text>
         </View>
       </Modal>
@@ -27,14 +33,25 @@ export default class ModalComponent extends Component {
 
 ModalComponent.propTypes = {
   navigateTo: PropTypes.func.isRequired,
+  visible: PropTypes.bool.isRequired,
+  animated: PropTypes.bool,
+  transparent: PropTypes.bool,
+};
+
+ModalComponent.getDefaultProps = {
+  animated: false,
+  transparent: true,
 };
 
 const styles = StyleSheet.create({
-  container: {
+  containerShow: {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  containerHide: {
+    flex: 0,
   },
   text: {
     fontSize: 20,
