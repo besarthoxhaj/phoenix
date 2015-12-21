@@ -50,7 +50,7 @@ class Router extends Component {
         history={this.props.history}
         sceneStyle={{
           flexDirection: 'column',
-          flex: 2
+          flex: 1
         }}
         configureScene={route => {
           if (route.sceneConfig) {
@@ -60,7 +60,7 @@ class Router extends Component {
           }
         }}
         navigationBar={
-          <View style={{flex:1,flexDirection:'column'}}>
+          <View style={{flex:1, flexDirection:'column', marginTop: 30}}>
             <Header />
             <Footer />
           </View>
@@ -85,4 +85,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, actionCreators)(Router);
-
