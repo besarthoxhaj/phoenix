@@ -1,7 +1,9 @@
-//functions return a promise created by fetch which is then resolved in the request wrapper
+/**
+* Functions return a promise created by fetch
+* which is then resolved in the request wrapper
+**/
 
-
-function createAuthenticatedRequest(method, url, data, token) {
+export function createAuthReq(method, url, data, token) {
   if (!token) {
     throw new Error('Token required to send an authenticated request');
   }
@@ -17,7 +19,7 @@ function createAuthenticatedRequest(method, url, data, token) {
   return fetch(url, req);
 }
 
-function createRequest(method, url, data) {
+export function createReq(method, url, data) {
   const req = {
     method: method,
     headers: {

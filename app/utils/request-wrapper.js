@@ -4,24 +4,52 @@ import { NetInfo } from 'react-native';
 **/
 
 
+
+ /** EXAMPLE use in an action:
+
+ import { createReq } from './create-request.js'
+
+ const login = (username, password) => dispatch => {
+    const data      = { username, password}
+    const request   = createReq('POST', API_URL + '/login', data); // returns a promise
+    const onSuccess = json => {
+       if (json.status === 'success') {
+         dispatch(updateSessionToken(json.token));
+         dispatch(loginAndSync());
+       } else {
+         dispatch(loginFail('Sorry password or username did not match'));
+       }
+     }
+     const onError = (error, errorType) => {
+       dispatch(loginFail('Sorry' + errorType));
+     }
+
+     sendRequest({ request, onSuccess, onError })
+
+    }
+  }
+
+**/
+
+
 /**
 * If there is an error in the fetch request
 * it is re-sent at the intervals defined below.
 **/
 
 const retryIntervals = [
-  1000,
-  2000
+  10,
+  20
 ]
 
 /**
 * Wrapper around the fetch request to retry the request if there is an error
 * @param {object} - options
-*  - request created using the request-helper.
-*  - Should return a promise from a fetch request
-* @param {function} - parse ????
-* @param {number} - attempt
-* - defaults to zero
+*  - request: created using the create-request helper (see create-request.js)
+*             should return a promise from a fetch request
+*  - onSuccess(data): when fetch request returns successfully
+*  - onError(error, errorType): when there is an error in the fetch request
+* @param {number} - attempt (defaults to zero)
 **/
 
 export function sendRequest(options, attempt=0) {
@@ -50,22 +78,16 @@ export const onError = async (options, attempt, error) {
   } else {
     const isConnected = await NetInfo.isConnected.fetch();
     const errorType = isConnected ? 'serverUnreachable' : 'noNetwork'
-    /**
-      either return a new Promise which can be resolved in the action calling
-     fetch or take in an array of actions and dispatch them .....
-    **/
+    return options.onError(error, errorType);
   }
 }
 
 export const onComplete = async (options, res) {
   if (res.status == 200 && res.ok) {
     let data = await res.json();
-    /**
-      return the data as a new Promise or dispatch a provided action
-    **/
+     options.onSuccess(data)
   } else {
-    /**
-     return an error based on the status code
-    **/
+    // error handling for 404 status codes etc
+    options.onError(error);
   }
 }
