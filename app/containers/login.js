@@ -7,7 +7,7 @@ import React, { Component, PropTypes } from 'react-native';
 import Login from '../components/login.js';
 // actions
 import * as NavigationActions from '../actions/navigation.js';
-import * as LoginTestActions from '../actions/logintest.js';
+import * as LoginTestActions from '../actions/login.js';
 
 const actionCreators = {
   ...NavigationActions,
