@@ -1,11 +1,11 @@
-import { NetInfo } from 'react-native';
-/** NetInfo can be used to asynchronously check if the user is online/offline
-*  More info: https://facebook.github.io/react-native/docs/netinfo.html
-**/
+ /**
 
+ FETCH REQUEST WRAPPER
 
+ Main function: 'sendRequest'
+ - use to re send the fetch request if there is an error
 
- /** EXAMPLE use in an action:
+ EXAMPLE use of the 'sendRequest' function in a redux action:
 
  import { createReq } from './create-request.js'
  import { sendRequest } from './request-wrapper.js'
@@ -32,6 +32,10 @@ import { NetInfo } from 'react-native';
 
 **/
 
+import { NetInfo } from 'react-native';
+/** NetInfo can be used to asynchronously check if the user is online/offline
+*  More info: https://facebook.github.io/react-native/docs/netinfo.html
+**/
 
 /**
 * If there is an error in the fetch request
@@ -61,6 +65,7 @@ export function sendRequest(options, attempt=0) {
 
 /**
 * Error handling for fetch request
+*
 * If the number of attempts is less that the number of retryIntervals
 * the request is sent again
 * @param {object} - request options object
@@ -88,7 +93,7 @@ const onComplete = async (options, res) {
     let data = await res.json();
      options.onSuccess(data)
   } else {
-    // error handling for 404 status codes etc
-    options.onError(error);
+    // maybe add error handling for 404 status codes etc
+    return options.onError(error, 'response error');
   }
 }
