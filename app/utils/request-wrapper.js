@@ -9,7 +9,7 @@ import { NetInfo } from 'react-native';
 
  import { createReq } from './create-request.js'
 
- const login = (username, password) => dispatch => {
+ const login = (username, password) => async (dispatch) => {
     const data      = { username, password}
     const request   = createReq('POST', API_URL + '/login', data); // returns a promise
     const onSuccess = json => {
