@@ -15,6 +15,7 @@ import * as NavigationActions from '../actions/navigation.js';
 const actionCreators = {
   ...StartActions,
   ...NavigationActions,
+  showAlert,
 };
 
 class Router extends Component {
@@ -85,4 +86,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, actionCreators)(Router);
-
