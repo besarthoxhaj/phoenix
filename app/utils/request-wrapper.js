@@ -7,28 +7,24 @@
 
  EXAMPLE use of the 'sendRequest' function in a redux action:
 
- import { createReq } from './create-request.js'
- import { sendRequest } from './request-wrapper.js'
+ import { createReq } from '../utils/create-request.js'
+ import { sendRequest } from '../utils/request-wrapper.js'
 
- const login = (username, password) => async (dispatch) => {
-    const data      = { username, password}
-    const request   = createReq('POST', API_URL + '/login', data); // returns a promise
-    const onSuccess = json => {
-       if (json.status === 'success') {
-         dispatch(updateSessionToken(json.token));
-         dispatch(loginAndSync());
-       } else {
-         dispatch(loginFail('Sorry password or username did not match'));
-       }
+ export const login = (username, password) => async (dispatch) => {
+   const data      = { username, password }
+   const request   = () => createReq('POST', 'http://localhost:9009/login', data); // returns a promise
+   const onSuccess = json => {
+     if (json.status === 'success') {
+       dispatch(loginSuccess());
+     } else {
+       dispatch(loginFail('Sorry password or username did not match'));
      }
-     const onError = (error, errorType) => {
-       dispatch(loginFail('Sorry' + errorType));
-     }
-
-     sendRequest({ request, onSuccess, onError })
-
-    }
-  }
+   }
+   const onError = (error, errorType) => {
+     dispatch(loginFail('Sorry ' + errorType));
+   }
+   sendRequest({ request, onSuccess, onError })
+ }
 
 **/
 
@@ -43,8 +39,11 @@ import { NetInfo } from 'react-native';
 **/
 
 const retryIntervals = [
-  10,
-  20
+  1000,
+  2000,
+  3000,
+  4000,
+  5000,
 ]
 
 /**
@@ -75,7 +74,8 @@ export function sendRequest(options, attempt=0) {
 * NB: using 'async' so that 'await' can be used to resolve promises and return the value
 **/
 
-const onError = async (options, attempt, error) {
+const onError = async (options, attempt, error) => {
+  console.log("ERROR")
   if (retryIntervals[attempt]) {
     setTimeout(
       () => sendRequest(options, ++attempt),
@@ -83,12 +83,13 @@ const onError = async (options, attempt, error) {
     )
   } else {
     const isConnected = await NetInfo.isConnected.fetch();
-    const errorType = isConnected ? 'serverUnreachable' : 'noNetwork'
+    const errorType = isConnected ? 'server unreachable' : 'no network'
     return options.onError(error, errorType);
   }
 }
 
-const onComplete = async (options, res) {
+const onComplete = async (options, res) => {
+  console.log("COMPLETE")
   if (res.status == 200 && res.ok) {
     let data = await res.json();
      options.onSuccess(data)
