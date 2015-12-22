@@ -49,7 +49,7 @@ function sendNotification (device_token, callback) {
 
 	var instance = getNewApnInstance(device_token || 'c2c5d6c01b98aa4e0b41ec63a9f6ab9de5c48f436a7a87e6383922ebec3d8443');  // hard coded to Nikki's iPhone
 
-	instance.note.alert = 'Nikki has sent you push notification!';
+	instance.note.alert = 'Nikki has sent you a push notification!';
 
 	apnConnection.pushNotification(instance.note, instance.device);
 
