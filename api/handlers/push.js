@@ -1,7 +1,8 @@
 module.exports = (Apn) => {
   return (req, reply) => {
+    const { device_token } = req.payload;
 
-    Apn.sendNotification(undefined, (error, reponse) => {
+    Apn.sendNotification(device_token || undefined, (error, reponse) => {
       if (error) {
         return reply({
           status: 'error',
