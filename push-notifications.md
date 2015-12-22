@@ -56,6 +56,9 @@ A [step-by-step guide](https://parse.com/tutorials/ios-push-notifications) can b
   * A Provisioning Profile authenticates your device to run app
   * In Xcode > Preferences > Accounts click 'Download all' to download the Push notification provisioning profile
 
+
+**NB: For Ad Hoc Production (beta testing) or Production (submission to the App store), new certificates and keys need to be generated so the whole of Step 3 needs to be repeated.**
+
 ### Step 4: Set up the APN server
 
 Our app server sends push notifications to APNs which then sends it to the user
@@ -102,7 +105,7 @@ componentWillMount(){
   PushNotificationIOS.requestPermissions();
 }
 ```
-The device token is passed to the 'registerDeviceToken' action and can then be saved. The device token is a hexadecimal string and is like a phone number. It enables the APNs to locate the device on which the app is installed. 
+The device token is passed to the 'registerDeviceToken' action and can then be saved. The device token is a hexadecimal string and is like a phone number. It enables the APNs to locate the device on which the app is installed.
 
 In this example the currentState of the app is also used to respond to the push notification depending on if the app is running in the background or currently active.
 
