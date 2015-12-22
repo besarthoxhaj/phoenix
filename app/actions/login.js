@@ -5,13 +5,14 @@
 **/
 
 import * as types      from '../action_types.js';
-import { postReq }   from '../utils/create-request-v2.js'
+import { postReq }     from '../utils/create-request-v2.js'
 import { sendRequest } from '../utils/request-wrapper.js'
 import { navigateTo }  from './navigation.js';
+import { API_URL }     from '../config.js';
 
 export const login = (username, password) => async (dispatch) => {
   const data      = { username: 'nikki', password: 'password'}
-  const request   = () => postReq('http://localhost:9009/login', data); // returns a promise
+  const request   = () => postReq(API_URL +'/login', data); // returns a promise
   const onSuccess = json => {
     if (json.status === 'success') {
       dispatch(loginSuccess());

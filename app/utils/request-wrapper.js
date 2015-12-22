@@ -7,12 +7,12 @@
 
  EXAMPLE use of the 'sendRequest' function in a redux action:
 
- import { createReq } from '../utils/create-request.js'
+ import { postReq } from '../utils/create-request.js'
  import { sendRequest } from '../utils/request-wrapper.js'
 
  export const login = (username, password) => async (dispatch) => {
    const data      = { username, password }
-   const request   = () => createReq('POST', 'http://localhost:9009/login', data); // returns a promise
+   const request   = () => postReq('http://localhost:9009/login', data); // returns a promise
    const onSuccess = json => {
      if (json.status === 'success') {
        dispatch(loginSuccess());
