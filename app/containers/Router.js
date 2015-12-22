@@ -2,7 +2,7 @@
 
 import { connect } from 'react-redux/native';
 import { bindActionCreators } from 'redux';
-import React, { Component, PropTypes, Navigator, View } from 'react-native';
+import React, { Component, PropTypes, Navigator, View, Dimensions } from 'react-native';
 // container
 import Login from './login.js';
 import Home from './home.js';
@@ -11,6 +11,8 @@ import Footer from './footer.js';
 // actions
 import * as StartActions from '../actions/start.js';
 import * as NavigationActions from '../actions/navigation.js';
+
+const { height: screenHeight } = Dimensions.get('window');
 
 const actionCreators = {
   ...StartActions,
@@ -50,7 +52,7 @@ class Router extends Component {
         history={this.props.history}
         sceneStyle={{
           flexDirection: 'column',
-          flex: 2
+          flex: 1
         }}
         configureScene={route => {
           if (route.sceneConfig) {
@@ -60,9 +62,9 @@ class Router extends Component {
           }
         }}
         navigationBar={
-          <View style={{flex:1,flexDirection:'column'}}>
-            <Header />
-            <Footer />
+          <View style={{position: 'absolute', top: 0, backgroundColor: 'transparent'}}>
+            <Header style={{top: 20}} />
+            <Footer style={{top: screenHeight - 80}}/>
           </View>
         }
       />
@@ -85,4 +87,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, actionCreators)(Router);
-
