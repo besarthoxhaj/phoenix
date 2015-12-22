@@ -42,30 +42,29 @@ class Router extends Component {
   }
   render(){
     return (
-      <Navigator
-        ref='navigator'
-        initialRoute={this.props.stack[this.props.route.index]}
-        initialRouteStack={this.props.stack}
-        renderScene={this.renderScene}
-        history={this.props.history}
-        sceneStyle={{
-          flexDirection: 'column',
-          flex: 2
-        }}
-        configureScene={route => {
-          if (route.sceneConfig) {
-            return route.sceneConfig;
-          } else {
-            return Navigator.SceneConfigs.FadeAndroid;
-          }
-        }}
-        navigationBar={
-          <View style={{flex:1,flexDirection:'column'}}>
-            <Header />
-            <Footer />
-          </View>
-        }
-      />
+      <View style={{flex:1}}>
+        <Header />
+        <Navigator
+        //Use Navigator to transition between different scenes in your app.
+          ref='navigator'
+          initialRoute={this.props.stack[this.props.route.index]}
+          initialRouteStack={this.props.stack}
+          renderScene={this.renderScene}
+          history={this.props.history}
+          sceneStyle={{
+            flexDirection: 'column',
+            flex: 2
+          }}
+          configureScene={route => {
+            if (route.sceneConfig) {
+              return route.sceneConfig;
+            } else {
+              return Navigator.SceneConfigs.FadeAndroid;
+            }
+          }}
+        />
+        <Footer />
+      </View>
     )
   }
 }
@@ -85,4 +84,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, actionCreators)(Router);
-

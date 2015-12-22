@@ -16,11 +16,11 @@ export default class ModalComponent extends Component {
   }
   render(){
     return (
-      <View style={styles.container}>
-        <Modal animated={true} transparent={true} visible={true} style={styles.container}>
-          <Text>Hello, modal!</Text>
-        </Modal>
-      </View>
+      <Modal animated={true} visible={true} transparent={true}>
+        <View style={styles.container}>
+          <Text style={styles.text}>Hello, modal!</Text>
+        </View>
+      </Modal>
     )
   }
 }
@@ -32,8 +32,11 @@ ModalComponent.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'transparent',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
+  text: {
+    fontSize: 20,
+  }
 });

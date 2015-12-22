@@ -16,8 +16,8 @@ export default class Home extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <TouchableHighlight onPress={this.props.navigateTo.bind(null,{name:'Login'})}>
-          <Text>Go Login</Text>
+        <TouchableHighlight onPress={this.props.showAlert.bind(null,'test')}>
+          <Text>Show Alert</Text>
         </TouchableHighlight>
       </View>
     )
