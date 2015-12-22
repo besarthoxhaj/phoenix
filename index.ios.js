@@ -26,7 +26,7 @@ class phoenix extends Component {
             return (
               <App />
             );
-          } 
+          }
         }
       </Provider>
     )
