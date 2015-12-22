@@ -1,8 +1,12 @@
+import { bindActionCreators } from 'redux';
+
+
 export function subscribeService (store, service) {
-  store.subscribe(function(){
-    console.log(arguments);
-    const state = store.getState();
-    service(state)
+  store.subscribe(() => {
+    const state        = store.getState();
+    const actionBinder = actionCreators => bindActionCreators(actionCreators, store.dispatch)
+
+    service(state, actionCreatorBinder);
   })
 }
 
