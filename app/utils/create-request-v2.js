@@ -15,7 +15,7 @@ import fetch from 'isomorphic-fetch';
 **/
 
 export const postAuthReq = (url, data, token) => {
-  return fetch(url, post(req(data, authHeader(token))))
+  return fetch(url, post(reqOptions(data, authHeader(token))))
 }
 
 /**
@@ -28,7 +28,7 @@ export const postAuthReq = (url, data, token) => {
 **/
 
 export const putAuthReq = (url, data, token) => {
-  return fetch(url, put(req(data, authHeader(token))))
+  return fetch(url, put(reqOptions(data, authHeader(token))))
 }
 
 /**
@@ -40,8 +40,7 @@ export const putAuthReq = (url, data, token) => {
 **/
 
 export const postReq = (url, data) => {
-  console.log(url, data)
-  return fetch(url, post(req(data)))
+  return fetch(url, post(reqOptions(data)))
 }
 
 /**
@@ -53,19 +52,23 @@ export const postReq = (url, data) => {
 **/
 
 export const getAuthReq = (url, token) => {
-  return fetch(url, get(req(null, authHeader(token))))
+  return fetch(url, get(reqOptions(null, authHeader(token))))
 }
 
 /**
-* Create a GET request
+* Create an unauthenticated GET request
+*
 * @param {string} - url
+*
 **/
 
 export const getReq = (url) => {
-  return fetch(url, get(req(null)))
+  return fetch(url, get(reqOptions(null)))
 }
 
-const req = (data=null, headers={}) => {
+// Helper functions to format the request options
+
+const reqOptions = (data=null, headers={}) => {
   const reqHeader = {
     headers: {
       ...headers,
@@ -75,18 +78,18 @@ const req = (data=null, headers={}) => {
   return data ? { ...reqHeader, body: JSON.stringify(data) } : reqHeader
 };
 
-const post = requestOptions => ({
-  ...requestOptions,
+const post = reqOptions => ({
+  ...reqOptions,
   method: 'POST'
 })
 
-const put = requestOptions => ({
-  ...requestOptions,
+const put = reqOptions => ({
+  ...reqOptions,
   method: 'PUT'
 })
 
-const get = requestOptions => ({
-  ...requestOptions,
+const get = reqOptions => ({
+  ...reqOptions,
   method: 'GET'
 })
 
