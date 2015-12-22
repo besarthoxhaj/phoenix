@@ -1,7 +1,7 @@
 module.exports = (Apn) => {
   return (req, reply) => {
 
-    Apn.sendNotification((error, reponse) => {
+    Apn.sendNotification(undefined, (error, reponse) => {
       if (error) {
         return reply({
           status: 'error',
