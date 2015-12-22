@@ -6,6 +6,7 @@ import React, {
   PropTypes,
   View,
   Text,
+  Dimensions
 } from 'react-native';
 
 export default class Feader extends Component {
@@ -32,5 +33,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#e8d279',
     justifyContent: 'center',
     alignItems: 'center',
+    height: 40,
+    width: Dimensions.get('window').width,
   }
 });

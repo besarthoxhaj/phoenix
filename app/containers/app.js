@@ -21,7 +21,7 @@ class AppContainer extends Component {
   }
 
   componentWillMount(){
-    PushNotificationIOS.addEventListener('register', this.props.registerDeviceToken(token))
+    PushNotificationIOS.addEventListener('register', this.props.registerDeviceToken)
     PushNotificationIOS.addEventListener('notification', this.props.onReceiveNotification.bind(null, AppStateIOS.currentState))
     PushNotificationIOS.setApplicationIconBadgeNumber(this.props.unreadNotificationCount);
 
