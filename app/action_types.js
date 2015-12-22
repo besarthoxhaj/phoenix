@@ -11,3 +11,7 @@ export const RESTART_NAVIGATION = 'RESTART_NAVIGATION';
 // notifications
 export const NEW_PUSH_NOTIFICATION = 'NEW_PUSH_NOTIFICATION';
 export const REGISTER_DEVICE_TOKEN = 'REGISTER_DEVICE_TOKEN';
+
+//login
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
