@@ -1,22 +1,19 @@
 'use strict';
 
 import { connect } from 'react-redux/native';
-import { bindActionCreators } from 'redux';
+
 import React, { Component, PropTypes } from 'react-native';
 // components
 import Home from '../components/home.js';
 // actions
-import * as NavigationActions from '../actions/navigation.js';
+import { showAlert } from '../actions/alert.js';
 
 const actionCreators = {
-  ...NavigationActions,
+  showAlert,
 };
 
 class HomeContainer extends Component {
 
-  constructor(props){
-    super(props);
-  }
   render(){
     return (
       <Home {...this.props} />
