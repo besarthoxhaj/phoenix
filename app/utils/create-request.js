@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch';
+
 /**
 * Functions return a promise created by fetch
 * which is then resolved in the request wrapper
