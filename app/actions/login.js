@@ -1,17 +1,17 @@
 /**
 *
-* LOGIN TEST actions
+* LOGIN actions
 * testing out request wrapper functions
 **/
 
 import * as types      from '../action_types.js';
-import { createReq }   from '../utils/create-request.js'
+import { postReq }   from '../utils/create-request-v2.js'
 import { sendRequest } from '../utils/request-wrapper.js'
 import { navigateTo }  from './navigation.js';
 
 export const login = (username, password) => async (dispatch) => {
   const data      = { username: 'nikki', password: 'password'}
-  const request   = () => createReq('POST', 'http://localhost:9009/login', data); // returns a promise
+  const request   = () => postReq('http://localhost:9009/login', data); // returns a promise
   const onSuccess = json => {
     if (json.status === 'success') {
       dispatch(loginSuccess());
