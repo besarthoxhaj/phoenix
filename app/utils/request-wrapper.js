@@ -8,6 +8,7 @@ import { NetInfo } from 'react-native';
  /** EXAMPLE use in an action:
 
  import { createReq } from './create-request.js'
+ import { sendRequest } from './request-wrapper.js'
 
  const login = (username, password) => async (dispatch) => {
     const data      = { username, password}
@@ -69,7 +70,7 @@ export function sendRequest(options, attempt=0) {
 * NB: using 'async' so that 'await' can be used to resolve promises and return the value
 **/
 
-export const onError = async (options, attempt, error) {
+const onError = async (options, attempt, error) {
   if (retryIntervals[attempt]) {
     setTimeout(
       () => sendRequest(options, ++attempt),
@@ -82,7 +83,7 @@ export const onError = async (options, attempt, error) {
   }
 }
 
-export const onComplete = async (options, res) {
+const onComplete = async (options, res) {
   if (res.status == 200 && res.ok) {
     let data = await res.json();
      options.onSuccess(data)
