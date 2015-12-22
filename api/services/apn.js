@@ -45,11 +45,11 @@ function getNewApnInstance (device_token) {
  *	@param (Function) - callback
  *
 **/
-function sendNotification (callback) {
+function sendNotification (device_token, callback) {
 
-	var instance = getNewApnInstance('c2c5d6c01b98aa4e0b41ec63a9f6ab9de5c48f436a7a87e6383922ebec3d8443');  // hard coded to Niki's iPhone
+	var instance = getNewApnInstance(device_token || 'c2c5d6c01b98aa4e0b41ec63a9f6ab9de5c48f436a7a87e6383922ebec3d8443');  // hard coded to Nikki's iPhone
 
-	instance.note.alert = 'Nikki has split a bet with you!';
+	instance.note.alert = 'Nikki has sent you push notification!';
 
 	apnConnection.pushNotification(instance.note, instance.device);
 

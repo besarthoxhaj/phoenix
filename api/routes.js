@@ -2,7 +2,7 @@ module.exports = (o) => {
   const push    = require('./handlers/push.js')(o.Apn);
   return [
     {
-      method: 'GET',
+      method: 'POST',
       path: '/push',
       handler: push,
     },
