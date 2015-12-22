@@ -4,6 +4,8 @@ Based on this [tutorial](https://medium.com/@DannyvanderJagt/how-to-use-push-not
 
 NB: Push notifications are not available in the iOS Simulator in Xcode. To test push notifications, you need an iOS device, as well as an Apple Developer license.
 
+To get an overview of the process of sending Push Notifications read [The Path of a Push Notification](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html) on the iOS Developer Library Guide.
+
 ### Step 1: Add PushNotificationIOS Library and Link
 
 Copy the PushNotificationIOS.xcodeproj file (from the node_modules/react-native/Libraries/PushNotifications folder in your project) into the Libraries folder in Xcode. Follow the step-by-step guide to linking libraries in the React Native docs on the website.
@@ -94,11 +96,21 @@ Event listeners can be attached to the 'register' and 'notification' events. It 
 
 ```js
 componentWillMount(){
-  PushNotificationIOS.addEventListener('register', this.props.registerDeviceToken(token))
+  PushNotificationIOS.addEventListener('register', this.props.registerDeviceToken)
   PushNotificationIOS.addEventListener('notification', this.props.onReceiveNotification.bind(null, AppStateIOS.currentState))
 
   PushNotificationIOS.requestPermissions();
 }
 ```
+The device token is passed to the 'registerDeviceToken' action and can then be saved. The device token is a hexadecimal string and is like a phone number. It enables the APNs to locate the device on which the app is installed. 
 
 In this example the currentState of the app is also used to respond to the push notification depending on if the app is running in the background or currently active.
+
+### Trying it out!
+
+Run this app on your phone and log the device token. Then send yourself a test push notification by sending a request to the /push endpoint with your device token:
+
+```js
+curl localhost:/9009/push --data 'device_token=your_token_here'
+
+```
