@@ -2,7 +2,7 @@
 
 import { ALERT, CLEAR_ALERT } from '../action_types.js';
 
-export const intitialState = null;
+export const intitialState = 'test';
 
 export const reducer = (state = intitialState, action) => {
 

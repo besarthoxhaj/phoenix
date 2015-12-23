@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 
 export function subscribeService (store, service) {
   store.subscribe(() => {
-    const state        = store.getState();
-    const actionBinder = actionCreators => bindActionCreators(actionCreators, store.dispatch)
+    const actionCreatorBinder = actionCreators => bindActionCreators(actionCreators, store.dispatch)
+    const state               = store.getState();
 
     service(state, actionCreatorBinder);
   })

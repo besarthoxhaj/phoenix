@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { AlertIOS } from 'react-native';
+import { AlertIOS } from 'react-native';
 // actions
 import * as AlertActions from '../actions/alert.js';
 
@@ -12,7 +12,7 @@ export default function (state, actionCreatorBinder) {
   let text             = 'OK';
   let onPress          = clearAlert;
 
-  switch ('state.alert') {
+  switch (alert) {
     case 'test':
       message = 'hello Jack';
       subtitle = '123';
