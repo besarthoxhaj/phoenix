@@ -7,11 +7,11 @@ import React, { Component, PropTypes } from 'react-native';
 import Home from '../components/home.js';
 // actions
 import { showAlert } from '../actions/alert.js';
-import { showModal } from '../actions/modal.js';
+import { testModal } from '../actions/modal.js';
 
 const actionCreators = {
   showAlert,
-  showModal
+  testModal,
 };
 
 class HomeContainer extends Component {
@@ -24,14 +24,9 @@ class HomeContainer extends Component {
 
 HomeContainer.propTypes = {
   showAlert: PropTypes.func.isRequired,
-  showModal: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired,
+  testModal: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => {
-  return {
-    text: 'Hello, world!'
-  };
-}
+const mapStateToProps = state => {return {}}
 
 export default connect(mapStateToProps, actionCreators)(HomeContainer);
