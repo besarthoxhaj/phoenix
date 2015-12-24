@@ -7,13 +7,14 @@ import React, { Component, PropTypes } from 'react-native';
 import Home from '../components/home.js';
 // actions
 import { showAlert } from '../actions/alert.js';
+import { showModal } from '../actions/modal.js';
 
 const actionCreators = {
   showAlert,
+  showModal
 };
 
 class HomeContainer extends Component {
-
   render(){
     return (
       <Home {...this.props} />
@@ -22,7 +23,9 @@ class HomeContainer extends Component {
 }
 
 HomeContainer.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
+  showAlert: PropTypes.func.isRequired,
+  showModal: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => {
