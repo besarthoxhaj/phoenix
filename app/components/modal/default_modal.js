@@ -27,7 +27,7 @@ export default class ModalComponent extends Component {
 }
 
 ModalComponent.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
