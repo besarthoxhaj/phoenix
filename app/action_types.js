@@ -8,5 +8,8 @@ export const SET_INITIAL_ROUTE = 'SET_INITIAL_ROUTE';
 export const RESTART = 'RESTART';
 export const RESTART_NAVIGATION = 'RESTART_NAVIGATION';
 // alert
-export const ALERT = 'ALERT';
+export const SHOW_ALERT = 'SHOW_ALERT';
 export const CLEAR_ALERT = 'CLEAR_ALERT';
+// modal
+export const SHOW_MODAL = 'SHOW_MODAL';
+export const CLEAR_MODAL = 'CLEAR_MODAL'
