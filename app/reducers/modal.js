@@ -1,16 +1,28 @@
 'use strict';
 
-import { SHOW_MODAL, CLEAR_MODAL } from '../action_types.js';
+import {
+  SHOW_MODAL,
+  RESET_MODAL
+} from '../action_types.js';
 
-export const intitialState = null;
+export const intitialState = {
+  visible: false,
+  text: '',
+};
 
 export const reducer = (state = intitialState, action) => {
 
   switch (action.type) {
     case SHOW_MODAL:
-      return action.modal;
-    case CLEAR_MODAL:
-      return null;
+      return {
+        visible: true,
+        text: action.text,
+      }
+    case RESET_MODAL:
+      return {
+        visible: false,
+        text: '',
+      }
     default:
       return state
   }

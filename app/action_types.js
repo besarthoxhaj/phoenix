@@ -12,4 +12,4 @@ export const SHOW_ALERT = 'SHOW_ALERT';
 export const CLEAR_ALERT = 'CLEAR_ALERT';
 // modal
 export const SHOW_MODAL = 'SHOW_MODAL';
-export const CLEAR_MODAL = 'CLEAR_MODAL'
+export const RESET_MODAL = 'RESET_MODAL'
