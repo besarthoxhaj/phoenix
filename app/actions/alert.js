@@ -3,7 +3,7 @@
 import * as types from '../action_types.js';
 
 export const showAlert = () => {
-  return { type: types.ALERT, alert: 'test' };
+  return { type: types.SHOW_ALERT, alert: 'test' };
 }
 
 export const clearAlert = () => {
