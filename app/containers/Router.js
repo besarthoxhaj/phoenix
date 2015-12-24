@@ -18,10 +18,12 @@ const actionCreators = {
 };
 
 class Router extends Component {
+  
   constructor(props){
     super(props);
     this.renderScene = this.renderScene.bind(this);
   }
+
   componentWillUpdate(nextProps) {
     const { route : newRoute, stack: newStack} = nextProps;
     const { route } = this.props;
@@ -30,6 +32,7 @@ class Router extends Component {
       this.refs.navigator.jumpTo(newStack[newRoute.index]);
     }
   }
+
   renderScene(route,navigator){
     switch(route.name){
       case 'Login':
@@ -40,6 +43,7 @@ class Router extends Component {
         return (<Login />)
     }
   }
+
   render(){
     return (
       <View style={{flex:1}}>
