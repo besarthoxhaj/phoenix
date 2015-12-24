@@ -19,13 +19,21 @@ export default class Home extends Component {
         <TouchableHighlight onPress={this.props.showAlert.bind(null,'test')}>
           <Text>Show Alert</Text>
         </TouchableHighlight>
+        <TouchableHighlight onPress={this.props.showModal.bind(null,'default_modal_1')}>
+          <Text>Show Default Modal</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={this.props.showModal.bind(null,'custom_modal')}>
+          <Text>Show Custom Modal</Text>
+        </TouchableHighlight>
       </View>
     )
   }
 }
 
 Home.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
+  showAlert: PropTypes.func.isRequired,
+  showModal: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({
