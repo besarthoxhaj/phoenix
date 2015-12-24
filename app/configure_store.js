@@ -41,7 +41,8 @@ export default () => {
       'bets',
       'navigation',
       'login',
-      'alert'
+      'alert',
+      'modal',
     ]
   });
 
