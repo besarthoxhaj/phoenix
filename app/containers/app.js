@@ -3,7 +3,7 @@
 import React, { Component, View } from 'react-native';
 // containers
 import Router from './router.js';
-import Modals from './modals.js';
+import Modal from './modal.js';
 import Alert from './alert.js';
 
 class AppContainer extends Component {
@@ -12,7 +12,7 @@ class AppContainer extends Component {
     return (
       <View style={{flex:1}}>
         <Router/>
-        <Modals/>
+        <Modal/>
         <Alert/>
       </View>
     );
