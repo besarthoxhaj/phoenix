@@ -15,8 +15,6 @@ export default class ModalComponent extends Component {
     super(props);
   }
   render(){
-    console.log('props in defailt modal', this.props)
-
     return (
       <View style={styles.container}>
         <Text style={styles.text}>Custom modal</Text>

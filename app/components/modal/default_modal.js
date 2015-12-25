@@ -8,6 +8,7 @@ import React, {
   Text,
   TouchableHighlight,
   Modal,
+  ActivityIndicatorIOS
 } from 'react-native';
 
 export default class ModalComponent extends Component {
@@ -15,11 +16,10 @@ export default class ModalComponent extends Component {
     super(props);
   }
   render(){
-    console.log('props in defailt modal', this.props)
-
     return (
       <View style={styles.container}>
         <Text style={styles.text}>{this.props.text}</Text>
+        <ActivityIndicatorIOS/>
         <TouchableHighlight onPress={this.props.close}><Text>Close</Text></TouchableHighlight>
       </View>
     )
@@ -33,7 +33,7 @@ ModalComponent.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(230,230,230, 0.95)',
     justifyContent: 'center',
     alignItems: 'center',
   },
