@@ -8,6 +8,7 @@ import Login from './login.js';
 import Home from './home.js';
 import Header from './header.js';
 import Footer from './footer.js';
+import Profile from './profile.js';
 // actions
 import * as StartActions from '../actions/start.js';
 import * as NavigationActions from '../actions/navigation.js';
@@ -18,7 +19,7 @@ const actionCreators = {
 };
 
 class Router extends Component {
-  
+
   constructor(props){
     super(props);
     this.renderScene = this.renderScene.bind(this);
@@ -37,8 +38,13 @@ class Router extends Component {
     switch(route.name){
       case 'Login':
         return (<Login />);
+      break;
       case 'Home':
         return (<Home />);
+      break;
+      case 'Profile':
+        return (<Profile />);
+      break;
       default:
         return (<Login />)
     }
@@ -55,10 +61,6 @@ class Router extends Component {
           initialRouteStack={this.props.stack}
           renderScene={this.renderScene}
           history={this.props.history}
-          sceneStyle={{
-            flexDirection: 'column',
-            flex: 2
-          }}
           configureScene={route => {
             if (route.sceneConfig) {
               return route.sceneConfig;
