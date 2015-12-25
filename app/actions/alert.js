@@ -2,8 +2,8 @@
 
 import * as types from '../action_types.js';
 
-export const showAlert = () => {
-  return { type: types.SHOW_ALERT, alert: 'test' };
+export const showAlert = (alert) => {
+  return { type: types.SHOW_ALERT, alert: alert };
 }
 
 export const clearAlert = () => {

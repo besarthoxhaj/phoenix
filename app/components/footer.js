@@ -6,6 +6,7 @@ import React, {
   PropTypes,
   View,
   Text,
+  TouchableHighlight,
 } from 'react-native';
 
 export default class Feader extends Component {
@@ -15,7 +16,12 @@ export default class Feader extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <Text>Footer</Text>
+        <TouchableHighlight onPress={this.props.navigateTo.bind(null,{name:'Home'})}>
+          <Text>Home</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={this.props.navigateTo.bind(null,{name:'Profile'})}>
+          <Text>Profile</Text>
+        </TouchableHighlight>
       </View>
     )
   }
@@ -27,9 +33,10 @@ Feader.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: 80,
     backgroundColor: '#e8d279',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
+    flexDirection: 'row',
   }
 });
