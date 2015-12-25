@@ -6,7 +6,7 @@ export const CHANGE_ROUTE = 'CHANGE_ROUTE';
 export const GO_BACK = 'GO_BACK';
 export const SET_INITIAL_ROUTE = 'SET_INITIAL_ROUTE';
 export const RESTART = 'RESTART';
-export const RESTART_NAVIGATION = 'RESTART_NAVIGATION';
+export const RESET_NAVIGATION = 'RESTART_NAVIGATION';
 // alert
 export const SHOW_ALERT = 'SHOW_ALERT';
 export const RESET_ALERT = 'RESET_ALERT';

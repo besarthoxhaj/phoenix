@@ -10,7 +10,7 @@ import Header from './header.js';
 import Footer from './footer.js';
 // actions
 import * as StartActions from '../actions/start.js';
-import * as NavigationActions from '../actions/navigation.js';
+import * as NavigationActions from '../actions/router.js';
 
 const actionCreators = {
   ...StartActions,
@@ -80,11 +80,7 @@ Router.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return {
-    route: state.navigation.route,
-    history: state.navigation.history,
-    stack: state.navigation.stack,
-  }
+  return { ...state.router };
 }
 
 export default connect(mapStateToProps, actionCreators)(Router);

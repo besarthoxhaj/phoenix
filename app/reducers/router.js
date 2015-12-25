@@ -6,7 +6,7 @@ import {
   GO_BACK,
   SET_INITIAL_ROUTE,
   RESTART,
-  RESTART_NAVIGATION,
+  RESET_NAVIGATION,
 } from '../action_types.js';
 
 const routes = [
@@ -20,9 +20,9 @@ const initialRouteStack = routes.map((name, index) => {return {name, index}});
 const initialRoute = { name: 'Home', index: 0 };
 
 export const initialState = {
-  route   : initialRoute,
+  route : initialRoute,
   history : [initialRoute],
-  stack   : initialRouteStack
+  stack : initialRouteStack
 };
 
 export const reducer = (state = initialState, action) => {
@@ -48,7 +48,7 @@ export const reducer = (state = initialState, action) => {
         history: [newRoute]
       }
     }
-    case RESTART_NAVIGATION:
+    case RESET_NAVIGATION:
       return {
         ...initialState
       };
