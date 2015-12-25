@@ -18,15 +18,10 @@ class AlertsContainer extends Component {
     let onPress = this.props.clearAlert;
 
     switch (alert) {
-      case 'test':
-        message = 'hello Jack';
-        subtitle = '123';
-        text = 'press me';
-      break;
-      case 'test2':
-        message = 'hello Izaak';
-        subtitle = '123';
-        text = 'press me';
+      case 'alert_1':
+        message = 'Alert!';
+        subtitle = 'Lorum Ipsum';
+        text = 'Close';
       break;
     }
 
