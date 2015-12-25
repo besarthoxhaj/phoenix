@@ -6,11 +6,11 @@ import React, { Component, PropTypes } from 'react-native';
 // components
 import Home from '../components/home.js';
 // actions
-import { showAlert } from '../actions/alert.js';
+import { testAlert } from '../actions/alert.js';
 import { testModal } from '../actions/modal.js';
 
 const actionCreators = {
-  showAlert,
+  testAlert,
   testModal,
 };
 
@@ -23,7 +23,7 @@ class HomeContainer extends Component {
 }
 
 HomeContainer.propTypes = {
-  showAlert: PropTypes.func.isRequired,
+  testAlert: PropTypes.func.isRequired,
   testModal: PropTypes.func.isRequired,
 };
 
