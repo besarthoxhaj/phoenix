@@ -27,7 +27,7 @@ Header.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: 80,
     backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
