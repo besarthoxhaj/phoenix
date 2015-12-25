@@ -6,8 +6,7 @@ import React, {
   PropTypes,
   View,
   Text,
-  TouchableHighlight,
-  Modal,
+  ActivityIndicatorIOS,
 } from 'react-native';
 
 export default class ModalComponent extends Component {
@@ -17,23 +16,46 @@ export default class ModalComponent extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <Modal animated={true} transparent={true} visible={true} style={styles.container}>
-          <Text>Hello, modal!</Text>
-        </Modal>
+        <View style={styles.spinner}>
+          <ActivityIndicatorIOS
+            style={[styles.activitySpinner]}
+            color="white"
+            size="large"
+          />
+          <Text style={styles.text}>{this.props.text}</Text>
+        </View>
       </View>
     )
   }
 }
 
 ModalComponent.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
+  spinner: {
+    borderWidth: 1,
+    width: 80,
+    height: 80,
+    borderRadius: 10,
+    borderColor: 'black',
+    backgroundColor: 'black'
+  },
+  activitySpinner: {
+    marginTop: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 15,
+    color: 'white',
+    textAlign: 'center'  
+  }
 });

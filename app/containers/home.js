@@ -1,22 +1,20 @@
 'use strict';
 
 import { connect } from 'react-redux/native';
-import { bindActionCreators } from 'redux';
+
 import React, { Component, PropTypes } from 'react-native';
 // components
 import Home from '../components/home.js';
 // actions
-import * as NavigationActions from '../actions/navigation.js';
+import { testAlert } from '../actions/alert.js';
+import { testModal } from '../actions/modal.js';
 
 const actionCreators = {
-  ...NavigationActions,
+  testAlert,
+  testModal,
 };
 
 class HomeContainer extends Component {
-
-  constructor(props){
-    super(props);
-  }
   render(){
     return (
       <Home {...this.props} />
@@ -25,13 +23,10 @@ class HomeContainer extends Component {
 }
 
 HomeContainer.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
+  testAlert: PropTypes.func.isRequired,
+  testModal: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => {
-  return {
-    text: 'Hello, world!'
-  };
-}
+const mapStateToProps = state => {return {}}
 
 export default connect(mapStateToProps, actionCreators)(HomeContainer);

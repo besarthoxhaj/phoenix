@@ -16,8 +16,11 @@ export default class Home extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <TouchableHighlight onPress={this.props.navigateTo.bind(null,{name:'Login'})}>
-          <Text>Go Login</Text>
+        <TouchableHighlight onPress={this.props.testAlert.bind(null)}>
+          <Text>Show Alert</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={this.props.testModal.bind(null)}>
+          <Text>Show Modal</Text>
         </TouchableHighlight>
       </View>
     )
@@ -25,7 +28,8 @@ export default class Home extends Component {
 }
 
 Home.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
+  testAlert: PropTypes.func.isRequired,
+  testModal: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({

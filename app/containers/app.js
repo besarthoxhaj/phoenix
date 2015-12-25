@@ -1,39 +1,22 @@
 'use strict';
 
-import { connect } from 'react-redux/native';
-import { bindActionCreators } from 'redux';
-import React, { Component, PropTypes, View } from 'react-native';
+import React, { Component, View } from 'react-native';
 // containers
 import Router from './router.js';
-import Alerts from './alerts.js';
-// actions
-import * as NavigationActions from '../actions/navigation.js';
-
-const actionCreators = {
-  ...NavigationActions,
-};
+import Modal from './modal.js';
+import Alert from './alert.js';
 
 class AppContainer extends Component {
 
-  constructor(props){
-    super(props);
-  }
   render(){
     return (
-      <View>
-        <Router />
-        <Alerts />
+      <View style={{flex:1}}>
+        <Router/>
+        <Modal/>
+        <Alert/>
       </View>
     );
   }
 }
 
-AppContainer.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = state => {
-  return {};
-}
-
-export default connect(mapStateToProps, actionCreators)(AppContainer);
+export default AppContainer;
