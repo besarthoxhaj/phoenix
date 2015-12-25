@@ -9,7 +9,7 @@ export const RESTART = 'RESTART';
 export const RESTART_NAVIGATION = 'RESTART_NAVIGATION';
 // alert
 export const SHOW_ALERT = 'SHOW_ALERT';
-export const CLEAR_ALERT = 'CLEAR_ALERT';
+export const RESET_ALERT = 'RESET_ALERT';
 // modal
 export const SHOW_MODAL = 'SHOW_MODAL';
 export const RESET_MODAL = 'RESET_MODAL'
