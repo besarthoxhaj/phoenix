@@ -16,14 +16,11 @@ export default class Home extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <TouchableHighlight onPress={this.props.showAlert.bind(null,'test')}>
+        <TouchableHighlight onPress={this.props.showAlert.bind(null,'alert_1')}>
           <Text>Show Alert</Text>
         </TouchableHighlight>
-        <TouchableHighlight onPress={this.props.showModal.bind(null,'default_modal_1')}>
-          <Text>Show Default Modal</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={this.props.showModal.bind(null,'custom_modal')}>
-          <Text>Show Custom Modal</Text>
+        <TouchableHighlight onPress={this.props.showModal.bind(null,'modal_1')}>
+          <Text>Show Modal</Text>
         </TouchableHighlight>
       </View>
     )
@@ -38,7 +35,7 @@ Home.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 4,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
