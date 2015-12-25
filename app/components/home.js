@@ -16,7 +16,7 @@ export default class Home extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <TouchableHighlight onPress={this.props.showAlert.bind(null,'test')}>
+        <TouchableHighlight onPress={this.props.testAlert.bind(null)}>
           <Text>Show Alert</Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={this.props.testModal.bind(null)}>
@@ -28,7 +28,7 @@ export default class Home extends Component {
 }
 
 Home.propTypes = {
-  showAlert: PropTypes.func.isRequired,
+  testAlert: PropTypes.func.isRequired,
   testModal: PropTypes.func.isRequired,
 };
 
