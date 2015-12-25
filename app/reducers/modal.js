@@ -6,7 +6,7 @@ import {
 } from '../action_types.js';
 
 export const intitialState = {
-  visible: false,
+  isVisible: false,
   text: '',
 };
 
@@ -15,12 +15,12 @@ export const reducer = (state = intitialState, action) => {
   switch (action.type) {
     case SHOW_MODAL:
       return {
-        visible: true,
+        isVisible: true,
         text: action.text,
       }
     case RESET_MODAL:
       return {
-        visible: false,
+        isVisible: false,
         text: '',
       }
     default:

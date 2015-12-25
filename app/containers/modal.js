@@ -17,7 +17,7 @@ class ModalsContainer extends Component {
 
   render() {
     return (
-      <Modal visible={this.props.visible} transparent={true}>
+      <Modal visible={this.props.isVisible} transparent={true}>
         <DefaultModal text={this.props.text}/>
       </Modal>
     );
@@ -25,16 +25,13 @@ class ModalsContainer extends Component {
 }
 
 ModalsContainer.propTypes = {
-  visible: PropTypes.bool.isRequired,
+  isVisible: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => {
 
-  return {
-    visible: state.modal.visible,
-    text: state.modal.text
-  };
+  return { ...state.modal };
 }
 
 export default connect(mapStateToProps, actionCreators)(ModalsContainer);
