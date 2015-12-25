@@ -1,17 +1,13 @@
-/*
-Initial ideas for modals. Use case:
-- One or more standard modals which only need custom text and actions
-- One or more custom modals
-*/
-
 'use strict';
 
 import { connect } from 'react-redux/native';
-import React, { Component, PropTypes, Modal, View } from 'react-native';
+import React, { Component,
+  PropTypes,
+  Modal,
+  View,
+} from 'react-native';
 // components
 import DefaultModal from '../components/modal/default_modal.js';
-// custom modal container
-import CustomModalContainer from './custom_modals/custom_modal.js';
 // actions
 import * as ModalActions from '../actions/modal.js';
 
@@ -31,15 +27,11 @@ class ModalsContainer extends Component {
 
   componentWillReceiveProps(props) {
     switch (props.modal) {
-      case 'default_modal_1':
+      case 'modal_1':
         open = true;
-        text = 'Default Modal 1',
+        text = 'Modal',
         close = this.props.clearModal,
         content = <DefaultModal text={text} close={close}/>
-      break;
-      case 'custom_modal':
-        open = true;
-        content = <CustomModalContainer/>
       break;
       default:
         open=false;
@@ -48,7 +40,7 @@ class ModalsContainer extends Component {
 
   render() {
     return (
-      <Modal visible={ open }>
+      <Modal visible={ open } transparent={ true }>
         { content }
       </Modal>
     );
