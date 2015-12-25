@@ -4,7 +4,7 @@ import { SHOW_ALERT, CLEAR_ALERT } from '../action_types.js';
 
 export const intitialState = null;
 
-export const reducer = (state = intitialState, action) => {
+export default (state = intitialState, action) => {
 
   switch (action.type) {
     case SHOW_ALERT:

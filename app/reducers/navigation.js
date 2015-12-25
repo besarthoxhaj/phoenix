@@ -12,6 +12,7 @@ import {
 const routes = [
   'Home',
   'Login',
+  'Profile',
   'Modal/Show',
 ];
 
@@ -25,7 +26,7 @@ export const initialState = {
   stack   : initialRouteStack
 };
 
-export const reducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
 
   switch (action.type) {
 

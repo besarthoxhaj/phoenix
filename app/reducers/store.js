@@ -8,7 +8,7 @@ export const initialState = {
   text: 'Click here'
 };
 
-export const reducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
 
   switch (action.type) {
 
