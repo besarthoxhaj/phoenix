@@ -10,35 +10,15 @@ const actionCreators = AlertActions;
 
 class AlertsContainer extends Component {
 
-  componentWillReceiveProps(props) {
-    const alert = props.alert;
-    let message;
-    let subtitle = null;
-    let text = 'OK';
-    let onPress = this.props.clearAlert;
-
-    switch (alert) {
-      case 'test':
-        message = 'hello Jack';
-        subtitle = '123';
-        text = 'press me';
-      break;
-      case 'test2':
-        message = 'hello Izaak';
-        subtitle = '123';
-        text = 'press me';
-      break;
-    }
-
-    if (alert !== null) {
+  componentWillReceiveProps(props){
+    if (props.isVisible) {
       AlertIOS.alert(
-        message,
-        subtitle,
-        [{text, onPress}]
+        props.title,
+        props.message,
+        props.buttons
       )
     }
   }
-
   render(){
     return (
       null
@@ -47,12 +27,14 @@ class AlertsContainer extends Component {
 }
 
 AlertsContainer.propTypes = {
-  alert: PropTypes.string,
-  clearAlert: PropTypes.func,
+  isVisible: PropTypes.bool.isRequired,
+  title: PropTypes.string,
+  message: PropTypes.string,
+  buttons: PropTypes.array,
 };
 
 const mapStateToProps = state => {
-  return { alert: state.alert };
+  return { ...state.alert };
 }
 
 export default connect(mapStateToProps, actionCreators)(AlertsContainer);
