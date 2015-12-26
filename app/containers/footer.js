@@ -4,7 +4,7 @@ import { connect } from 'react-redux/native';
 import { bindActionCreators } from 'redux';
 import React, { Component, PropTypes } from 'react-native';
 // components
-import Footer from '../components/footer.js';
+import Default from '../components/footer/default.js';
 // actions
 import * as NavigationActions from '../actions/router.js';
 
@@ -19,7 +19,7 @@ class FooterContainer extends Component {
   }
   render(){
     return (
-      <Footer {...this.props} />
+      <Default {...this.props} />
     );
   }
 }
