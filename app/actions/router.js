@@ -1,10 +1,3 @@
-
-/**
- * NAVIGATION ACTIONS
- * navigateTo function should be used for any transitions between any
- * routes in app/containers/router.js
- */
-
 'use strict';
 
 import { findIndex, propEq } from 'ramda';
