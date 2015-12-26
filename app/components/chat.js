@@ -9,22 +9,20 @@ import React, {
   TouchableHighlight,
 } from 'react-native';
 
-export default class Login extends Component {
+export default class Chat extends Component {
   constructor(props) {
     super(props);
   }
   render(){
     return (
       <View style={styles.container}>
-        <Text>Login</Text>
+        <Text>Chat</Text>
       </View>
     )
   }
 }
 
-Login.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
-};
+Chat.propTypes = {};
 
 const styles = StyleSheet.create({
   container: {
