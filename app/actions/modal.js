@@ -2,14 +2,14 @@
 
 import * as types from '../action_types.js';
 
-export const showModal = text => {
+export const show = text => {
   return {
     type: types.SHOW_MODAL,
     text: text
   };
 }
 
-export const resetModal = () => {
+export const reset = () => {
   return { type: types.RESET_MODAL };
 }
 
@@ -18,9 +18,9 @@ export const resetModal = () => {
  */
 export const testModal = () => {
   return (dispatch, getState) => {
-    dispatch(showModal('Wait...'));
+    dispatch(show('Wait...'));
     setTimeout(() => {
-      dispatch(resetModal());
+      dispatch(reset());
     }, 1000)
   }
 }
