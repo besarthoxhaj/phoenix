@@ -11,8 +11,8 @@ import {
 } from '../action_types.js';
 
 const routes = [
-  'home',
   'login',
+  'home',
   'modal/show',
   'profile',
   'chat'
@@ -20,7 +20,7 @@ const routes = [
 
 const initialRouteStack = routes.map((name, index) => {return {name, index}});
 
-const initialRoute = { name: 'home', index: 0 };
+const initialRoute = { name: 'login', index: 0 };
 
 export const initialState = {
   route : initialRoute,
@@ -94,7 +94,7 @@ export default function reducer (state = initialState, action) {
       };
     default:
       return {
-        ...initialState
+        ...state
       };
   }
 }
