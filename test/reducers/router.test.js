@@ -10,21 +10,21 @@ test('app:reducers:router -> inital state', t => {
   t.end();
 });
 
-// test('app:reducers:router:CHANGE_ROUTE -> should return right state', t => {
+test('app:reducers:router:CHANGE_ROUTE -> should return right state', t => {
 
-//   const newRoute = {name:'Modal/Show',index:2};
-//   const newHistory = [...initialState.history, newRoute];
-//   const newRouteStack = initialState.stack;
+  const newRoute = {name:'modal/show',index:2};
+  const newHistory = [...initialState.history, newRoute];
+  const newRouteStack = initialState.stack;
 
-//   const updatedRouteState = {
-//     route: newRoute,
-//     history: newHistory,
-//     stack: initialState.stack
-//   };
+  const updatedRouteState = {
+    route: newRoute,
+    history: newHistory,
+    stack: initialState.stack
+  };
 
-//   const mockAction = {type:CHANGE_ROUTE, newRoute};
-//   const reducerState = reducer(initialState, mockAction);
+  const mockAction = {type:CHANGE_ROUTE, newRoute};
+  const reducerState = reducer(initialState, mockAction);
 
-//   t.deepEquals(reducerState, updatedRouteState, 'got right state');
-//   t.end();
-// });
+  t.deepEquals(reducerState, updatedRouteState, 'got right state');
+  t.end();
+});
