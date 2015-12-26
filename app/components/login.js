@@ -6,6 +6,7 @@ import React, {
   PropTypes,
   View,
   Text,
+  TextInput,
   TouchableHighlight,
 } from 'react-native';
 
@@ -17,6 +18,16 @@ export default class Login extends Component {
     return (
       <View style={styles.container}>
         <Text>Login</Text>
+        <TextInput
+          style={styles.inputText}
+          placeholder='Email'
+          value={this.props.email}
+          onChangeText={email => this.props.updateInput('email',email)}
+          style={{height: 100, width: 100, backgroundColor: 'white'}}
+        />
+        <TouchableHighlight onPress={this.props.submit}>
+          <Text>Submit</Text>
+        </TouchableHighlight>
       </View>
     )
   }
@@ -33,4 +44,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  inputText: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });
