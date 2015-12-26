@@ -19,8 +19,8 @@ export default class ModalComponent extends Component {
         <View style={styles.spinner}>
           <ActivityIndicatorIOS
             style={[styles.activitySpinner]}
-            color="white"
-            size="large"
+            color='white'
+            size='large'
           />
           <Text style={styles.text}>{this.props.text}</Text>
         </View>
