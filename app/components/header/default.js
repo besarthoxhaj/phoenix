@@ -6,6 +6,7 @@ import React, {
   PropTypes,
   View,
   Text,
+  TouchableHighlight,
 } from 'react-native';
 
 export default class Header extends Component {
@@ -15,7 +16,9 @@ export default class Header extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <Text>Header</Text>
+        <TouchableHighlight onPress={this.props.goBack}>
+          <Text>Go Back</Text>
+        </TouchableHighlight>
       </View>
     )
   }
