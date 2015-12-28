@@ -39,9 +39,9 @@ Feader.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: 80,
     backgroundColor: '#e8d279',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
   },
 });
