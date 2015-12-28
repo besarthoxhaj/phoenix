@@ -12,7 +12,7 @@ test('app:reducers:router -> inital state', t => {
 
 test('app:reducers:router:CHANGE_ROUTE -> should return right state', t => {
 
-  const newRoute = {name:'modal/show',index:3};
+  const newRoute = {name:'modal/show',index:4};
   const newHistory = [...initialState.history, newRoute];
   const newRouteStack = initialState.stack;
 

@@ -10,7 +10,6 @@ import Footer from './footer.js';
 import * as StartActions from '../actions/start.js';
 import * as NavigationActions from '../actions/router.js';
 // utils
-import check from '../utils/router.js';
 import _routes from './_routes.js';
 
 const actionCreators = {
@@ -36,11 +35,7 @@ class Router extends Component {
   }
 
   renderScene(route){
-
-    const finalRoute = check(route, _routes, this.props.state);
-
-    const Component = _routes[finalRoute].component;
-
+    const Component = _routes[route.name].component;
     return (<Component />);
   }
 

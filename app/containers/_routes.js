@@ -9,10 +9,10 @@ import login from './login.js';
 import chat from './chat.js';
 import profile from './profile.js';
 import splash from './splash.js';
+import pin from './pin.js';
 
 const routeList = {
   '_splash': {
-    auth: false,
     component: splash,
     config: {
       footer: empty,
@@ -20,15 +20,20 @@ const routeList = {
     }
   },
   'login': {
-    auth: false,
     component: login,
     config: {
       footer: empty,
       header: empty,
     }
   },
+  'pin': {
+    component: pin,
+    config: {
+      footer: empty,
+      header: empty,
+    }
+  },
   'home': {
-    auth: 'login',
     component: home,
     config: {
       footer: defaultFooter,
@@ -36,7 +41,6 @@ const routeList = {
     }
   },
   'chat': {
-    auth: 'login',
     component: chat,
     config: {
       footer: defaultFooter,
@@ -44,7 +48,6 @@ const routeList = {
     }
   },
   'profile': {
-    auth: 'login',
     component: profile,
     config: {
       footer: defaultFooter,
@@ -52,7 +55,6 @@ const routeList = {
     }
   },
   'modal/show': {
-    auth: 'login',
     component: profile,
     config: {
       footer: defaultFooter,
@@ -60,14 +62,5 @@ const routeList = {
     }
   }
 };
-
-export const auth = {
-  login: (state) => {
-    return true;
-  },
-  balance: (state) => {
-    return true;
-  }
-}
 
 export default routeList;

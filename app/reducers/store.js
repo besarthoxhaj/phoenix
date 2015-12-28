@@ -8,8 +8,10 @@ import {
 
 export const initialState = {
   isLoggedIn: false,
-  pin: '',
-  name: '',
+  user: {  
+    pin: '2222',
+    email: '',
+  }
 };
 
 export default function (state = initialState, action) {
@@ -18,13 +20,18 @@ export default function (state = initialState, action) {
     case LOG_IN:
       return {
         isLoggedIn: true,
-        name: action.name
+        user: {
+          ...state.user,
+          email: action.email
+        }
       };
     case LOG_OUT:
       return {
-        isLoggedIn: false
+        ...initialState,
       };
     default:
-      return state;
+      return {
+        ...state,
+      };
   }
 }

@@ -1,6 +1,7 @@
 'use strict';
 
 import { findIndex, propEq } from 'ramda';
+import check from '../utils/router.js';
 import {
   CHANGE_ROUTE,
   GO_BACK,
@@ -13,6 +14,7 @@ import {
 const routes = [
   '_splash',
   'login',
+  'pin',
   'home',
   'modal/show',
   'profile',
@@ -24,9 +26,9 @@ const initialRouteStack = routes.map((name, index) => {return {name, index}});
 const initialRoute = { name: '_splash', index: 0 };
 
 export const initialState = {
-  route : initialRoute,
-  history : [initialRoute],
-  stack : initialRouteStack
+  route: initialRoute,
+  history: [initialRoute],
+  stack: initialRouteStack
 };
 
 export default function reducer (state = initialState, action) {
@@ -35,10 +37,10 @@ export default function reducer (state = initialState, action) {
      * Some recursion going on here! OMG!
      */
     case COMPLETE:
-      
+      const redirectRoute = check({name:'home'},action._store.getState());
       return reducer(state, {
         type: 'CHANGE_ROUTE',
-        newRoute: {name: 'home'}
+        newRoute: {name: redirectRoute}
       });
     case CHANGE_ROUTE:
       const { route, history, stack } = state;
