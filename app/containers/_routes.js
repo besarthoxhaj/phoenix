@@ -8,8 +8,17 @@ import home from './home.js';
 import login from './login.js';
 import chat from './chat.js';
 import profile from './profile.js';
+import splash from './splash.js';
 
 const routeList = {
+  '_splash': {
+    auth: false,
+    component: splash,
+    config: {
+      footer: empty,
+      header: empty,
+    }
+  },
   'login': {
     auth: false,
     component: login,
