@@ -67,7 +67,6 @@ export const dispatchSend = () => {
 ws.onopen = e => dispatchOpen(e);
 
 ws.onmessage = e => {
-  console.log('ws.onmessage',e);
   dispatchReceive(e.data);
 }
 

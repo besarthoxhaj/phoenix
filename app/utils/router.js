@@ -47,8 +47,6 @@ export const auth = {
 
 const check = (route, state) => {
 
-  console.log('state',state);
-
   if (!routeList[route.name]) {
     throw new Error('route name does not match with route list');
   }

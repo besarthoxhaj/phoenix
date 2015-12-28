@@ -11,11 +11,11 @@ export const updateInput = (field, value) => {
 
 export const reset = () => {
   return { type: types.LOGIN_RESET_INPUT };
-}
+};
 
 export const setEmail = email => {
   return { type: types.LOG_IN, email };
-}
+};
 
 export const submit = () => {
   return (dispatch, getState) => {
