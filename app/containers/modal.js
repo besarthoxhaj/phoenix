@@ -25,8 +25,7 @@ ModalsContainer.propTypes = {
 };
 
 const mapStateToProps = state => {
-
   return { ...state.modal };
-}
+};
 
 export default connect(mapStateToProps, actionCreators)(ModalsContainer);

@@ -25,7 +25,7 @@ HeaderContainer.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return {};
+  return { ...state };
 }
 
 export default connect(mapStateToProps, actionCreators)(HeaderContainer);
