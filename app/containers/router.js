@@ -6,11 +6,16 @@ import React, { Component, PropTypes, Navigator, View } from 'react-native';
 // container
 import Login from './login.js';
 import Home from './home.js';
+import Profile from './profile.js';
+import Chat from './chat.js';
 import Header from './header.js';
 import Footer from './footer.js';
 // actions
 import * as StartActions from '../actions/start.js';
 import * as NavigationActions from '../actions/router.js';
+// utils
+import check from '../utils/router.js';
+import routes from '../routes.js';
 
 const actionCreators = {
   ...StartActions,
@@ -18,13 +23,14 @@ const actionCreators = {
 };
 
 class Router extends Component {
-  
+
   constructor(props){
     super(props);
     this.renderScene = this.renderScene.bind(this);
   }
 
   componentWillUpdate(nextProps) {
+
     const { route : newRoute, stack: newStack} = nextProps;
     const { route } = this.props;
 
@@ -33,14 +39,21 @@ class Router extends Component {
     }
   }
 
-  renderScene(route,navigator){
-    switch(route.name){
-      case 'Login':
+  renderScene(route){
+
+    const finalRoute = check(route, routes, this.props.state);
+
+    switch(finalRoute){
+      case 'login':
         return (<Login />);
-      case 'Home':
+      case 'home':
         return (<Home />);
+      case 'profile':
+        return (<Profile />);
+      case 'chat':
+        return (<Chat />);
       default:
-        return (<Login />)
+        return (<Login />);
     }
   }
 
@@ -49,7 +62,7 @@ class Router extends Component {
       <View style={{flex:1}}>
         <Header />
         <Navigator
-        //Use Navigator to transition between different scenes in your app.
+        // use Navigator to transition between different scenes in your app.
           ref='navigator'
           initialRoute={this.props.stack[this.props.route.index]}
           initialRouteStack={this.props.stack}
@@ -80,7 +93,7 @@ Router.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return { ...state.router };
+  return { ...state.router, state };
 }
 
 export default connect(mapStateToProps, actionCreators)(Router);

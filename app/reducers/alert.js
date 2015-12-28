@@ -9,7 +9,7 @@ export const intitialState = {
   buttons: []
 };
 
-export const reducer = (state = intitialState, action) => {
+export default function (state = intitialState, action) {
 
   switch (action.type) {
     case SHOW_ALERT:

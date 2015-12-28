@@ -1,20 +1,28 @@
 'use strict';
 
 import {
-  START
+  LOG_IN,
+  LOG_OUT,
+  RESET_STORE,
 } from '../action_types.js';
 
 export const initialState = {
-  text: 'Click here'
+  isLoggedIn: false,
+  pin: '',
+  name: '',
 };
 
-export const reducer = (state = initialState, action) => {
+export default function (state = initialState, action) {
 
   switch (action.type) {
-
-    case START:
+    case LOG_IN:
       return {
-        text: 'Hello, world!',
+        isLoggedIn: true,
+        name: action.name
+      };
+    case LOG_OUT:
+      return {
+        isLoggedIn: false
       };
     default:
       return state;

@@ -7,17 +7,20 @@ import {
   SET_INITIAL_ROUTE,
   RESTART,
   RESET_NAVIGATION,
+  COMPLETE,
 } from '../action_types.js';
 
 const routes = [
-  'Home',
-  'Login',
-  'Modal/Show',
+  'login',
+  'home',
+  'modal/show',
+  'profile',
+  'chat'
 ];
 
 const initialRouteStack = routes.map((name, index) => {return {name, index}});
 
-const initialRoute = { name: 'Home', index: 0 };
+const initialRoute = { name: 'login', index: 0 };
 
 export const initialState = {
   route : initialRoute,
@@ -25,19 +28,56 @@ export const initialState = {
   stack : initialRouteStack
 };
 
-export const reducer = (state = initialState, action) => {
+export default function reducer (state = initialState, action) {
 
   switch (action.type) {
-
     case CHANGE_ROUTE:
-      return {
-        route: action.newRoute,
-        stack: action.newRouteStack,
-        history: action.newHistory
-      };
+
+      const { route, history, stack } = state;
+
+      if (action.newRoute.name !== route.name) {
+
+        let newRoute;
+        let newRouteStack;
+        let newHistory;
+
+        const index = findIndex(propEq('name', action.newRoute.name))(stack);
+
+        // if newRoute isn't in the stack, add it.
+        if (index < 0) {
+          newRoute = {...action.newRoute, index: stack.length};
+          newRouteStack = [...stack, newRoute];
+        } else {
+          newRoute = {...action.newRoute, index};
+          newRouteStack = [...stack];
+        }
+
+        // if returning to a previous page, remove route from history (i.e. pop)
+        if (history.length >= 2 && action.newRoute.name === history[history.length - 2].name) {
+          newHistory = history.slice(0, -1);
+        } else {
+          newHistory = [...history, newRoute];
+        }
+
+        return {
+          route: newRoute,
+          stack: newRouteStack,
+          history: newHistory
+        };
+      } else {
+        return {
+          ...state
+        };
+      }
     case GO_BACK:
+
+      let newRoute = state.history[state.history.length - 2];
+      let newHistory = state.history.slice(0, -1);
+
       return {
         ...state,
+        route: newRoute,
+        history: newHistory,
       };
     case SET_INITIAL_ROUTE: {
       const index = findIndex(propEq('name', action.routeName))(state.stack);
@@ -46,7 +86,7 @@ export const reducer = (state = initialState, action) => {
         ...state,
         route: newRoute,
         history: [newRoute]
-      }
+      };
     }
     case RESET_NAVIGATION:
       return {
@@ -54,7 +94,7 @@ export const reducer = (state = initialState, action) => {
       };
     default:
       return {
-        ...initialState
+        ...state
       };
   }
 }
