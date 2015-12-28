@@ -7,11 +7,11 @@ export const show = text => {
     type: types.SHOW_MODAL,
     text: text
   };
-}
+};
 
 export const reset = () => {
   return { type: types.RESET_MODAL };
-}
+};
 
 /**
  * Opens modal and closes it after 2 seconds

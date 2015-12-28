@@ -7,7 +7,6 @@ import Modal from './modal.js';
 import Alert from './alert.js';
 
 class AppContainer extends Component {
-
   render(){
     return (
       <View style={{flex:1}}>

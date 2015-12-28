@@ -13,10 +13,6 @@ const actionCreators = {
 };
 
 class FooterContainer extends Component {
-
-  constructor(props){
-    super(props);
-  }
   render(){
     return (
       <Default {...this.props} />
