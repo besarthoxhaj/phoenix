@@ -26,7 +26,9 @@ FooterContainer.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return { ...state };
+  return {
+    ...state,
+  };
 };
 
 export default connect(mapStateToProps, actionCreators)(FooterContainer);

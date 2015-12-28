@@ -4,19 +4,19 @@ import { connect } from 'react-redux/native';
 
 import React, { Component, PropTypes } from 'react-native';
 // components
-import Profile from '../components/profile.js';
+import Pin from '../components/pin.js';
 
 const actionCreators = {};
 
-class ProfileContainer extends Component {
+class PinContainer extends Component {
   render(){
     return (
-      <Profile {...this.props} />
+      <Pin {...this.props} />
     );
   }
 }
 
-ProfileContainer.propTypes = {};
+PinContainer.propTypes = {};
 
 const mapStateToProps = state => {
   return {
@@ -24,4 +24,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, actionCreators)(ProfileContainer);
+export default connect(mapStateToProps, actionCreators)(PinContainer);

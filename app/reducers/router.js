@@ -35,6 +35,7 @@ export default function reducer (state = initialState, action) {
      * Some recursion going on here! OMG!
      */
     case COMPLETE:
+      
       return reducer(state, {
         type: 'CHANGE_ROUTE',
         newRoute: {name: 'home'}
