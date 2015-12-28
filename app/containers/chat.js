@@ -5,8 +5,11 @@ import { connect } from 'react-redux/native';
 import React, { Component, PropTypes } from 'react-native';
 // components
 import Chat from '../components/chat.js';
+import * as ChatActions from '../actions/chat.js';
 
-const actionCreators = {};
+const actionCreators = {
+  ...ChatActions,
+};
 
 class ChatContainer extends Component {
   render(){
