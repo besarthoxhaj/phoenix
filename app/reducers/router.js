@@ -1,6 +1,7 @@
 'use strict';
 
 import { findIndex, propEq } from 'ramda';
+import check from '../utils/router.js';
 import {
   CHANGE_ROUTE,
   GO_BACK,
@@ -11,7 +12,9 @@ import {
 } from '../action_types.js';
 
 const routes = [
+  '_splash',
   'login',
+  'pin',
   'home',
   'modal/show',
   'profile',
@@ -20,29 +23,32 @@ const routes = [
 
 const initialRouteStack = routes.map((name, index) => {return {name, index}});
 
-const initialRoute = { name: 'login', index: 0 };
+const initialRoute = { name: '_splash', index: 0 };
 
 export const initialState = {
-  route : initialRoute,
-  history : [initialRoute],
-  stack : initialRouteStack
+  route: initialRoute,
+  history: [initialRoute],
+  stack: initialRouteStack
 };
 
 export default function reducer (state = initialState, action) {
-
   switch (action.type) {
+    /**
+     * Some recursion going on here! OMG!
+     */
+    case COMPLETE:
+      const redirectRoute = check({name:'home'},action._store.getState());
+      return reducer(state, {
+        type: 'CHANGE_ROUTE',
+        newRoute: {name: redirectRoute}
+      });
     case CHANGE_ROUTE:
-
       const { route, history, stack } = state;
-
       if (action.newRoute.name !== route.name) {
-
         let newRoute;
         let newRouteStack;
         let newHistory;
-
         const index = findIndex(propEq('name', action.newRoute.name))(stack);
-
         // if newRoute isn't in the stack, add it.
         if (index < 0) {
           newRoute = {...action.newRoute, index: stack.length};
@@ -51,14 +57,12 @@ export default function reducer (state = initialState, action) {
           newRoute = {...action.newRoute, index};
           newRouteStack = [...stack];
         }
-
         // if returning to a previous page, remove route from history (i.e. pop)
         if (history.length >= 2 && action.newRoute.name === history[history.length - 2].name) {
           newHistory = history.slice(0, -1);
         } else {
           newHistory = [...history, newRoute];
         }
-
         return {
           route: newRoute,
           stack: newRouteStack,
@@ -70,10 +74,8 @@ export default function reducer (state = initialState, action) {
         };
       }
     case GO_BACK:
-
       let newRoute = state.history[state.history.length - 2];
       let newHistory = state.history.slice(0, -1);
-
       return {
         ...state,
         route: newRoute,

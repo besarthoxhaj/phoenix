@@ -9,27 +9,26 @@ import React, {
   TouchableHighlight,
 } from 'react-native';
 
-export default class Header extends Component {
+export default class Pin extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <TouchableHighlight onPress={this.props.goBack}>
-          <Text>Go Back</Text>
+        <Text>Pin</Text>
+        <TouchableHighlight onPress={this.props.navigateTo.bind(null,{name:'home'})}>
+          <Text>Skip</Text>
         </TouchableHighlight>
       </View>
     )
   }
 }
 
-Header.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
-};
+Pin.propTypes = {};
 
 const styles = StyleSheet.create({
   container: {
-    height: 80,
-    backgroundColor: 'red',
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  }
+    backgroundColor: '#F5FCFF',
+  },
 });

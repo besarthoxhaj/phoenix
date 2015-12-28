@@ -16,10 +16,16 @@ import { persistStore, autoRehydrate } from 'redux-persist';
  *          You can see the full api on github: https://github.com/rt2zz/redux-persist
  */
 
+
+const passFullStoreMiddleware = store => dispatch => action => {
+  action['_store'] = store;
+  return dispatch(action);
+}
+
 import reducer from './reducers';
 
 const finalCreateStore = compose(
-  applyMiddleware(thunk, createLogger()),
+  applyMiddleware(thunk, createLogger(), passFullStoreMiddleware),
   autoRehydrate()
 )(createStore);
 

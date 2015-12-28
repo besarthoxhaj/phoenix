@@ -10,9 +10,6 @@ import React, {
 } from 'react-native';
 
 export default class ModalComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
   render(){
     return (
       <View style={styles.container}>
