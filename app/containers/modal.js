@@ -3,7 +3,7 @@
 import { connect } from 'react-redux/native';
 import React, { Component, PropTypes, Modal, View } from 'react-native';
 // components
-import DefaultModal from '../components/modal.js';
+import LoadingModal from '../components/modal/_loading.js';
 // actions
 import * as ModalActions from '../actions/modal.js';
 
@@ -13,7 +13,7 @@ class ModalsContainer extends Component {
   render() {
     return (
       <Modal visible={this.props.isVisible} transparent={true}>
-        <DefaultModal text={this.props.text}/>
+        <LoadingModal text={this.props.text}/>
       </Modal>
     );
   }
