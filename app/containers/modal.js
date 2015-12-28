@@ -10,11 +10,6 @@ import * as ModalActions from '../actions/modal.js';
 const actionCreators = ModalActions;
 
 class ModalsContainer extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Modal visible={this.props.isVisible} transparent={true}>

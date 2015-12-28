@@ -13,10 +13,6 @@ const actionCreators = {
 };
 
 class HeaderContainer extends Component {
-
-  constructor(props){
-    super(props);
-  }
   render(){
     return (
       <Default {...this.props} />

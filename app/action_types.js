@@ -17,3 +17,10 @@ export const RESET_MODAL = 'RESET_MODAL';
 // login
 export const LOGIN_UPDATE_INPUT = 'LOGIN_UPDATE_INPUT';
 export const LOGIN_RESET_INPUT = 'LOGIN_RESET_INPUT';
+// chat
+export const CHAT_CLOSE = 'CHAT_CLOSE';
+export const CHAT_OPEN = 'CHAT_OPEN';
+export const CHAT_ERROR = 'CHAT_ERROR';
+export const SEND_MESSAGE = 'SEND_MESSAGE';
+export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
+export const CHAT_UPDATE_INPUT = 'CHAT_UPDATE_INPUT';

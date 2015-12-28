@@ -15,10 +15,6 @@ const actionCreators = {
 };
 
 class LoginContainer extends Component {
-
-  constructor(props){
-    super(props);
-  }
   render(){
     return (
       <Login {...this.props} />

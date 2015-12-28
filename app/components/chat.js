@@ -6,6 +6,7 @@ import React, {
   PropTypes,
   View,
   Text,
+  TextInput,
   TouchableHighlight,
 } from 'react-native';
 
@@ -17,6 +18,16 @@ export default class Chat extends Component {
     return (
       <View style={styles.container}>
         <Text>Chat</Text>
+        <TextInput
+          style={styles.inputText}
+          placeholder='Message'
+          value={this.props.text}
+          onChangeText={text => this.props.updateInput(text)}
+          style={{height: 100, width: 100, backgroundColor: 'white'}}
+        />
+        <TouchableHighlight onPress={this.props.dispatchSend}>
+          <Text>Submit</Text>
+        </TouchableHighlight>
       </View>
     )
   }

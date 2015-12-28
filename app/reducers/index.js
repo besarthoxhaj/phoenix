@@ -6,6 +6,7 @@ import router from './router.js';
 import login from './login.js';
 import alert from './alert.js';
 import modal from './modal.js';
+import chat from './chat.js';
 
 const rootReducer = combineReducers({
   store,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   alert,
   modal,
   login,
+  chat,
 });
 
 export default rootReducer;
