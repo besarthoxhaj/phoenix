@@ -10,13 +10,13 @@ import React, {
 } from 'react-native';
 
 export default class Pin extends Component {
-  constructor(props) {
-    super(props);
-  }
   render(){
     return (
       <View style={styles.container}>
         <Text>Pin</Text>
+        <TouchableHighlight onPress={this.props.navigateTo.bind(null,{name:'home'})}>
+          <Text>Skip</Text>
+        </TouchableHighlight>
       </View>
     )
   }
