@@ -3,7 +3,6 @@
 import { connect } from 'react-redux/native';
 import { bindActionCreators } from 'redux';
 import React, { Component, PropTypes } from 'react-native';
-
 // actions
 import * as NavigationActions from '../actions/router.js';
 // routes
@@ -15,9 +14,7 @@ const actionCreators = {
 
 class FooterContainer extends Component {
   render(){
-
     const Footer = _routes[this.props.router.route.name].config.footer;
-
     return (
       <Footer {...this.props} />
     );

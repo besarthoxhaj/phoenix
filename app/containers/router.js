@@ -69,7 +69,7 @@ class Router extends Component {
         />
         <Footer />
       </View>
-    )
+    );
   }
 }
 
