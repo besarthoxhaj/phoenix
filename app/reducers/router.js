@@ -2,14 +2,19 @@
 
 import { findIndex, propEq } from 'ramda';
 import check from '../utils/router.js';
+
 import {
   CHANGE_ROUTE,
   GO_BACK,
   SET_INITIAL_ROUTE,
   RESTART,
   RESET_NAVIGATION,
-  COMPLETE,
 } from '../action_types.js';
+
+import {
+  REHYDRATE_COMPLETE,
+  REHYDRATE,
+} from 'redux-persist/constants';
 
 const routes = [
   '_splash',
@@ -36,8 +41,8 @@ export default function reducer (state = initialState, action) {
     /**
      * Some recursion going on here! OMG!
      */
-    case COMPLETE:
-      const redirectRoute = check({name:'home'},action._store.getState());
+    case REHYDRATE_COMPLETE:
+      const redirectRoute = check({name:'home'}, action._store.getState());
       return reducer(state, {
         type: 'CHANGE_ROUTE',
         newRoute: {name: redirectRoute}

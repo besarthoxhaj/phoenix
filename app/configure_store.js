@@ -8,15 +8,6 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { persistStore, autoRehydrate } from 'redux-persist';
 
-/**
- * thunk: for asynchronous dispatching
- * createLogger: to see how state changes on every action, see console
- * persist: for storing state into async storage and rehydrating when app opens up.
- *          You can limit what you store and what you hydrate by specifying a blacklist and logic in reducers respectively.
- *          You can see the full api on github: https://github.com/rt2zz/redux-persist
- */
-
-
 const passFullStoreMiddleware = store => dispatch => action => {
   action['_store'] = store;
   return dispatch(action);
@@ -24,6 +15,13 @@ const passFullStoreMiddleware = store => dispatch => action => {
 
 import reducer from './reducers';
 
+/**
+ * thunk: for asynchronous dispatching
+ * createLogger: to see how state changes on every action, see console
+ * persist: for storing state into async storage and rehydrating when app opens up.
+ *          You can limit what you store and what you hydrate by specifying a blacklist and logic in reducers respectively.
+ *          You can see the full api on github: https://github.com/rt2zz/redux-persist
+ */
 const finalCreateStore = compose(
   applyMiddleware(thunk, createLogger(), passFullStoreMiddleware),
   autoRehydrate()
@@ -40,19 +38,12 @@ export default () => {
     storage: AsyncStorage,
     blacklist: [
       'home',
-      'details',
-      'cashier',
-      'notifications',
-      'registration',
-      'bets',
-      'navigation',
+      'router',
       'login',
       'alert',
       'modal',
     ]
   });
-
-  // console.log('store', store.getState());
 
   return store;
 }
