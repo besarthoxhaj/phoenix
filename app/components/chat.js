@@ -23,7 +23,6 @@ export default class Chat extends Component {
           placeholder='Message'
           value={this.props.text}
           onChangeText={text => this.props.updateInput(text)}
-          style={{height: 100, width: 100, backgroundColor: 'white'}}
         />
         <TouchableHighlight onPress={this.props.dispatchSend}>
           <Text>Submit</Text>
@@ -42,4 +41,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  inputText: {
+    height: 100,
+    width: 100,
+    backgroundColor: 'white',
+  }
 });
