@@ -26,6 +26,10 @@ LoginContainer.propTypes = {
   navigateTo: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => {return {};};
+const mapStateToProps = state => {
+  return {
+    ...state,
+  };
+};
 
 export default connect(mapStateToProps, actionCreators)(LoginContainer);

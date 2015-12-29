@@ -4,18 +4,13 @@ import { connect } from 'react-redux/native';
 import { bindActionCreators } from 'redux';
 import React, { Component, PropTypes, Navigator, View } from 'react-native';
 // container
-import Login from './login.js';
-import Home from './home.js';
-import Profile from './profile.js';
-import Chat from './chat.js';
 import Header from './header.js';
 import Footer from './footer.js';
 // actions
 import * as StartActions from '../actions/start.js';
 import * as NavigationActions from '../actions/router.js';
 // utils
-import check from '../utils/router.js';
-import routes from '../routes.js';
+import _routes from './_routes.js';
 
 const actionCreators = {
   ...StartActions,
@@ -40,21 +35,8 @@ class Router extends Component {
   }
 
   renderScene(route){
-
-    const finalRoute = check(route, routes, this.props.state);
-
-    switch(finalRoute){
-      case 'login':
-        return (<Login />);
-      case 'home':
-        return (<Home />);
-      case 'profile':
-        return (<Profile />);
-      case 'chat':
-        return (<Chat />);
-      default:
-        return (<Login />);
-    }
+    const Component = _routes[route.name].component;
+    return (<Component />);
   }
 
   render(){
@@ -82,7 +64,7 @@ class Router extends Component {
         />
         <Footer />
       </View>
-    )
+    );
   }
 }
 

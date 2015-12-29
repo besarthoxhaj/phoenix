@@ -11,12 +11,17 @@ export const updateInput = (field, value) => {
 
 export const reset = () => {
   return { type: types.LOGIN_RESET_INPUT };
-}
+};
+
+export const setEmail = email => {
+  return { type: types.LOG_IN, email };
+};
 
 export const submit = () => {
   return (dispatch, getState) => {
     dispatch(modal.show('Wait...'));
-    const message = 'Email not found: ' + getState().login.email;
+    const email = getState().login.email;
+    const message = 'Email not found: ' + email;
     setTimeout(() => {
       dispatch(modal.reset());
       dispatch(alert.show('Error', message, [{
@@ -26,6 +31,7 @@ export const submit = () => {
           dispatch(alert.show('Bonus', '...for this time it\'s ok ;)', [{
             text: 'I\'m lucky!',
             onPress: () => {
+              dispatch(setEmail(email));
               dispatch(reset());
               dispatch(router.navigateTo({name:'home'}));
               dispatch(alert.reset());

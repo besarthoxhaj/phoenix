@@ -9,27 +9,23 @@ import React, {
   TouchableHighlight,
 } from 'react-native';
 
-export default class Header extends Component {
+export default class Profile extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <TouchableHighlight onPress={this.props.goBack}>
-          <Text>Go Back</Text>
-        </TouchableHighlight>
+        <Text>Splash</Text>
       </View>
-    )
+    );
   }
 }
 
-Header.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
-};
+Profile.propTypes = {};
 
 const styles = StyleSheet.create({
   container: {
-    height: 80,
-    backgroundColor: 'red',
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  }
+    backgroundColor: '#F5FCFF',
+  },
 });

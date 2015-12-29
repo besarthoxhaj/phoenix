@@ -4,19 +4,19 @@ import { connect } from 'react-redux/native';
 
 import React, { Component, PropTypes } from 'react-native';
 // components
-import Profile from '../components/profile.js';
+import Splash from '../components/splash.js';
 
 const actionCreators = {};
 
-class ProfileContainer extends Component {
+class SplashContainer extends Component {
   render(){
     return (
-      <Profile {...this.props} />
+      <Splash {...this.props} />
     );
   }
 }
 
-ProfileContainer.propTypes = {};
+SplashContainer.propTypes = {};
 
 const mapStateToProps = state => {
   return {
@@ -24,4 +24,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, actionCreators)(ProfileContainer);
+export default connect(mapStateToProps, actionCreators)(SplashContainer);

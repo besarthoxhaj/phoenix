@@ -1,6 +1,10 @@
 'use strict';
 
 import {
+  REHYDRATE_COMPLETE,
+  REHYDRATE,
+} from 'redux-persist/constants';
+import {
   LOG_IN,
   LOG_OUT,
   RESET_STORE,
@@ -8,23 +12,43 @@ import {
 
 export const initialState = {
   isLoggedIn: false,
-  pin: '',
-  name: '',
+  user: {  
+    pin: '2222',
+    email: '',
+  }
 };
 
 export default function (state = initialState, action) {
 
   switch (action.type) {
+    case REHYDRATE:
+      if (action.key === 'store') {
+        return {
+          isLoggedIn: false,
+          user: {
+            ...action.payload.user,
+          }
+        };
+      } else {
+        return {
+          ...state,
+        };
+      }
     case LOG_IN:
       return {
         isLoggedIn: true,
-        name: action.name
+        user: {
+          ...state.user,
+          email: action.email
+        }
       };
     case LOG_OUT:
       return {
-        isLoggedIn: false
+        ...initialState,
       };
     default:
-      return state;
+      return {
+        ...state,
+      };
   }
 }

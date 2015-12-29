@@ -21,6 +21,10 @@ class ChatContainer extends Component {
 
 ChatContainer.propTypes = {};
 
-const mapStateToProps = state => {return {}};
+const mapStateToProps = state => {
+  return {
+    ...state,
+  };
+};
 
 export default connect(mapStateToProps, actionCreators)(ChatContainer);
