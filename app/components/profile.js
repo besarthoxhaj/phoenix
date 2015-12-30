@@ -7,33 +7,28 @@ import React, {
   View,
   Text,
   Dimensions
+  TouchableHighlight,
 } from 'react-native';
 
-export default class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default class Profile extends Component {
   render(){
     return (
-      <View style={[styles.container, this.props.style]}>
-        <Text>Header</Text>
+      <View style={styles.container}>
+        <Text>Profile</Text>
       </View>
     )
   }
 }
 
-Header.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
-  style: PropTypes.object
-};
+Profile.propTypes = {};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
     height: 40,
     width: Dimensions.get('window').width,
+    backgroundColor: '#F5FCFF',
   }
 });

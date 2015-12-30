@@ -10,19 +10,19 @@ import React, {
   TouchableHighlight,
 } from 'react-native';
 
-export default class Login extends Component {
+export default class Chat extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <Text>Login</Text>
+        <Text>Chat</Text>
         <TextInput
           style={styles.inputText}
-          placeholder='Email'
-          value={this.props.email}
-          onChangeText={email => this.props.updateInput('email',email)}
+          placeholder='Message'
+          value={this.props.text}
+          onChangeText={text => this.props.updateInput(text)}
           style={{height: 100, width: 100, backgroundColor: 'white'}}
         />
-        <TouchableHighlight onPress={this.props.submit}>
+        <TouchableHighlight onPress={this.props.dispatchSend}>
           <Text>Submit</Text>
         </TouchableHighlight>
       </View>
@@ -30,9 +30,7 @@ export default class Login extends Component {
   }
 }
 
-Login.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
-};
+Chat.propTypes = {};
 
 const styles = StyleSheet.create({
   container: {
@@ -41,8 +39,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  inputText: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
 });

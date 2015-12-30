@@ -3,8 +3,9 @@
 import { connect } from 'react-redux/native';
 import React, { Component, PropTypes, View, PushNotificationIOS, AppStateIOS } from 'react-native';
 // containers
-import Router from './Router.js';
-import Alerts from './alerts.js';
+import Router from './router.js';
+import Modal from './modal.js';
+import Alert from './alert.js';
 // actions
 import * as NavigationActions from '../actions/navigation.js';
 import * as PushNotificationActions from '../actions/notifications.js';
@@ -15,10 +16,6 @@ const actionCreators = {
 };
 
 class AppContainer extends Component {
-
-  constructor(props){
-    super(props);
-  }
 
   componentWillMount(){
     PushNotificationIOS.addEventListener('register', this.props.registerDeviceToken)
@@ -43,6 +40,8 @@ class AppContainer extends Component {
     return (
       <View style={{flex:1}}>
         <Router/>
+        <Modal/>
+        <Alert/>
       </View>
     );
   }
@@ -63,3 +62,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, actionCreators)(AppContainer);
+

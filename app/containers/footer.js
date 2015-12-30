@@ -3,21 +3,18 @@
 import { connect } from 'react-redux/native';
 import { bindActionCreators } from 'redux';
 import React, { Component, PropTypes } from 'react-native';
-// components
-import Footer from '../components/footer.js';
 // actions
-import * as NavigationActions from '../actions/navigation.js';
+import * as NavigationActions from '../actions/router.js';
+// routes
+import _routes from './_routes.js';
 
 const actionCreators = {
   ...NavigationActions,
 };
 
 class FooterContainer extends Component {
-
-  constructor(props){
-    super(props);
-  }
   render(){
+    const Footer = _routes[this.props.router.route.name].config.footer;
     return (
       <Footer {...this.props} />
     );
@@ -29,7 +26,9 @@ FooterContainer.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return {};
-}
+  return {
+    ...state,
+  };
+};
 
 export default connect(mapStateToProps, actionCreators)(FooterContainer);

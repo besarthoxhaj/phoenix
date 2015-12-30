@@ -7,30 +7,30 @@ import React, {
   View,
   Text,
   Dimensions
+  TouchableHighlight,
 } from 'react-native';
 
-export default class Feader extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default class Header extends Component {
   render(){
     return (
-      <View style={[styles.container, this.props.style]}>
-        <Text>Footer</Text>
+      <View style={styles.container}>
+        <TouchableHighlight onPress={this.props.goBack}>
+          <Text>Go Back</Text>
+        </TouchableHighlight>
       </View>
     )
   }
 }
 
-Feader.propTypes = {
+Header.propTypes = {
   navigateTo: PropTypes.func.isRequired,
   style: PropTypes.object
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#e8d279',
+    height: 80,
+    backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
     height: 40,
