@@ -37,6 +37,7 @@ Feader.propTypes = {
 const styles = StyleSheet.create({
   container: {
     height: 80,
+    flexDirection: 'row',
     backgroundColor: '#e8d279',
     justifyContent: 'space-around',
     alignItems: 'center',

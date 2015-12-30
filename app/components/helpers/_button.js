@@ -16,6 +16,7 @@ export default class Home extends Component {
   }
   _onPressButton(){
     console.log('_onPressButton');
+    this.props.action()
   }
   _onHideUnderlay(){
     console.log('_onHideUnderlay');
@@ -49,7 +50,6 @@ Home.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
