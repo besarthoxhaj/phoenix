@@ -20,7 +20,6 @@ export default class Login extends Component {
           placeholder='Email'
           value={this.props.email}
           onChangeText={email => this.props.updateInput('email',email)}
-          style={{height: 100, width: 100, backgroundColor: 'white'}}
         />
         <TouchableHighlight onPress={this.props.submit}>
           <Text>Submit</Text>

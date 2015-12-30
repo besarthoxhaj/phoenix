@@ -4,18 +4,23 @@ import {
   REHYDRATE_COMPLETE,
   REHYDRATE,
 } from 'redux-persist/constants';
+
 import {
+  START,
   LOG_IN,
   LOG_OUT,
   RESET_STORE,
+  REGISTER_DEVICE_TOKEN,
 } from '../action_types.js';
 
 export const initialState = {
   isLoggedIn: false,
+  notifications: [],
+  device_token: '',
   user: {  
     pin: '2222',
     email: '',
-  }
+  },
 };
 
 export default function (state = initialState, action) {
@@ -46,6 +51,11 @@ export default function (state = initialState, action) {
       return {
         ...initialState,
       };
+    case REGISTER_DEVICE_TOKEN:
+      return {
+        ...state,
+        device_token: action.device_token,
+      }
     default:
       return {
         ...state,
