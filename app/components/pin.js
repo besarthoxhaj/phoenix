@@ -9,28 +9,26 @@ import React, {
   TouchableHighlight,
 } from 'react-native';
 
-import Button from './helpers/_button.js';
-
-export default class Home extends Component {
+export default class Pin extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <Button action={this.props.testAlert.bind(null)} text={'Show Alert'} />
-        <Button action={this.props.testModal.bind(null)} text={'Show Modal'} />
+        <Text>Pin</Text>
+        <TouchableHighlight onPress={this.props.navigateTo.bind(null,{name:'home'})}>
+          <Text>Skip</Text>
+        </TouchableHighlight>
       </View>
     )
   }
 }
 
-Home.propTypes = {
-  testAlert: PropTypes.func.isRequired,
-  testModal: PropTypes.func.isRequired,
-};
+Pin.propTypes = {};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
 });

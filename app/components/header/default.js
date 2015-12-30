@@ -6,17 +6,21 @@ import React, {
   PropTypes,
   View,
   Text,
-  Dimensions
+  Dimensions,
+  TouchableHighlight,
 } from 'react-native';
 
+import H1 from '../helpers/_h1.js';
+
 export default class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
   render(){
+    console.log('test',this.props.router.route.name)
     return (
-      <View style={[styles.container, this.props.style]}>
-        <Text>Header</Text>
+      <View style={styles.container}>
+        <TouchableHighlight onPress={this.props.goBack}>
+          <Text>Go Back</Text>
+        </TouchableHighlight>
+        <H1>{this.props.router.route.name}</H1>
       </View>
     )
   }
@@ -29,11 +33,10 @@ Header.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: 80,
     backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 40,
     width: Dimensions.get('window').width,
   }
 });

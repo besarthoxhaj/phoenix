@@ -1,4 +1,7 @@
-module.exports = (o) => {
+'use strict';
+
+module.exports = o => {
+
   const push  = require('./handlers/push.js')(o.Apn);
   const login = require('./handlers/login.js');
 

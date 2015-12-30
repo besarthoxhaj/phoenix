@@ -69,26 +69,20 @@ function getNewApnInstance (device_token) {
  *	@param (Function) - callback
  *
 **/
-function sendNotification (device_token, callback) {
+function sendNotification (device_token) {
 
-	var instance = getNewApnInstance(device_token || 'c2c5d6c01b98aa4e0b41ec63a9f6ab9de5c48f436a7a87e6383922ebec3d8443');  // hard coded to Nikki's iPhone
+	var instance = getNewApnInstance(device_token);
 
 	instance.note.alert = 'Nikki has sent you a push notification!';
+	instance.note.payload = {type: 'chat'};
 
 	apnConnection.pushNotification(instance.note, instance.device);
 
 	apnConnection.on('transmitted', function (notification, device){
-		return callback(undefined, {
-			notification: notification,
-			device: device
-		});
+		console.log('on.transmitted', arguments);
 	});
 
 	apnConnection.on('transmissionError', function (errorCode, notification, device) {
-		return callback({
-			errorCode: errorCode,
-			notification: notification,
-			device: device
-		}, undefined);
+		console.log('on.transmissionError',arguments);
 	});
 };

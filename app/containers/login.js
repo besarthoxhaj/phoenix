@@ -6,19 +6,15 @@ import React, { Component, PropTypes } from 'react-native';
 // components
 import Login from '../components/login.js';
 // actions
-import * as NavigationActions from '../actions/navigation.js';
-import * as LoginTestActions from '../actions/login.js';
+import * as NavigationActions from '../actions/router.js';
+import * as LoginActions from '../actions/login.js';
 
 const actionCreators = {
   ...NavigationActions,
-  ...LoginTestActions
+  ...LoginActions,
 };
 
 class LoginContainer extends Component {
-
-  constructor(props){
-    super(props);
-  }
   render(){
     return (
       <Login {...this.props} />
@@ -31,7 +27,9 @@ LoginContainer.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return {};
-}
+  return {
+    ...state,
+  };
+};
 
 export default connect(mapStateToProps, actionCreators)(LoginContainer);

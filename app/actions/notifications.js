@@ -1,5 +1,7 @@
+'use strict';
+
 import * as types from '../action_types.js';
-import { navigateTo } from './navigation.js';
+import { navigateTo } from './router.js';
 /**
 *
 * NOTIFICATIONS actions
@@ -7,10 +9,27 @@ import { navigateTo } from './navigation.js';
 *
 **/
 
+export const registerDeviceToken = device_token => {
+  return { type: types.REGISTER_DEVICE_TOKEN, device_token };
+};
+
 // Action should save the device token in the the database and call sync to update the store reducer
-export function registerDeviceToken(token) {
-  return { type: types.REGISTER_DEVICE_TOKEN, token }
-}
+export const saveDeviceToken = device_token => {
+  return dispatch => {
+    const req = {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({ device_token })
+    };
+
+    fetch('http://192.168.1.5:9009' + '/push', req)
+    .then(response => response.json())
+    .then(json => {
+      dispatch(registerDeviceToken(device_token));
+    })
+    .catch(err => console.log('err',err));
+  };
+};
 
 
 /**
@@ -19,15 +38,16 @@ export function registerDeviceToken(token) {
 *
 * if the app is active user is not re routed, dispatch sync action 
 **/
-
-export function onReceiveNotification(appState, notification) {
-
+export const onReceiveNotification = (appState, notification) => {
   return dispatch => {
-    if (appState === 'background') { // entering the app from a push notification navigate to a page
+
+    // entering the app from a push notification navigate to a page
+    // if in app then don't change the page, just dispatch an action
+    console.log('hey', notification);
+    if (appState === 'background') {
       return dispatch(navigateTo({name:'Home'}));
-    } else { // if in app then don't change the page, just dispatch an action
+    } else { 
       return { type: types.NEW_PUSH_NOTIFICATION, notification: notification._data }
     }
-  }
-
-}
+  };
+};

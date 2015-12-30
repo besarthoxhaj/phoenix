@@ -3,21 +3,18 @@
 import { connect } from 'react-redux/native';
 import { bindActionCreators } from 'redux';
 import React, { Component, PropTypes } from 'react-native';
-// components
-import Header from '../components/header.js';
 // actions
-import * as NavigationActions from '../actions/navigation.js';
+import * as NavigationActions from '../actions/router.js';
+// routes
+import _routes from './_routes.js';
 
 const actionCreators = {
   ...NavigationActions,
 };
 
 class HeaderContainer extends Component {
-
-  constructor(props){
-    super(props);
-  }
   render(){
+    const Header = _routes[this.props.router.route.name].config.header;
     return (
       <Header {...this.props} />
     );
@@ -29,7 +26,9 @@ HeaderContainer.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    ...state,
+  };
 }
 
 export default connect(mapStateToProps, actionCreators)(HeaderContainer);
