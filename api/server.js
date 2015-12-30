@@ -1,14 +1,16 @@
+'use strict';
+
 function _throw (mess) {
   throw 'Error while initialization: ' + mess;
 }
 
-module.exports = (injectConfig) => {
+module.exports = injectConfig => {
 
   // config
-  var config     = injectConfig     !== undefined ? injectConfig     : _throw('Missing config object');
-  var Apn        = config.apn       !== undefined ? config.apn       : require('./services/apn.js');
+  var config = injectConfig !== undefined ? injectConfig : _throw('Missing config object');
+  var Apn = config.apn !== undefined ? config.apn : require('./services/apn.js');
 
-  var Hapi   = require('hapi');
+  var Hapi = require('hapi');
   var server = new Hapi.Server({
     connections:{
       query: {

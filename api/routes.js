@@ -1,5 +1,7 @@
+'use strict';
+
 module.exports = (o) => {
-  const push    = require('./handlers/push.js')(o.Apn);
+  const push = require('./handlers/push.js')(o.Apn);
   return [
     {
       method: 'POST',
