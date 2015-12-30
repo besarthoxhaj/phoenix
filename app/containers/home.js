@@ -7,9 +7,11 @@ import React, { Component, PropTypes } from 'react-native';
 import Home from '../components/home.js';
 // actions
 import * as NavigationActions from '../actions/navigation.js';
+import * as NotificationsActions from '../actions/notifications.js';
 
 const actionCreators = {
   ...NavigationActions,
+  ...NotificationsActions,
 };
 
 class HomeContainer extends Component {
