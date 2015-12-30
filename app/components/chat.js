@@ -38,4 +38,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  inputText: {
+    height: 100,
+    width: 100,
+    backgroundColor: 'white',
+  }
 });
