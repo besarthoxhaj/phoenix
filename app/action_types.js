@@ -19,6 +19,8 @@ export const SHOW_MODAL = 'SHOW_MODAL';
 export const RESET_MODAL = 'RESET_MODAL';
 // login
 export const LOG_IN = 'LOG_IN';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGIN_UPDATE_INPUT = 'LOGIN_UPDATE_INPUT';
 export const LOGIN_RESET_INPUT = 'LOGIN_RESET_INPUT';
 // chat
