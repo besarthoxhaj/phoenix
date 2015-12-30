@@ -1,18 +1,21 @@
 'use strict';
 
 import { connect } from 'react-redux/native';
-
 import React, { Component, PropTypes } from 'react-native';
 // components
 import Home from '../components/home.js';
 // actions
-import { testAlert } from '../actions/alert.js';
-import { testModal } from '../actions/modal.js';
+import * as NavigationActions from '../actions/router.js';
+import * as NotificationsActions from '../actions/notifications.js';
+import * as AlertActions from '../actions/alert.js';
+import * as ModalActions from '../actions/modal.js';
 
 const actionCreators = {
-  testAlert,
-  testModal,
-};
+  ...NavigationActions,
+  ...NotificationsActions,
+  ...AlertActions,
+  ...ModalActions,
+}
 
 class HomeContainer extends Component {
   render(){

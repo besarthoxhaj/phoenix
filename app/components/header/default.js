@@ -6,6 +6,7 @@ import React, {
   PropTypes,
   View,
   Text,
+  Dimensions,
   TouchableHighlight,
 } from 'react-native';
 
@@ -27,6 +28,7 @@ export default class Header extends Component {
 
 Header.propTypes = {
   navigateTo: PropTypes.func.isRequired,
+  style: PropTypes.object
 };
 
 const styles = StyleSheet.create({
@@ -35,5 +37,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
+    width: Dimensions.get('window').width,
   }
 });
