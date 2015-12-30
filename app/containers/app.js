@@ -7,7 +7,7 @@ import Router from './router.js';
 import Modal from './modal.js';
 import Alert from './alert.js';
 // actions
-import * as NavigationActions from '../actions/navigation.js';
+import * as NavigationActions from '../actions/router.js';
 import * as PushNotificationActions from '../actions/notifications.js';
 
 const actionCreators = {
@@ -18,10 +18,9 @@ const actionCreators = {
 class AppContainer extends Component {
 
   componentWillMount(){
-    PushNotificationIOS.addEventListener('register', this.props.registerDeviceToken)
-    PushNotificationIOS.addEventListener('notification', this.props.onReceiveNotification.bind(null, AppStateIOS.currentState))
+    PushNotificationIOS.addEventListener('register', this.props.saveDeviceToken);
+    PushNotificationIOS.addEventListener('notification', this.props.onReceiveNotification.bind(null, AppStateIOS.currentState));
     PushNotificationIOS.setApplicationIconBadgeNumber(this.props.unreadNotificationCount);
-
     PushNotificationIOS.requestPermissions();
   }
 

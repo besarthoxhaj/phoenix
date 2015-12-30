@@ -6,7 +6,7 @@ import React, {
   PropTypes,
   View,
   Text,
-  Dimensions
+  Dimensions,
   TouchableHighlight,
 } from 'react-native';
 
@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 40,
     width: Dimensions.get('window').width,
   }
 });

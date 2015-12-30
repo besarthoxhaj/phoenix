@@ -6,7 +6,7 @@ import React, {
   PropTypes,
   View,
   Text,
-  Dimensions
+  Dimensions,
   TouchableHighlight,
 } from 'react-native';
 

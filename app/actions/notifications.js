@@ -1,7 +1,7 @@
 'use strict';
 
 import * as types from '../action_types.js';
-import { navigateTo } from './navigation.js';
+import { navigateTo } from './router.js';
 /**
 *
 * NOTIFICATIONS actions
