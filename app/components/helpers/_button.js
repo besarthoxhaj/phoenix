@@ -15,19 +15,15 @@ export default class Home extends Component {
     this.state = { pressStatus: false };
   }
   _onPressButton(){
-    console.log('_onPressButton');
-    this.props.action()
+    this.props.onPress();
   }
   _onHideUnderlay(){
-    console.log('_onHideUnderlay');
     this.setState({ pressStatus: false });
   }
   _onShowUnderlay(){
-    console.log('_onShowUnderlay');
     this.setState({ pressStatus: true });
   }
   render(){
-    console.log('render');
     return (
       <View style={styles.container}>
         <TouchableHighlight
@@ -46,6 +42,7 @@ export default class Home extends Component {
 
 Home.propTypes = {
   text: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({

@@ -15,8 +15,8 @@ export default class Home extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <Button action={this.props.testAlert.bind(null)} text={'Show Alert'} />
-        <Button action={this.props.testModal.bind(null)} text={'Show Modal'} />
+        <Button onPress={this.props.testAlert.bind(null)} text={'Show Alert'} />
+        <Button onPress={this.props.testModal.bind(null)} text={'Show Modal'} />
       </View>
     )
   }

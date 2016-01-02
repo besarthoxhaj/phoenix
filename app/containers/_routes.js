@@ -3,6 +3,7 @@
 // components
 import empty from '../components/_empty.js';
 import defaultFooter from '../components/footer/default.js';
+import chatFooter from '../components/footer/chat.js';
 import defaultHeader from '../components/header/default.js';
 import home from './home.js';
 import login from './login.js';
@@ -43,7 +44,7 @@ const routeList = {
   'chat': {
     component: chat,
     config: {
-      footer: defaultFooter,
+      footer: chatFooter,
       header: defaultHeader,
     }
   },

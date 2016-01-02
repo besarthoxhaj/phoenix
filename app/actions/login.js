@@ -3,7 +3,7 @@
 import * as types      from '../action_types.js';
 import { postReq }     from '../utils/create-request-v2.js'
 import { sendRequest } from '../utils/request-wrapper.js'
-import { navigateTo }  from './router.js';
+import * as router from './router.js';
 import * as modal from './modal.js';
 import * as alert from './alert.js';
 import { API_URL }     from '../config.js';
@@ -34,7 +34,7 @@ export const login = (username, password) => async (dispatch) => {
   const onSuccess = json => {
     if (json.status === 'success') {
       dispatch(loginSuccess());
-      dispatch(navigateTo({name:'Home'}))
+      dispatch(router.navigateTo({name:'Home'}))
     } else {
       dispatch(loginFail('Sorry password or username did not match'));
     }

@@ -22,5 +22,5 @@ export const testModal = () => {
     setTimeout(() => {
       dispatch(reset());
     }, 1000)
-  }
-}
+  };
+};

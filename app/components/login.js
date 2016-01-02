@@ -10,6 +10,8 @@ import React, {
   TouchableHighlight,
 } from 'react-native';
 
+import Button from './helpers/_button.js';
+
 export default class Login extends Component {
   render(){
     return (
@@ -21,9 +23,16 @@ export default class Login extends Component {
           value={this.props.email}
           onChangeText={email => this.props.updateInput('email',email)}
         />
-        <TouchableHighlight onPress={this.props.submit}>
-          <Text>Submit</Text>
-        </TouchableHighlight>
+        <TextInput
+          style={styles.inputText}
+          placeholder='Password'
+          value={this.props.email}
+          onChangeText={email => this.props.updateInput('email',email)}
+        />
+        <Button
+          onPress={this.props.submit}
+          text={'Submit'}
+        />
       </View>
     )
   }
@@ -41,10 +50,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   inputText: {
+    alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 100,
-    width: 100,
-    backgroundColor: 'white'
+    textAlign: 'center',
+    height: 50,
+    width: 250,
+    padding: 10,
+    backgroundColor: 'white',
+    margin: 10,
   }
 });
