@@ -6,7 +6,7 @@ import React, {
   PropTypes,
   View,
   Text,
-  Image
+  Image,
 } from 'react-native';
 
 import NavIcon from './footerIcon.js';
@@ -19,12 +19,8 @@ export default class Footer extends Component {
   }
 
   createIconArray(currentLocation){
-    const {
-      props: {
-        navigateTo,
-      }
-    } = this;
 
+    const { props: { navigateTo } } = this;
 
     return iconArray.map((icon, i) => {
       var active = currentLocation.indexOf(icon.name) > -1 ? true : false;
@@ -32,7 +28,7 @@ export default class Footer extends Component {
         <NavIcon
           key={ i }
           name={ icon.name }
-          imageSrc={ active ? icon.activeImage : icon.inactiveImage }
+          image={ icon.image }
           active={ active}
           pressHandler={ () => navigateTo({name: icon.name}) }
         />
@@ -47,11 +43,11 @@ export default class Footer extends Component {
       createIconArray
     } = this;
 
-    const iconArray = createIconArray(name);
+    const icons = createIconArray(name);
 
     return (
       <View style={styles.container}>
-        { iconArray }
+        { icons }
       </View>
     )
   }
@@ -64,23 +60,19 @@ Footer.propTypes = {
 var iconArray = [
   {
     name: 'home',
-    activeImage: require('../../images/inplay-active.png'),
-    inactiveImage: require('../../images/inplay-inactive.png'),
+    image: 'home'
   },
   {
     name: 'login',
-    activeImage: require('../../images/inplay-active.png'),
-    inactiveImage: require('../../images/inplay-inactive.png'),
+    image: 'anchor'
   },
   {
     name: 'profile',
-    activeImage: require('../../images/inplay-active.png'),
-    inactiveImage: require('../../images/inplay-inactive.png'),
+    image: 'reddit-alien'
   },
   {
     name: 'chat',
-    activeImage: require('../../images/inplay-active.png'),
-    inactiveImage: require('../../images/inplay-inactive.png'),
+    image: 'comment'
   },
 ];
 
