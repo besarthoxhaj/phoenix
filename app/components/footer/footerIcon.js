@@ -1,3 +1,11 @@
+/*
+* Footer Icons
+*
+* We have to call onPress for the link to the login page as the login page does not contain the footer.
+* If we call onPressIn the footer is removed before the unused onPress and onPressOut have a chance to run.
+*
+*
+*/
 'use strict';
 
 import React, {
@@ -8,6 +16,8 @@ import React, {
   TouchableWithoutFeedback,
   Image
 } from 'react-native';
+
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 export default class FooterIcon extends Component {
 
@@ -20,7 +30,7 @@ export default class FooterIcon extends Component {
     const {
       props: {
         name,
-        imageSrc,
+        image,
         active,
         pressHandler,
       }
@@ -32,12 +42,8 @@ export default class FooterIcon extends Component {
           onPress={ name === 'login' ? pressHandler : null }
         >
           <View style={{alignItems: 'center', justifyContent: 'center'}}>
-            <Image
-              source={ imageSrc }
-              style={{ height: 40, width: 40 }}
-              resizeMode={'contain'}
-            />
-            <Text style={ active ? { color: 'red'} : { color: 'green'} }>{ name }</Text>
+            <Icon name={ image } size={30} color={ active ? 'red' : 'green' } />
+            <Text style={{ color: active ? 'red' : 'green' }}>{ name }</Text>
           </View>
         </TouchableWithoutFeedback>
 
