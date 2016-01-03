@@ -6,33 +6,83 @@ import React, {
   PropTypes,
   View,
   Text,
-  TouchableHighlight,
+  Image
 } from 'react-native';
 
-export default class Feader extends Component {
+import NavIcon from './footerIcon.js';
+
+export default class Footer extends Component {
+
+  constructor(props) {
+    super(props);
+    this.createIconArray = this.createIconArray.bind(this);
+  }
+
+  createIconArray(currentLocation){
+    const {
+      props: {
+        navigateTo,
+      }
+    } = this;
+
+
+    return iconArray.map((icon, i) => {
+      var active = currentLocation.indexOf(icon.name) > -1 ? true : false;
+      return (
+        <NavIcon
+          key={ i }
+          name={ icon.name }
+          imageSrc={ active ? icon.activeImage : icon.inactiveImage }
+          active={ active}
+          pressHandler={ () => navigateTo({name: icon.name}) }
+        />
+      );
+    });
+  }
+
   render(){
+
+    const {
+      props: { router: { route: { name }}},
+      createIconArray
+    } = this;
+
+    const iconArray = createIconArray(name);
+
     return (
       <View style={styles.container}>
-        <TouchableHighlight onPress={this.props.navigateTo.bind(null,{name:'home'})}>
-          <Text>Go Home</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={this.props.navigateTo.bind(null,{name:'login'})}>
-          <Text>Go Login</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={this.props.navigateTo.bind(null,{name:'profile'})}>
-          <Text>Go Profile</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={this.props.navigateTo.bind(null,{name:'chat'})}>
-          <Text>Go Chat</Text>
-        </TouchableHighlight>
+        { iconArray }
       </View>
     )
   }
 }
 
-Feader.propTypes = {
+Footer.propTypes = {
   navigateTo: PropTypes.func.isRequired,
 };
+
+var iconArray = [
+  {
+    name: 'home',
+    activeImage: require('../../images/inplay-active.png'),
+    inactiveImage: require('../../images/inplay-inactive.png'),
+  },
+  {
+    name: 'login',
+    activeImage: require('../../images/inplay-active.png'),
+    inactiveImage: require('../../images/inplay-inactive.png'),
+  },
+  {
+    name: 'profile',
+    activeImage: require('../../images/inplay-active.png'),
+    inactiveImage: require('../../images/inplay-inactive.png'),
+  },
+  {
+    name: 'chat',
+    activeImage: require('../../images/inplay-active.png'),
+    inactiveImage: require('../../images/inplay-inactive.png'),
+  },
+];
 
 const styles = StyleSheet.create({
   container: {
