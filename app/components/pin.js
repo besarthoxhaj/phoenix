@@ -6,30 +6,29 @@ import React, {
   PropTypes,
   View,
   Text,
+  TouchableHighlight,
 } from 'react-native';
 
-export default class Feader extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default class Pin extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <Text>Footer</Text>
+        <Text>Pin</Text>
+        <TouchableHighlight onPress={this.props.navigateTo.bind(null,{name:'home'})}>
+          <Text>Skip</Text>
+        </TouchableHighlight>
       </View>
     )
   }
 }
 
-Feader.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
-};
+Pin.propTypes = {};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e8d279',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+    backgroundColor: '#F5FCFF',
+  },
 });

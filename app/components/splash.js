@@ -6,30 +6,26 @@ import React, {
   PropTypes,
   View,
   Text,
+  TouchableHighlight,
 } from 'react-native';
 
-export default class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default class Profile extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <Text>Header</Text>
+        <Text>Splash</Text>
       </View>
-    )
+    );
   }
 }
 
-Header.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
-};
+Profile.propTypes = {};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+    backgroundColor: '#F5FCFF',
+  },
 });

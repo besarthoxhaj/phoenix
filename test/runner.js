@@ -6,4 +6,4 @@ require('babel-core/register')({
   plugins: ['transform-object-rest-spread'],
 });
 
-require('./reducers/navigation.test.js');
+require('./reducers/router.test.js');

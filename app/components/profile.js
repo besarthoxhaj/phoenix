@@ -6,34 +6,29 @@ import React, {
   PropTypes,
   View,
   Text,
+  Dimensions,
   TouchableHighlight,
-  Modal,
 } from 'react-native';
 
-export default class ModalComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default class Profile extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <Modal animated={true} transparent={true} visible={true} style={styles.container}>
-          <Text>Hello, modal!</Text>
-        </Modal>
+        <Text>Profile</Text>
       </View>
     )
   }
 }
 
-ModalComponent.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
-};
+Profile.propTypes = {};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    height: 40,
+    width: Dimensions.get('window').width,
     backgroundColor: '#F5FCFF',
-  },
+  }
 });

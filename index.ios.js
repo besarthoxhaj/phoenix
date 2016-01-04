@@ -1,6 +1,6 @@
 
 'use strict';
-
+require('regenerator/runtime')
 import React, {
   AppRegistry,
   Component,
