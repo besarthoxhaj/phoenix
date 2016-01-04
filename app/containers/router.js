@@ -50,10 +50,6 @@ class Router extends Component {
           initialRouteStack={this.props.stack}
           renderScene={this.renderScene}
           history={this.props.history}
-          sceneStyle={{
-            flexDirection: 'column',
-            flex: 2
-          }}
           configureScene={route => {
             if (route.sceneConfig) {
               return route.sceneConfig;

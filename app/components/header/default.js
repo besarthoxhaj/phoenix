@@ -18,7 +18,7 @@ export default class Header extends Component {
     return (
       <View style={styles.container}>
         <TouchableHighlight onPress={this.props.goBack}>
-          <Text>Go Back</Text>
+          <Text style={{color:'#cccc00'}}>Go Back</Text>
         </TouchableHighlight>
         <H1>{this.props.router.route.name}</H1>
       </View>
@@ -34,7 +34,7 @@ Header.propTypes = {
 const styles = StyleSheet.create({
   container: {
     height: 80,
-    backgroundColor: 'red',
+    backgroundColor: '#333',
     justifyContent: 'center',
     alignItems: 'center',
     width: Dimensions.get('window').width,

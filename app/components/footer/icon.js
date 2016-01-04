@@ -42,9 +42,9 @@ export default class FooterIcon extends Component {
         onPressIn={ name === 'login' || name === 'chat' ? null : pressHandler }
         onPress={ name === 'login' || name === 'chat' ? pressHandler : null }
       >
-        <View style={{alignItems: 'center', justifyContent: 'center'}}>
-          <Icon name={ image } size={30} color={ active ? 'red' : 'green' } />
-          <Text style={{ color: active ? 'red' : 'green' }}>{ name }</Text>
+        <View style={{alignItems: 'center', justifyContent: 'center', flex:1, margin: 5}}>
+          <Icon name={ image } size={30} color={ active ? '#cccc00' : 'white' } />
+          <Text style={{ color: active ? '#cccc00' : 'white' }}>{ name }</Text>
         </View>
       </TouchableWithoutFeedback>
     )
