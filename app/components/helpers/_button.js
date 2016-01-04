@@ -49,28 +49,28 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
   text: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-    color: '#000066'
+    color: 'white'
   },
   textPress: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-    color: '#ffffff'
+    color: '#333'
   },
   button: {
-    borderColor: '#000066',
+    borderColor: '#333',
     borderWidth: 1,
     borderRadius: 10,
+    backgroundColor: '#333',
   },
   buttonPress: {
-    borderColor: '#000066',
-    backgroundColor: '#000066',
+    borderColor: '#cccc00',
+    backgroundColor: '#cccc00',
     borderWidth: 1,
     borderRadius: 10,
   },

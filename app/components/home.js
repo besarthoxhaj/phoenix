@@ -16,6 +16,7 @@ export default class Home extends Component {
     return (
       <View style={styles.container}>
         <Button onPress={this.props.testAlert.bind(null)} text={'Show Alert'} />
+        <View style={{marginTop:10}}/>
         <Button onPress={this.props.testModal.bind(null)} text={'Show Modal'} />
       </View>
     )

@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+    borderTopWidth: 1,
   },
   inputText: {
     alignSelf: 'center',

@@ -10,20 +10,19 @@ import React, {
   TouchableHighlight,
 } from 'react-native';
 
+import Button from './helpers/_button.js';
+
 export default class Chat extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <Text>Chat</Text>
         <TextInput
           style={styles.inputText}
           placeholder='Message'
           value={this.props.text}
           onChangeText={text => this.props.updateInput(text)}
         />
-        <TouchableHighlight onPress={this.props.dispatchSend}>
-          <Text>Submit</Text>
-        </TouchableHighlight>
+        <Button onPress={this.props.dispatchSend.bind(null)} text={'Submit'}/>
       </View>
     )
   }
@@ -40,7 +39,11 @@ const styles = StyleSheet.create({
   },
   inputText: {
     height: 100,
-    width: 100,
+    width: 300,
     backgroundColor: 'white',
+    borderWidth: 1,
+    alignSelf: 'center',
+    marginBottom: 10,
+    paddingLeft: 10,
   }
 });
