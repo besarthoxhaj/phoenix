@@ -16,11 +16,12 @@ const store = configureStore();
 
 import { subscribeServices } from './app/services/'
 import alert                 from './app/services/alert.js';
+import netinfo               from './app/services/netinfo.js';
 
 class phoenix extends Component {
 
   componentDidMount () {
-    subscribeServices(store, [alert]);
+    subscribeServices(store, [alert, netinfo]);
   }
 
   render(){
