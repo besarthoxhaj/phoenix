@@ -39,3 +39,10 @@ export default class FooterIcon extends Component {
     )
   }
 }
+
+FooterIcon.propTypes = {
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  active: PropTypes.bool.isRequired,
+  pressHandler: PropTypes.func.isRequired,
+};
