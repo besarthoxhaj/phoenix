@@ -29,8 +29,8 @@ const loginFail = (error) => {
 };
 
 export const login = (username, password) => async (dispatch) => {
-  const data      = { username: 'nikki', password: 'password'}
-  const request   = () => postReq(API_URL +'/login', data); // returns a promise
+  const data = { username: 'nikki', password: 'password'}
+  const request = () => postReq(API_URL +'/login', data); // returns a promise
   const onSuccess = json => {
     if (json.status === 'success') {
       dispatch(loginSuccess());
