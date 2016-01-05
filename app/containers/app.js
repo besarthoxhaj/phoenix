@@ -5,7 +5,6 @@ import React, { Component, PropTypes, View, PushNotificationIOS, AppStateIOS } f
 // containers
 import Router from './router.js';
 import Modal from './modal.js';
-import Alert from './alert.js';
 // actions
 import * as NavigationActions from '../actions/router.js';
 import * as PushNotificationActions from '../actions/notifications.js';
@@ -40,7 +39,6 @@ class AppContainer extends Component {
       <View style={{flex:1}}>
         <Router/>
         <Modal/>
-        <Alert/>
       </View>
     );
   }
