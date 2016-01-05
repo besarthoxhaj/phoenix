@@ -9,10 +9,12 @@ import Alert from './alert.js';
 // actions
 import * as NavigationActions from '../actions/router.js';
 import * as PushNotificationActions from '../actions/notifications.js';
+import * as LocationActions from '../actions/location.js';
 
 const actionCreators = {
   ...NavigationActions,
-  ...PushNotificationActions
+  ...PushNotificationActions,
+  ...LocationActions
 };
 
 class AppContainer extends Component {
@@ -33,6 +35,10 @@ class AppContainer extends Component {
   componentWillUnmount(){
     PushNotificationIOS.removeEventListener('register');
     PushNotificationIOS.removeEventListener('notification');
+  }
+
+  componentDidMount() {
+    this.props.isGB(navigator);
   }
 
   render(){
@@ -61,4 +67,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, actionCreators)(AppContainer);
-
