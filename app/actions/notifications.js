@@ -10,7 +10,6 @@ import { API_URL } from '../config.js';
 * use to set state to show and dismiss internal alerts and register device token
 *
 **/
-
 export const registerDeviceToken = device_token => {
   return { type: types.REGISTER_DEVICE_TOKEN, device_token };
 };
@@ -32,7 +31,6 @@ export const saveDeviceToken = device_token => {
   };
 };
 
-
 /**
 * use appState to check if the user has entered the app from the background i.e. by swiping a push notification
 * can redirect the user to a different route instead of home by dispatching navigateTo
@@ -41,14 +39,8 @@ export const saveDeviceToken = device_token => {
 **/
 export const onReceiveNotification = (appState, notification) => {
   return dispatch => {
-
-    // entering the app from a push notification navigate to a page
-    // if in app then don't change the page, just dispatch an action
-    console.log('hey', notification);
-    if (appState === 'background') {
-      return dispatch(navigateTo({name:'Home'}));
-    } else { 
-      return { type: types.NEW_PUSH_NOTIFICATION, notification: notification._data }
-    }
+    console.log('notification', notification);
+    console.log('appState', appState);
+    dispatch(navigateTo({name:notification._data.type}));
   };
 };
