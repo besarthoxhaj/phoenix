@@ -59,10 +59,10 @@ export const submit = () => {
           dispatch(alert.show('Bonus', '...for this time it\'s ok ;)', [{
             text: 'I\'m lucky!',
             onPress: () => {
+              dispatch(alert.reset());
               dispatch(setEmail(email));
               dispatch(reset());
               dispatch(router.navigateTo({name:'home'}));
-              dispatch(alert.reset());
             }
           }]));
         }
