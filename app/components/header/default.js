@@ -21,7 +21,7 @@ export default class Header extends Component {
           <Text style={{color:'#cccc00'}}>Go Back</Text>
         </TouchableHighlight>
         <H1>{this.props.router.route.name}</H1>
-        <Text>{"CONNECTION STATUS: " + (this.props.ui.isConnected ? 'online' : 'offline') }</Text>
+        <H1>{"Connection Status: " + (this.props.ui.isConnected ? 'online' : 'offline') }</H1>
       </View>
     )
   }
@@ -35,7 +35,7 @@ Header.propTypes = {
 const styles = StyleSheet.create({
   container: {
     height: 80,
-    backgroundColor: 'pink',
+    backgroundColor: '#333',
     justifyContent: 'center',
     alignItems: 'center',
     width: Dimensions.get('window').width,
