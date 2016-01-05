@@ -2,6 +2,8 @@
 
 import * as types from '../action_types.js';
 import { navigateTo } from './router.js';
+import { API_URL } from '../config.js';
+
 /**
 *
 * NOTIFICATIONS actions
@@ -21,8 +23,7 @@ export const saveDeviceToken = device_token => {
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({ device_token })
     };
-
-    fetch('http://192.168.1.5:9009' + '/push', req)
+    fetch( API_URL + '/push', req)
     .then(response => response.json())
     .then(json => {
       dispatch(registerDeviceToken(device_token));
