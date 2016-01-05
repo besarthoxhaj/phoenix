@@ -14,10 +14,15 @@ import configureStore from './app/configure_store.js';
 import App from './app/containers/app.js';
 const store = configureStore();
 
+import { subscribeServices } from './app/services/'
+import alert                 from './app/services/alert.js';
+
 class phoenix extends Component {
-  constructor(props) {
-    super(props);
+
+  componentDidMount () {
+    subscribeServices(store, [alert]);
   }
+
   render(){
     return (
       <Provider store={store}>
