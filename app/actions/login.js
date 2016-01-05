@@ -1,12 +1,12 @@
 'use strict';
 
-import * as types      from '../action_types.js';
-import { postReq }     from '../utils/create-request-v2.js'
+import * as types from '../action_types.js';
+import { postReq } from '../utils/create-request-v2.js'
 import { sendRequest } from '../utils/request-wrapper.js'
 import * as router from './router.js';
 import * as modal from './modal.js';
 import * as alert from './alert.js';
-import { API_URL }     from '../config.js';
+import { API_URL } from '../config.js';
 
 export const updateInput = (field, value) => {
   return { type: types.LOGIN_UPDATE_INPUT, field, value };

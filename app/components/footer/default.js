@@ -12,39 +12,26 @@ import React, {
 import NavIcon from './icon.js';
 
 export default class Footer extends Component {
-
   constructor(props) {
     super(props);
     this.createIconArray = this.createIconArray.bind(this);
   }
-
   createIconArray(currentLocation){
-
-    const { props: { navigateTo } } = this;
-
     return iconArray.map((icon, i) => {
-      var active = currentLocation.indexOf(icon.name) > -1 ? true : false;
+      const active = currentLocation.indexOf(icon.name) > -1 ? true : false;
       return (
         <NavIcon
           key={ i }
           name={ icon.name }
           image={ icon.image }
-          active={ active}
-          pressHandler={ () => navigateTo({name: icon.name}) }
+          active={ active }
+          pressHandler={ () => this.props.navigateTo({name: icon.name}) }
         />
       );
     });
   }
-
   render(){
-
-    const {
-      props: { router: { route: { name }}},
-      createIconArray
-    } = this;
-
-    const icons = createIconArray(name);
-
+    const icons = this.createIconArray(this.props.router.route.name);
     return (
       <View style={styles.container}>
         { icons }
