@@ -79,8 +79,8 @@ export default function reducer (state = initialState, action) {
         };
       }
     case GO_BACK:
-      let newRoute = state.history[state.history.length - 2];
-      let newHistory = state.history.slice(0, -1);
+      let newRoute = state.history.length > 3 ? state.history[state.history.length - 2] : state.history[2];
+      let newHistory = state.history.length > 3 ? state.history.slice(0, -1) : state.history;
       return {
         ...state,
         route: newRoute,
