@@ -30,3 +30,5 @@ export const CHAT_ERROR = 'CHAT_ERROR';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
 export const CHAT_UPDATE_INPUT = 'CHAT_UPDATE_INPUT';
+//loction
+export const CORRECT_COUNTRY = 'CORRECT_COUNTRY';

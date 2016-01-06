@@ -12,6 +12,7 @@ import React, {
 import Button from './helpers/_button.js';
 
 export default class Home extends Component {
+  
   render(){
     return (
       <View style={styles.container}>
