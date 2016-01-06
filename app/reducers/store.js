@@ -11,16 +11,18 @@ import {
   LOG_OUT,
   RESET_STORE,
   REGISTER_DEVICE_TOKEN,
+  CORRECT_COUNTRY,
 } from '../action_types.js';
 
 export const initialState = {
   isLoggedIn: false,
   notifications: [],
   device_token: '',
-  user: {  
+  user: {
     pin: '2222',
     email: '',
   },
+  correctCountry: true,
 };
 
 export default function (state = initialState, action) {

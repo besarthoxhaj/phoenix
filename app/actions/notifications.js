@@ -36,7 +36,7 @@ export const saveDeviceToken = device_token => {
 * use appState to check if the user has entered the app from the background i.e. by swiping a push notification
 * can redirect the user to a different route instead of home by dispatching navigateTo
 *
-* if the app is active user is not re routed, dispatch sync action 
+* if the app is active user is not re routed, dispatch sync action
 **/
 export const onReceiveNotification = (appState, notification) => {
   return dispatch => {
@@ -46,7 +46,7 @@ export const onReceiveNotification = (appState, notification) => {
     console.log('hey', notification);
     if (appState === 'background') {
       return dispatch(navigateTo({name:'Home'}));
-    } else { 
+    } else {
       return { type: types.NEW_PUSH_NOTIFICATION, notification: notification._data }
     }
   };
