@@ -28,7 +28,7 @@ class RegistrationPage extends Component {
               </Text>
               <TextInput
                 value              = { value }
-                onChange           = { (text) => changeInput(fieldName, text) }
+                onChangeText           = { (text) => changeInput(fieldName, text) }
                 smartScrollOptions = {{
                   moveToNext: false,
                   onSubmitEditing: (next) => {
