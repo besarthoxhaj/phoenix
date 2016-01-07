@@ -9,23 +9,24 @@ import React, {
   TouchableHighlight,
 } from 'react-native';
 
+import Button from './helpers/_button.js';
+
 export default class Home extends Component {
-  constructor(props) {
-    super(props);
-  }
+  
   render(){
     return (
       <View style={styles.container}>
-        <TouchableHighlight onPress={this.props.showAlert.bind(null,'test')}>
-          <Text>Show Alert</Text>
-        </TouchableHighlight>
+        <Button onPress={this.props.testAlert.bind(null)} text={'Show Alert'} />
+        <View style={{marginTop:10}}/>
+        <Button onPress={this.props.testModal.bind(null)} text={'Show Modal'} />
       </View>
     )
   }
 }
 
 Home.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
+  testAlert: PropTypes.func.isRequired,
+  testModal: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -33,6 +34,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
 });

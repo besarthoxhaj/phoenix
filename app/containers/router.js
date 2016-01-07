@@ -4,13 +4,13 @@ import { connect } from 'react-redux/native';
 import { bindActionCreators } from 'redux';
 import React, { Component, PropTypes, Navigator, View } from 'react-native';
 // container
-import Login from './login.js';
-import Home from './home.js';
 import Header from './header.js';
 import Footer from './footer.js';
 // actions
 import * as StartActions from '../actions/start.js';
-import * as NavigationActions from '../actions/navigation.js';
+import * as NavigationActions from '../actions/router.js';
+// utils
+import _routes from './_routes.js';
 
 const actionCreators = {
   ...StartActions,
@@ -18,11 +18,14 @@ const actionCreators = {
 };
 
 class Router extends Component {
+
   constructor(props){
     super(props);
     this.renderScene = this.renderScene.bind(this);
   }
+
   componentWillUpdate(nextProps) {
+
     const { route : newRoute, stack: newStack} = nextProps;
     const { route } = this.props;
 
@@ -30,31 +33,23 @@ class Router extends Component {
       this.refs.navigator.jumpTo(newStack[newRoute.index]);
     }
   }
-  renderScene(route,navigator){
-    switch(route.name){
-      case 'Login':
-        return (<Login />);
-      case 'Home':
-        return (<Home />);
-      default:
-        return (<Login />)
-    }
+
+  renderScene(route){
+    const Component = _routes[route.name].component;
+    return (<Component />);
   }
+
   render(){
     return (
       <View style={{flex:1}}>
         <Header />
         <Navigator
-        //Use Navigator to transition between different scenes in your app.
+        // use Navigator to transition between different scenes in your app.
           ref='navigator'
           initialRoute={this.props.stack[this.props.route.index]}
           initialRouteStack={this.props.stack}
           renderScene={this.renderScene}
           history={this.props.history}
-          sceneStyle={{
-            flexDirection: 'column',
-            flex: 2
-          }}
           configureScene={route => {
             if (route.sceneConfig) {
               return route.sceneConfig;
@@ -65,7 +60,7 @@ class Router extends Component {
         />
         <Footer />
       </View>
-    )
+    );
   }
 }
 
@@ -76,11 +71,7 @@ Router.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return {
-    route: state.navigation.route,
-    history: state.navigation.history,
-    stack: state.navigation.stack,
-  }
+  return { ...state.router, state };
 }
 
 export default connect(mapStateToProps, actionCreators)(Router);

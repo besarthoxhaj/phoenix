@@ -1,17 +1,29 @@
 'use strict';
 
-import { ALERT, CLEAR_ALERT } from '../action_types.js';
+import {
+  SHOW_ALERT,
+  RESET_ALERT,
+} from '../action_types.js';
 
-export const intitialState = 'test';
+export const intitialState = {
+  isVisible: false,
+  title: '',
+  message: '',
+  buttons: []
+};
 
-export const reducer = (state = intitialState, action) => {
-
+export default function (state = intitialState, action) {
   switch (action.type) {
-    case ALERT:
-      return action.alert;
-    case CLEAR_ALERT:
-      return null
+    case SHOW_ALERT:
+      return {
+        isVisible: true,
+        title: action.title,
+        message: action.message,
+        buttons: action.buttons,
+      };
+    case RESET_ALERT:
+      return intitialState;
     default:
-      return state
+      return state;
   }
 }

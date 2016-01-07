@@ -17,7 +17,7 @@ const routes = [
 
 const initialRouteStack = routes.map((name, index) => {return {name, index}});
 
-const initialRoute = { name: 'Home', index: 0 };
+const initialRoute = { name: 'Login', index: 1 };
 
 export const initialState = {
   route   : initialRoute,

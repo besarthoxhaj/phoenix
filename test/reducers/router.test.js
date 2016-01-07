@@ -1,21 +1,18 @@
 'use strict';
 
 import test from 'tape';
-import {
-  reducer,
-  initialState
-} from '../../app/reducers/navigation.js';
+import reducer, { initialState } from '../../app/reducers/router.js';
 import { CHANGE_ROUTE, SET_INITIAL_ROUTE, RESTART } from '../../app/action_types.js';
 
-test('app:reducers:navigation -> inital state', t => {
+test('app:reducers:router -> inital state', t => {
 
   t.deepEquals(reducer(undefined, {}), initialState, 'default state');
   t.end();
 });
 
-test('app:reducers:navigation:CHANGE_ROUTE -> should return right state', t => {
+test('app:reducers:router:CHANGE_ROUTE -> should return right state', t => {
 
-  const newRoute = {name:'In_Play',index:1};
+  const newRoute = {name:'modal/show',index:4};
   const newHistory = [...initialState.history, newRoute];
   const newRouteStack = initialState.stack;
 
@@ -25,7 +22,7 @@ test('app:reducers:navigation:CHANGE_ROUTE -> should return right state', t => {
     stack: initialState.stack
   };
 
-  const mockAction = {type:CHANGE_ROUTE,newRoute,newRouteStack,newHistory};
+  const mockAction = {type:CHANGE_ROUTE, newRoute};
   const reducerState = reducer(initialState, mockAction);
 
   t.deepEquals(reducerState, updatedRouteState, 'got right state');

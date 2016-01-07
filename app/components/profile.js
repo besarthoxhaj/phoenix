@@ -6,30 +6,29 @@ import React, {
   PropTypes,
   View,
   Text,
+  Dimensions,
+  TouchableHighlight,
 } from 'react-native';
 
-export default class Feader extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default class Profile extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <Text>Footer</Text>
+        <Text>Profile</Text>
       </View>
     )
   }
 }
 
-Feader.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
-};
+Profile.propTypes = {};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e8d279',
     justifyContent: 'center',
     alignItems: 'center',
+    height: 40,
+    width: Dimensions.get('window').width,
+    backgroundColor: '#F5FCFF',
   }
 });

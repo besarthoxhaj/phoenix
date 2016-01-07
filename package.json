@@ -8,14 +8,21 @@
     "rn:init": "./init_component.sh"
   },
   "dependencies": {
+    "good": "^6.4.0",
+    "good-console": "^5.2.0",
+    "hapi": "^11.1.2",
+    "isomorphic-fetch": "^2.2.0",
     "ramda": "^0.18.0",
     "react": "^0.14.3",
     "react-native": "^0.16.0",
+    "react-native-vector-icons": "^1.0.4",
     "react-redux": "^3.0.1",
     "redux": "^3.0.5",
     "redux-logger": "^2.2.1",
     "redux-persist": "^1.4.10",
-    "redux-thunk": "^1.0.2"
+    "redux-thunk": "^1.0.2",
+    "regenerator": "^0.8.42",
+    "ws": "^0.8.1"
   },
   "devDependencies": {
     "babel-core": "^6.3.17",
