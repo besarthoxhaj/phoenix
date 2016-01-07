@@ -33,13 +33,20 @@ export default class Login extends Component {
           onPress={this.props.submit}
           text={'Submit'}
         />
+        <Button
+          onPress={this.props.goToRegister}
+          text={'Register'}
+        />
       </View>
     )
   }
 }
 
 Login.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
+  email:        PropTypes.string,
+  submit:       PropTypes.func,
+  goToregister: PropTypes.func,
+  updateInput:  PropTypes.func
 };
 
 const styles = StyleSheet.create({

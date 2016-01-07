@@ -6,30 +6,23 @@ import React, { Component, PropTypes } from 'react-native';
 // components
 import Login from '../components/login.js';
 // actions
-import * as NavigationActions from '../actions/router.js';
 import * as LoginActions from '../actions/login.js';
 
-const actionCreators = {
-  ...NavigationActions,
-  ...LoginActions,
-};
+const actionCreators = LoginActions
 
 class LoginContainer extends Component {
-  render(){
-    return (
-      <Login {...this.props} />
-    );
+  render () {
+    return <Login {...this.props} />;
   }
 }
 
 LoginContainer.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
+  submit:       PropTypes.func,
+  goToRegister: PropTypes.func,
+  updateInput:  PropTypes.func,
+  email:        PropTypes.string
 };
 
-const mapStateToProps = state => {
-  return {
-    ...state,
-  };
-};
+const mapStateToProps = state => state.login;
 
 export default connect(mapStateToProps, actionCreators)(LoginContainer);

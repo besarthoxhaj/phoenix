@@ -1,36 +1,54 @@
 'use strict';
 
-import { CHANGE_REGISTRATION_FIELD, CHANGE_REGISTRATION_PAGE } from '../action_types.js';
+import {
+  CHANGE_REGISTRATION_FIELD,
+  VALIDATE_REGISTRATION_FIELD,
+  CHANGE_REGISTRATION_PAGE,
+  SUBMIT_PAGE,
+  RESET_REGISTRATION
+} from '../action_types.js';
 
-const initialState = {
-  page1: {
-    name: {value: '', validated: false},
-    email: {value: '', validated: false}
-  },
-  page2: {
-    username: {value: '', validated: false},
-    password: {value: '', validated: false}
-  }
-  currentPage: 'page1'
-}
+import { numberPages, pages, initialState } from '../registration_schema.js';
 
 export default function reducer (state = initialState, action) {
+  const {
+    type,
+    field,
+    value,
+    validated,
+    direction
+  }                     = action;
+  const { index, page } = state
 
-  switch (action.type) {
+  switch (type) {
+    case VALIDATE_REGISTRATION_FIELD:
+      return {
+        ...state,
+        [page]: {
+          ...state[page],
+          [field]: { ...state[page][field], validated }
+        }
+      };
     case CHANGE_REGISTRATION_FIELD:
       return {
-        ...state
-        [action.page]: {
-          ...state[action.page],
-          [action.field]: { value: action.value, validated: action.validated }
+        ...state,
+        [page]: {
+          ...state[page],
+          [field]: { ...state[page][field], value }
         }
       };
     case CHANGE_REGISTRATION_PAGE:
+      const newIndex = index + direction === 'forward' ? 1 : -1
+
       return {
         ...state,
-        currentPage: action.page
+        currentIndex: newIndex,
+        page:         pages[newIndex],
+        buttonText:   newIndex === numberPages - 1 ? 'Continue' : 'Register'
       }
     default:
       return state;
+    case RESET_REGISTRATION:
+      return initialState;
   }
 }

@@ -1,53 +1,69 @@
 'use strict';
 
-import React, { Component, PropTypes, View, TextInput, Text, StyleSheet } from 'react-native';
+import React, { Component, PropTypes, View, TextInput, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import SmartScrollView from 'react-native-smart-scroll-view';
 
 class RegistrationPage extends Component {
 
-  render(){
+  render () {
     const {
       inputs,
       changeInput,
       validateInput,
       buttonText,
-      submitForm
+      submitPage,
+      page
     }                     = this.props;
-    const fields          = Object.keys(inputs)
+    const fields          = Object.keys(inputs);
     const inputComponents = fields.map((fieldName, i) => {
-      return (
-        <View style = {styles.inputField} >
-          <Text style = {styles.fieldName} >
-            {fieldName}
-          </Text>
-          <TextInput
-            value:             = { inputs[fieldName].value }
-            onChange           = { (text) => changeInput(fieldName, text) }
-            smartScrollOptions = {{
-              moveToNext: i === fields.length - 1,
-              onSubmitEditing: (next) => {
-                validateInput(fieldName);
-                next();
-              },
-              type: 'text'
-            }}
-            onEndEditing       = { () => validateInput(fieldName) }
-            autoCorrect        = { false }
-            style              = { [styles.texInput, {borderColor: inputs[fieldName].validated ? 'green' : 'red' }] }
-          />
-        </View>
-      )
+      const {value, validated, type, componentOptions} = inputs[fieldName];
+
+      switch (type) {
+        case 'text':
+          return (
+            <View style = {styles.inputContainer} key = {i} >
+              <Text style = {styles.fieldName} >
+                {fieldName}
+              </Text>
+              <TextInput
+                value              = { value }
+                onChange           = { (text) => changeInput(fieldName, text) }
+                smartScrollOptions = {{
+                  moveToNext: false,
+                  onSubmitEditing: (next) => {
+                    validateInput(fieldName);
+                    next();
+                  },
+                  type: 'text'
+                }}
+                onEndEditing       = { () => validateInput(fieldName) }
+                autoCorrect        = { false }
+                style              = { [styles.textInput, {borderColor: validated ? 'green' : 'red' }] }
+                {...componentOptions}
+              />
+            </View>
+          )
+        default:
+          return <View/>;
+      }
     })
 
     return (
       <View style = {styles.container}>
-        <SmartScrollView>
+        <View style = {styles.header} >
+          <Text style = {styles.headerText}>
+            {page}
+          </Text>
+        </View>
+        <SmartScrollView
+          contentContainerStyle = { styles.contentContainerStyle }
+        >
           {inputComponents}
         </SmartScrollView>
         <TouchableOpacity
           style   = {styles.button}
-          onPress = {submitForm}
+          onPress = {submitPage}
         >
           <Text style = {styles.buttonText} >
             {buttonText}
@@ -60,51 +76,70 @@ class RegistrationPage extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'stretch',
-    justifyContent: 'space-between'
+    flex:              1,
+    alignItems:        'stretch',
+    backgroundColor:   'lightBlue',
   },
-   inputContainer: {
-     flexDirection:  'row',
-     justifyContent: 'space-between',
-     alignItems:     'center'
-   },
-     fieldName: {
-       fontSize: 10,
-       color:    '#42647F'
-     },
-     textInput: {
-       height:          30,
-       width:           220,
-       paddingLeft:     10,
-       borderWidth:     1,
-       borderRadius:    5,
-       backgroundColor: 'white',
-       fontSize:        12,
-     },
-   button: {
-      backgroundColor: '#1E90FF',
-      height:            40,
-      alignItems:        'center',
-      justifyContent:    'center',
-      paddingHorizontal: 20,
-      borderRadius:      10
+    header: {
+      height: 80,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'darkBlue'
     },
-      buttonText: {
-        fontSize:  15,
-        color:     '#FFFFFF',
-        textAlign: 'center'
-      }
-})
-
-})
+      headerText: {
+        fontSize: 40,
+        color:    '#42647F'
+      },
+    contentContainerStyle: {
+      alignItems: 'stretch',
+      justifyContent: 'space-around',
+      paddingHorizontal: 30
+    },
+     inputContainer: {
+       paddingVertical: 10,
+       flexDirection:   'row',
+       justifyContent:  'space-between',
+       alignItems:      'center'
+     },
+       fieldName: {
+         fontSize: 18,
+         color:    '#42647F'
+       },
+       textInput: {
+         height:          40,
+         width:           260,
+         paddingLeft:     10,
+         borderWidth:     3,
+         borderRadius:    5,
+         backgroundColor: 'white',
+         fontSize:        18,
+       },
+     button: {
+        backgroundColor:  'darkBlue',
+        height:            50,
+        width:             280,
+        alignSelf:         'center',
+        alignItems:        'center',
+        justifyContent:    'center',
+        paddingHorizontal: 20,
+        borderRadius:      10,
+        marginVertical:    20
+      },
+        buttonText: {
+          fontSize:  15,
+          color:     '#FFFFFF',
+          textAlign: 'center'
+        }
+});
 
 RegistrationPage.propTypes = {
-  inputs:        PropTypes.obj,
+  inputs:        PropTypes.object,
   changeInput:   PropTypes.func,
   validateInput: PropTypes.func,
   buttonText:    PropTypes.string,
-  submitForm:    PropTypes.func,
+  submitPage:    PropTypes.func,
+  currentPage:   PropTypes.string,
+  back:          PropTypes.func
 };
 
 export default RegistrationPage;

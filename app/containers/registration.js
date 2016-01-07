@@ -15,36 +15,38 @@ class Registration extends Component {
     const {
       validateInput,
       changeInput,
-      changeRegistrationPage,
-      submitForm,
-      currentPage
-    }
+      submitPage,
+      page,
+      back,
+      buttonText
+    } = this.props;
+
     return (
       <RegistrationPage
-        inputs                 = {this.props[currentPage]}
+        inputs                 = {this.props[page]}
         changeInput            = { changeInput }
-        changeRegistrationPage = { changeRegistrationPage }
-        submitForm             = { submitForm }
-        currentPage            = { currentPage }
+        back                   = { back }
+        submitPage             = { submitPage }
+        page                   = { page }
+        validateInput          = { validateInput }
+        buttonText             = { buttonText }
       />
     );
   }
 }
 
 Registration.propTypes = {
-  page1:                  PropTypes.obj,
-  page2:                  PropTypes.obj,
+  'Contact Info':         PropTypes.object,
+  'Login Info':           PropTypes.object,
+  Address:                PropTypes.object,
   currentPage:            PropTypes.string,
+  buttonText:             PropTypes.string,
   validateInput:          PropTypes.func,
   changeInput:            PropTypes.func,
   changeRegistrationPage: PropTypes.func,
-  submitForm:             PropTypes.func
+  submitPage:             PropTypes.func
 };
 
-const mapStateToProps = state => {
-  return {
-    ...state.registration,
-  };
-};
+const mapStateToProps = state => state.registration;
 
 export default connect(mapStateToProps, actionCreators)(Registration);

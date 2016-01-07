@@ -1,37 +1,63 @@
 'use strict';
 
-import { CHANGE_REGISTRATION_FIELD, CHANGE_REGISTRATION_PAGE } from '../action_types.js';
+import * as types from '../action_types.js';
+import navigateTo from './router.js';
 
-const schema = {
-  'name': {validator: checkString , optional: false}
-}
+import { schemaValidation, numberPages } from '../registration_schema.js'
 
-export function validateInput(page, fieldName) {
-  return (dispatch) => {
-    const { page: { fieldName: fieldObj } } = getState();
-    const validated = schema[fieldName].optional ? true : schema[fieldName].validator(fieldObj.value)
-    return dispatch(changeValidationState(fieldName, validated))
-  }
-}
-
-function changeValidationState(page, fieldName, validated) {
-  return { type: types.CHANGE_VALIDATION_STATE, page, fieldName, validated }
-}
-
-export function changeInput(page, fieldName, value){
-  return { type: types.CHANGE_REGISTRATION_FIELD, page, fieldName, value}
-}
-
-export function changeRegistrationPage(page){
-  return { type: types.CHANGE_REGISTRATION_PAGE, page }
-}
-
-export function submitForm(page){
+export function validateInput (field) {
   return (dispatch, getState) => {
-    const { page } = getState();
-    const allInputsValidated = Object.keys(inputs).every((input) => input.validated );
-
-    return { type: types.SUBMIT_FORM, allInputsValidated }
+    const { registration } = getState();
+    const { page }         = registration;
+    const value            = registration[page][field].value;
+    console.log(value, registration, 'valuevalue');
+    schemaValidation[page][field](value, (validated) => dispatch(changeValidationState(field, validated)), registration)
   }
+}
 
+function changeValidationState (field, validated) {
+  return { type: types.VALIDATE_REGISTRATION_FIELD, field, validated }
+}
+
+export function changeInput (field, value) {
+  return { type: types.CHANGE_REGISTRATION_FIELD, field, value}
+}
+
+export function submitPage () {
+  return (dispatch, getState) => {
+    const { registration }   = getState();
+    const { page }           = registration;
+    const inputs             = registration[page];
+    const allInputsValidated = Object.keys(inputs).every(input => input.validated );
+
+    if (allInputsValidated) {
+      dispatch( registration.index === numberPages -1 ? submitForm() :changeRegistrationPage('forward'));
+    }
+  }
+}
+
+export function back () {
+  return (dispatch, getState) => {
+    const { registration: {index} } = getState();
+
+    dispatch( index === 0 ? backToLogin(): changeRegistrationPage('back'));
+  }
+}
+
+function backToLogin () {
+  return dispatch => {
+    dispatch(navigateTo('login'));
+    dispatch(resetRegistration());
+  };
+}
+
+function submitForm () {
+  return dispatch => {
+    dispatch(navigateTo('home'));
+    dispatch(resetRegistration());
+  };
+}
+
+function resetRegistration () {
+  return { type: types.RESET_REGISTRATION };
 }

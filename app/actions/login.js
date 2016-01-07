@@ -34,7 +34,7 @@ export const login = (username, password) => async (dispatch) => {
   const onSuccess = json => {
     if (json.status === 'success') {
       dispatch(loginSuccess());
-      dispatch(router.navigateTo({name:'Home'}))
+      dispatch(router.navigateTo({name:'home'}))
     } else {
       dispatch(loginFail('Sorry password or username did not match'));
     }
@@ -70,3 +70,5 @@ export const submit = () => {
     }, 1000);
   };
 };
+
+export const goToRegister = () => router.navigateTo({name:'registration'})

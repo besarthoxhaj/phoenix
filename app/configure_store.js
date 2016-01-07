@@ -42,6 +42,7 @@ export default () => {
       'login',
       'alert',
       'modal',
+      'registration'
     ]
   });
 
