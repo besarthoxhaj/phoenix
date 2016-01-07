@@ -5,7 +5,7 @@ import { connect } from 'react-redux/native';
 import React, { Component, PropTypes } from 'react-native';
 // components
 import TabHistory from '../components/history.js';
-
+// actions
 import * as HistoryActions from '../actions/history.js';
 
 class TabHistoryContainer extends Component {
@@ -17,9 +17,22 @@ class TabHistoryContainer extends Component {
 }
 
 TabHistoryContainer.propTypes = {
-  selectedTab: PropTypes.string
+  selectedTab:       PropTypes.string,
+  data:              PropTypes.array,
+  loadData:          PropTypes.func,
+  changeSelectedTab: PropTypes.func
 };
 
-const mapStateToProps = state => state.history
+function mapStateToProps(state) {
+
+  const { history } = state;
+  const selectedTab = history.selectedTab;
+  const data        = history[selectedTab];
+
+  return {
+    selectedTab,
+    data
+  }
+}
 
 export default connect(mapStateToProps, HistoryActions)(TabHistoryContainer);

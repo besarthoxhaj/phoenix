@@ -10,36 +10,37 @@ import React, {
 
 const { width: screenWidth } = Dimensions.get('window');
 
+//components
 import TabButton from './helpers/_tab-button.js';
-import List from './history_list.js';
+import List      from './history_list.js';
 
 class TabHistory extends Component {
 
   render() {
 
-    const { selectedTab, changeSelectedTab, loadData } = this.props;
+    const { selectedTab, changeSelectedTab, loadData, data } = this.props;
 
     return (
       <View style={styles.container} >
         <View style={styles.buttonContainer}>
           <TabButton
-            pressHandler={() => changeSelectedTab('INBOX')}
+            pressHandler={() => changeSelectedTab('tab1')}
             buttonText='INBOX'
-            selected={selectedTab === 'INBOX'}
+            selected={selectedTab === 'tab1'}
           />
           <TabButton
-            pressHandler={() => changeSelectedTab('SENT MESSAGES')}
+            pressHandler={() => changeSelectedTab('tab2')}
             buttonText='SENT MESSAGES'
-            selected={selectedTab === 'SENT MESSAGES'}
+            selected={selectedTab === 'tab2'}
           />
           <TabButton
-            pressHandler={() => changeSelectedTab('TRASH')}
+            pressHandler={() => changeSelectedTab('tab3')}
             buttonText='TRASH'
-            selected={selectedTab === 'TRASH'}
+            selected={selectedTab === 'tab3'}
           />
         </View>
         <View style={styles.loadingViewContainer}>
-          <List selectedTab={selectedTab} loadData={loadData}/>
+          <List selectedTab={selectedTab} loadData={loadData} data={data}/>
         </View>
       </View>
     );
@@ -47,9 +48,9 @@ class TabHistory extends Component {
 }
 
 TabHistory.propTypes = {
-  selectedTab: PropTypes.string,
+  selectedTab:       PropTypes.string,
   changeSelectedTab: PropTypes.func,
-  loadData: PropTypes.func
+  loadData:          PropTypes.func
 }
 
 const styles = StyleSheet.create({
