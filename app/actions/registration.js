@@ -1,6 +1,6 @@
 'use strict';
 
-import { CHANGE_REGISTRATION_FIELD, CHANGE_REGISTRATION_PAGE } from '../action_types/js';
+import { CHANGE_REGISTRATION_FIELD, CHANGE_REGISTRATION_PAGE } from '../action_types.js';
 
 const schema = {
   'name': {validator: checkString , optional: false}

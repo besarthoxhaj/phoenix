@@ -11,10 +11,18 @@ import chat from './chat.js';
 import profile from './profile.js';
 import splash from './splash.js';
 import pin from './pin.js';
+import registration from './registration.js';
 
 const routeList = {
   '_splash': {
     component: splash,
+    config: {
+      footer: empty,
+      header: empty,
+    }
+  },
+  'registration': {
+    component: registration,
     config: {
       footer: empty,
       header: empty,

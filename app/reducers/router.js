@@ -23,7 +23,8 @@ const routes = [
   'home',
   'modal/show',
   'profile',
-  'chat'
+  'chat',
+  'registration'
 ];
 
 const initialRouteStack = routes.map((name, index) => {return {name, index}});

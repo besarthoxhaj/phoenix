@@ -9,10 +9,10 @@ class RegistrationPage extends Component {
   render(){
     const {
       inputs,
-      saveInput,
+      changeInput,
       validateInput,
       buttonText,
-      formSubmit
+      submitForm
     }                     = this.props;
     const fields          = Object.keys(inputs)
     const inputComponents = fields.map((fieldName, i) => {
@@ -23,7 +23,7 @@ class RegistrationPage extends Component {
           </Text>
           <TextInput
             value:             = { inputs[fieldName].value }
-            onChange           = { (text) => saveInput(fieldName, text) }
+            onChange           = { (text) => changeInput(fieldName, text) }
             smartScrollOptions = {{
               moveToNext: i === fields.length - 1,
               onSubmitEditing: (next) => {
@@ -47,7 +47,7 @@ class RegistrationPage extends Component {
         </SmartScrollView>
         <TouchableOpacity
           style   = {styles.button}
-          onPress = {formSubmit}
+          onPress = {submitForm}
         >
           <Text style = {styles.buttonText} >
             {buttonText}
@@ -101,10 +101,10 @@ const styles = StyleSheet.create({
 
 RegistrationPage.propTypes = {
   inputs:        PropTypes.obj,
-  saveInput:     PropTypes.func,
+  changeInput:   PropTypes.func,
   validateInput: PropTypes.func,
   buttonText:    PropTypes.string,
-  formSubmit:    PropTypes.func,
+  submitForm:    PropTypes.func,
 };
 
 export default RegistrationPage;
