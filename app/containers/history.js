@@ -4,7 +4,7 @@ import { connect } from 'react-redux/native';
 
 import React, { Component, PropTypes } from 'react-native';
 // components
-import TabHistory from '../components/tabHistory.js';
+import TabHistory from '../components/history.js';
 
 import * as HistoryActions from '../actions/history.js';
 

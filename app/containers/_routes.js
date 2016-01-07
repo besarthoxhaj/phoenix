@@ -11,7 +11,7 @@ import chat from './chat.js';
 import profile from './profile.js';
 import splash from './splash.js';
 import pin from './pin.js';
-import history from './tabHistory.js';
+import history from './history.js';
 
 const routeList = {
   '_splash': {

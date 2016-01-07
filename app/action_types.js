@@ -34,3 +34,4 @@ export const CHAT_UPDATE_INPUT = 'CHAT_UPDATE_INPUT';
 export const CORRECT_COUNTRY = 'CORRECT_COUNTRY';
 //history
 export const CHANGE_SELECTED_TAB = 'CHANGE_SELECTED_TAB';
+export const DATA_LOADED = 'DATA_LOADED';

@@ -11,12 +11,13 @@ import React, {
 const { width: screenWidth } = Dimensions.get('window');
 
 import TabButton from './helpers/_tab-button.js';
+import List from './history_list.js';
 
 class TabHistory extends Component {
 
   render() {
 
-    const { selectedTab, changeSelectedTab } = this.props;
+    const { selectedTab, changeSelectedTab, loadData } = this.props;
 
     return (
       <View style={styles.container} >
@@ -37,6 +38,9 @@ class TabHistory extends Component {
             selected={selectedTab === 'TRASH'}
           />
         </View>
+        <View style={styles.loadingViewContainer}>
+          <List selectedTab={selectedTab} loadData={loadData}/>
+        </View>
       </View>
     );
   }
@@ -44,7 +48,8 @@ class TabHistory extends Component {
 
 TabHistory.propTypes = {
   selectedTab: PropTypes.string,
-  changeSelectedTab: PropTypes.func
+  changeSelectedTab: PropTypes.func,
+  loadData: PropTypes.func
 }
 
 const styles = StyleSheet.create({
@@ -60,7 +65,7 @@ const styles = StyleSheet.create({
   },
   loadingViewContainer: {
     flex: 1,
-    justifyContent: 'flex-start',
+    marginTop: 10,
     width: screenWidth,
   }
 });

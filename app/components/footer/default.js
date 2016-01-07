@@ -76,7 +76,7 @@ var iconArray = [
   },
   {
     name: 'history',
-    image: 'comment'
+    image: 'envelope'
   },
 ];
 
