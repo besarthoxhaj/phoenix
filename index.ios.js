@@ -1,6 +1,8 @@
 
 'use strict';
+
 require('regenerator/runtime')
+
 import React, {
   AppRegistry,
   Component,
@@ -15,7 +17,7 @@ import App from './app/containers/app.js';
 const store = configureStore();
 
 import { subscribeServices } from './app/services/'
-import alert                 from './app/services/alert.js';
+import alert from './app/services/alert.js';
 
 class phoenix extends Component {
 

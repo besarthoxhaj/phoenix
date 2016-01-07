@@ -1,11 +1,13 @@
+'use strict';
+
 import { bindActionCreators } from 'redux';
 
-
 export function subscribeService (store, service) {
-  store.subscribe(() => {
-    const actionCreatorBinder = actionCreators => bindActionCreators(actionCreators, store.dispatch)
-    const state               = store.getState();
 
+  store.subscribe(() => {
+
+    const actionCreatorBinder = actionCreators => bindActionCreators(actionCreators, store.dispatch)
+    const state = store.getState();
     service(state, actionCreatorBinder);
   })
 }
