@@ -1,4 +1,4 @@
-import { RETURN_DECK, NEXT_CARD } from '../constants/ActionTypes';
+import { RETURN_DECK, NEXT_CARD } from '../action_types.js';
 
 export const initialState = {
   deck:          [],
@@ -42,7 +42,6 @@ export default function home(state = initialState, action) {
           nextCard:    bigDeck.slice(1,2)[0],
           currentCard: bigDeck.slice(0,1)[0],
         };
-      }
     case NEXT_CARD:
       return {
         ...state,

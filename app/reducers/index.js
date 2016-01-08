@@ -7,6 +7,7 @@ import login from './login.js';
 import alert from './alert.js';
 import modal from './modal.js';
 import chat from './chat.js';
+import deck from './deck.js';
 import history from './history.js';
 
 const rootReducer = combineReducers({
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   modal,
   login,
   chat,
+  deck,
   history
 });
 
