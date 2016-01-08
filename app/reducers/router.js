@@ -46,7 +46,7 @@ export default function reducer (state = initialState, action) {
       const redirectRoute = check({name:'home'}, action._store.getState());
       return reducer(state, {
         type: 'CHANGE_ROUTE',
-        newRoute: {name: redirectRoute}
+        newRoute: {name: 'profile'}
       });
     case CHANGE_ROUTE:
       const { route, history, stack } = state;
