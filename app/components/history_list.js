@@ -31,7 +31,7 @@ class HistoryList extends Component {
         dataSource                       = {dataSource}
         renderRow                        = {this.renderRow}
         renderSeparator                  = {this.renderSeparator}
-        loadData                         = {loadData.bind(null, selectedTab)}
+        loadData                         = {loadData}
         refreshDescription               = {"Loading..."}
         automaticallyAdjustContentInsets = {false}
       />

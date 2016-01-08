@@ -27,7 +27,7 @@ function mapStateToProps(state) {
 
   const { history } = state;
   const selectedTab = history.selectedTab;
-  const data        = history[selectedTab];
+  const data        = history[selectedTab]; // only feed the data for the selected tab to the history component 
 
   return {
     selectedTab,
