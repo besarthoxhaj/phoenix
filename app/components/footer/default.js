@@ -67,6 +67,10 @@ var iconArray = [
     image: 'anchor'
   },
   {
+    name: 'deck',
+    image: 'stack-overflow'
+  },
+  {
     name: 'profile',
     image: 'reddit-alien'
   },
