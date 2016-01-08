@@ -7,6 +7,7 @@ import login from './login.js';
 import alert from './alert.js';
 import modal from './modal.js';
 import chat from './chat.js';
+import history from './history.js';
 
 const rootReducer = combineReducers({
   store,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   modal,
   login,
   chat,
+  history
 });
 
 export default rootReducer;
