@@ -6,6 +6,7 @@ import defaultFooter from '../components/footer/default.js';
 import chatFooter from '../components/footer/chat.js';
 import defaultHeader from '../components/header/default.js';
 import home from './home.js';
+import deck from './deck.js';
 import login from './login.js';
 import chat from './chat.js';
 import profile from './profile.js';
@@ -37,6 +38,13 @@ const routeList = {
   },
   'home': {
     component: home,
+    config: {
+      footer: defaultFooter,
+      header: defaultHeader,
+    }
+  },
+  'deck': {
+    component: deck,
     config: {
       footer: defaultFooter,
       header: defaultHeader,
