@@ -16,7 +16,7 @@ export default class Profile extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <Deck />
+        <Text>Profile</Text>
       </View>
     )
   }
@@ -27,6 +27,10 @@ Profile.propTypes = {};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 40,
+    width: Dimensions.get('window').width,
+    backgroundColor: '#F5FCFF',
   }
 });
