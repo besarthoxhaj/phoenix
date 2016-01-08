@@ -12,6 +12,8 @@ import profile from './profile.js';
 import splash from './splash.js';
 import pin from './pin.js';
 import history from './history.js';
+import my_details from '../components/profile/my_details.js';
+import my_friends from '../components/profile/my_friends.js';
 
 const routeList = {
   '_splash': {
@@ -51,6 +53,20 @@ const routeList = {
   },
   'profile': {
     component: profile,
+    config: {
+      footer: defaultFooter,
+      header: defaultHeader,
+    }
+  },
+  'profile/my_details': {
+    component: my_details,
+    config: {
+      footer: defaultFooter,
+      header: defaultHeader,
+    }
+  },
+  'profile/my_friends': {
+    component: my_friends,
     config: {
       footer: defaultFooter,
       header: defaultHeader,

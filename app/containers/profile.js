@@ -6,7 +6,7 @@ import React, { Component, PropTypes } from 'react-native';
 // components
 import Profile from '../components/profile.js';
 
-const actionCreators = {};
+import * as NavigationActions from '../actions/router.js';
 
 class ProfileContainer extends Component {
   render(){
@@ -24,4 +24,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, actionCreators)(ProfileContainer);
+export default connect(mapStateToProps, NavigationActions)(ProfileContainer);

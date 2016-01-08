@@ -24,7 +24,9 @@ const routes = [
   'modal/show',
   'profile',
   'chat',
-  'history'
+  'history',
+  'profile/my_details',
+  'profile/my_friends'
 ];
 
 const initialRouteStack = routes.map((name, index) => {return {name, index}});
