@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-import * as types from '../constants/ActionTypes.js';
+import * as types from '../action_types.js';
 
 function sliceTopCard () {
   return { type: types.NEXT_CARD };
