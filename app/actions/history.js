@@ -16,10 +16,21 @@ export function loadData(cb){
   return (dispatch, getState) => {
     const { history } = getState();
     const selectedTab = history.selectedTab
+    
+    let newData;
+    switch(selectedTab){
+      case 'tab1':
+        newData = ["New Message"].concat(history[selectedTab]);
+        break;
+      case 'tab2':
+        newData = ["Sent Message"].concat(history[selectedTab]);
+        break;
+      case 'tab3':
+        newData = ["More Rubbish"].concat(history[selectedTab]);
+    }
 
     // mocking async call to fetch data for the selectedTab
     setTimeout(() => {
-      const newData  = ["Added New Data"].concat(history[selectedTab]) // mock adding new data from the database
       cb();
       return dispatch(dataLoaded(selectedTab, newData));
     }, 500);

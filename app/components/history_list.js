@@ -10,11 +10,17 @@ import React, {
 } from 'react-native';
 
 import RefreshableListView from 'react-native-refreshable-listview';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 class HistoryList extends Component {
 
   renderRow(rowData, sectionID, rowID, highlightRow) {
-    return <Text key={rowID}>{rowData}</Text>
+    return (
+      <View style={styles.row}>
+        <Icon name={'envelope'} size={20} color={'#d3d3d3'} style={{flex:1, paddingLeft: 20}} />
+        <Text key={rowID} style={{flex:2}}>{rowData}</Text>
+      </View>
+    )
   }
 
   renderSeparator(sectionID, rowID, adjacentRowHighlighted){
@@ -44,6 +50,12 @@ HistoryList.propTypes = {
 };
 
 const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 35,
+    alignItems: 'center'
+  },
   separator: {
     height:          1.5,
     backgroundColor: '#CCCCCC'

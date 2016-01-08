@@ -6,7 +6,7 @@ export const intitialState = {
   selectedTab: 'tab1',
   tab1: ["New message from Jack", "New message from Izaak"],
   tab2: ["Email sent to Bes", "Email sent to Nikki"],
-  tab3: ["Rubbish 1", "Rubbish 2"]
+  tab3: ["Rubbish Message 1", "Rubbish Message 2"]
 };
 
 export default function (state = intitialState, action) {
