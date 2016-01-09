@@ -11,6 +11,7 @@ import chat from './chat.js';
 import profile from './profile.js';
 import splash from './splash.js';
 import pin from './pin.js';
+import history from './history.js';
 
 const routeList = {
   '_splash': {
@@ -61,7 +62,14 @@ const routeList = {
       footer: defaultFooter,
       header: defaultHeader,
     }
-  }
+  },
+  'history': {
+    component: history,
+    config: {
+      footer: defaultFooter,
+      header: defaultHeader,
+    }
+  },
 };
 
 export default routeList;

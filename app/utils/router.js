@@ -21,6 +21,9 @@ const routeList = {
   },
   'modal/show': {
     auth: 'login',
+  },
+  'history': {
+    auth: 'login',
   }
 };
 

@@ -74,6 +74,10 @@ var iconArray = [
     name: 'chat',
     image: 'comment'
   },
+  {
+    name: 'history',
+    image: 'envelope'
+  },
 ];
 
 const styles = StyleSheet.create({

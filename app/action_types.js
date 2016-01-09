@@ -30,7 +30,10 @@ export const CHAT_ERROR = 'CHAT_ERROR';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
 export const CHAT_UPDATE_INPUT = 'CHAT_UPDATE_INPUT';
-//loction
+//location
 export const CORRECT_COUNTRY = 'CORRECT_COUNTRY';
 // NetInfo
 export const SET_CONNECTION_STATUS = 'SET_CONNECTION_STATUS';
+//history
+export const CHANGE_SELECTED_TAB = 'CHANGE_SELECTED_TAB';
+export const DATA_LOADED = 'DATA_LOADED';
