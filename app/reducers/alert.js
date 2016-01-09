@@ -1,6 +1,9 @@
 'use strict';
 
-import { SHOW_ALERT, RESET_ALERT } from '../action_types.js';
+import {
+  SHOW_ALERT,
+  RESET_ALERT,
+} from '../action_types.js';
 
 export const intitialState = {
   isVisible: false,
@@ -10,7 +13,6 @@ export const intitialState = {
 };
 
 export default function (state = intitialState, action) {
-
   switch (action.type) {
     case SHOW_ALERT:
       return {

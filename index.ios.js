@@ -1,6 +1,8 @@
 
 'use strict';
+
 require('regenerator/runtime')
+
 import React, {
   AppRegistry,
   Component,
@@ -9,15 +11,22 @@ import React, {
   View,
 } from 'react-native';
 
-import { Provider } from 'react-redux/native';
-import configureStore from './app/configure_store.js';
-import App from './app/containers/app.js';
+import { Provider }          from 'react-redux/native';
+import configureStore        from './app/configure_store.js';
+import App                   from './app/containers/app.js';
+
+import { subscribeServices } from './app/services/'
+import alert                 from './app/services/alert.js';
+import netinfo               from './app/services/netinfo.js';
+
 const store = configureStore();
 
 class phoenix extends Component {
-  constructor(props) {
-    super(props);
+
+  componentDidMount () {
+    subscribeServices(store, [alert, netinfo]);
   }
+
   render(){
     return (
       <Provider store={store}>

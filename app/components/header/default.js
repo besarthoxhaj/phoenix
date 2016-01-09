@@ -14,13 +14,14 @@ import H1 from '../helpers/_h1.js';
 
 export default class Header extends Component {
   render(){
-    console.log('test',this.props.router.route.name)
+    console.log('test',this.props)
     return (
       <View style={styles.container}>
         <TouchableHighlight onPress={this.props.goBack}>
           <Text style={{color:'#cccc00'}}>Go Back</Text>
         </TouchableHighlight>
         <H1>{this.props.router.route.name}</H1>
+        <H1>{"Connection Status: " + (this.props.ui.isConnected ? 'online' : 'offline') }</H1>
       </View>
     )
   }
