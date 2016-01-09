@@ -17,12 +17,17 @@ import App from './app/containers/app.js';
 const store = configureStore();
 
 import { subscribeServices } from './app/services/'
+<<<<<<< HEAD
 import alert from './app/services/alert.js';
+=======
+import alert                 from './app/services/alert.js';
+import netinfo               from './app/services/netinfo.js';
+>>>>>>> netinfo
 
 class phoenix extends Component {
 
   componentDidMount () {
-    subscribeServices(store, [alert]);
+    subscribeServices(store, [alert, netinfo]);
   }
 
   render(){
