@@ -36,5 +36,7 @@ export const CORRECT_COUNTRY = 'CORRECT_COUNTRY';
 export const CHANGE_SELECTED_TAB = 'CHANGE_SELECTED_TAB';
 export const DATA_LOADED = 'DATA_LOADED';
 //deck
+export const RETURN_DECK = 'RETURN_DECK:';
 export const NEXT_CARD = 'NEXT_CARD';
-export const RETURN_DECK = 'RETURN_DECK';
+export const BOUNCE_BACK = 'BOUNCE_BACK';
+export const NO_BOUNCE_BACK = 'NO_BOUNCE_BACK';
