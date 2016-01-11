@@ -2,25 +2,29 @@
 
 import { connect } from 'react-redux/native';
 
-import React, { Component, PropTypes } from 'react-native';
+import React, { Component } from 'react-native';
 // components
 import Deck from '../components/deck/deck.js';
+//actions
 import * as DeckActions from '../actions/deck.js';
+import * as NavigationActions from '../actions/router.js';
 
 const actionCreators = {
   ...DeckActions,
+  ...NavigationActions
 };
 
 class DeckContainer extends Component {
+  componentWillMount() {
+    this.props.returnDeck()
+
+  }
   render(){
-    console.log('asdasd',this.props)
     return (
       <Deck {...this.props} />
     );
   }
-};
-
-DeckContainer.propTypes = {};
+}
 
 const mapStateToProps = state => {
   return {
