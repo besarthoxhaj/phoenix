@@ -21,6 +21,7 @@ const routes = [
   'login',
   'pin',
   'home',
+  'confirm_bet',
   'deck',
   'modal/show',
   'profile',
