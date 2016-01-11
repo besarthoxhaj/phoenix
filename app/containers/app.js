@@ -4,8 +4,7 @@ import { connect } from 'react-redux/native';
 import React, { Component, PropTypes, View, PushNotificationIOS, AppStateIOS } from 'react-native';
 // containers
 import Router from './router.js';
-import Modal from './modal.js';
-import Alert from './alert.js';
+import Modals from './modal.js';
 // actions
 import * as NavigationActions from '../actions/router.js';
 import * as PushNotificationActions from '../actions/notifications.js';
@@ -45,8 +44,7 @@ class AppContainer extends Component {
     return (
       <View style={{flex:1}}>
         <Router/>
-        <Modal/>
-        <Alert/>
+        <Modals/>
       </View>
     );
   }

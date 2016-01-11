@@ -20,6 +20,7 @@ export default class Header extends Component {
           <Text style={{color:'#cccc00'}}>Go Back</Text>
         </TouchableHighlight>
         <H1>{this.props.router.route.name}</H1>
+        <H1>{"Connection Status: " + (this.props.ui.isConnected ? 'online' : 'offline') }</H1>
       </View>
     )
   }

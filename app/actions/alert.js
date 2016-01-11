@@ -7,7 +7,7 @@ export const show = (title, message, buttons = []) => {
     type: types.SHOW_ALERT,
     title,
     message,
-    buttons
+    buttons,
   };
 }
 
