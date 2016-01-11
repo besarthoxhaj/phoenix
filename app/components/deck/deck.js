@@ -1,80 +1,129 @@
-'use-strict';
+/*
+* Animations home screen
+*
+*
+*
+*/
+import React, { StyleSheet, Animated, View, PropTypes, Dimensions, Component } from 'react-native';
+import QuickSwipe from './quick_swipe.js';
+import CardContainer from './card_container.js';
+import Blank from './cards/blank_card.js';
+import iPhone from '../helpers/_iphone.js';
 
-import React, {
-  Component,
-  StyleSheet,
-  Animated,
-  View,
-  PanResponder,
-  PropTypes,
-  Dimensions
-} from 'react-native';
+import { handleAnimation } from './_animation.js';
 
-import Card from './card.js';
+var screenWidth = Dimensions.get('window').width;
+var screeHeight = Dimensions.get('window').height;
 
-var SWIPE_THRESHOLD = 150;
+var deckWidth = screenWidth - 70 * iPhone.width;
+var { deckHeight } = iPhone;
+var deckBorderWidth = 0.5;
 
-var { height:screenHeight, width } = Dimensions.get('window');
+export default class Tinderable extends Component {
 
-export default class Deck extends Component {
+  propTypes: {
+    currentCard: PropTypes.object,
+    nextCard: PropTypes.object,
+    actions: PropTypes.object,
+    modalOpen: PropTypes.bool,
+    errorCard: PropTypes.object,
+    processingBet: PropTypes.bool,
+    deck: PropTypes.object,
+  };
 
   constructor(props) {
-    super(props)
-
+    super(props);
     this.state = {
       pan: new Animated.ValueXY(),
       topcard: styles.normalCardContainer,
+      deckWideBorder: deckBorderWidth,
+      rotateOnAuto: '',
+      currentCard: this.props.deck.currentCard,
+      bounceBack: true,
+      cancelledBet: true,
+    }
+  }
+  //Initialise animations etc.
+  componentWillMount () {
+    handleAnimation.call(this)
+  }
+  //Update currentCard when component receives new currentCard
+  componentWillReceiveProps (props) {
+    this.setState({currentCard:props.deck.currentCard});
+  }
+
+  componentDidUpdate() {
+    if(this.props.deck.bounceBack) {
+      this.state.pan.setValue({x: 600, y: 0});
+      setTimeout(()=>Animated.spring(this.state.pan, {
+        toValue: {x: 0, y: 0},
+        friction: 4
+      }).start(() => this.props.noBounceBack()),500)
+    }
+  }
+  //Call setValue to reset pan to [0,0] i.e. transform top card to origional position or will render in far left
+  swipeLeft () {
+    this.state.pan.setValue({x: 0, y: 0});
+    this.props.sliceTopCard()
+  }
+
+  swipeRight () {
+    this.props.navigateTo({name: 'confirm_bet'});
+    this.props.bounceBack()
+  }
+
+  autoSwipe (direction) {
+    if (direction === 'left') {
+      Animated.timing(this.state.pan.x, {
+        toValue: -600,
+        duration: 350,
+      }).start(()=>this.swipeLeft());
+    } else {
+      Animated.timing(this.state.pan.x, {
+        toValue: 600,
+        duration: 350,
+      }).start(() => this.swipeRight());
     }
   }
 
-  componentWillMount () {
-    console.log('bsfhad',this.props.swipeLeft)
-
-    this._panResponder = PanResponder.create({
-      onStartShouldSetPanResponder: (evt, gestureState) => true,
-      onStartShouldSetPanResponderCapture: function(e: Object, gestureState: Object): boolean {
-        this.rotateTop = e.nativeEvent.pageY <= screenHeight/2;
-        this.setState(function() {
-          this.getTopCardRotation(this.rotateTop);
-        });
-        return true;
-      }.bind(this),
-      onPanResponderMove: Animated.event([null, {
-        dx: this.state.pan.x,
-        dy: this.state.pan.y,
-      }]),
-      onPanResponderRelease: () => {
-       this.state.pan.flattenOffset();
-       if (Math.abs(this.state.pan.x.__getAnimatedValue()) > SWIPE_THRESHOLD) {
-         if (this.state.pan.x.__getAnimatedValue() < 0) {
-           Animated.timing(this.state.pan.x, {
-             toValue: -600,
-             duration: 400,
-           }).start(() => this.setState({currentCard:this.props.nextCard}, ()=> setTimeout(()=>this.swipeLeft(),0)));
-         } else {
-           Animated.timing(this.state.pan.x, {
-             toValue: 600,
-             duration: 400,
-           }).start(() => this.swipeRight());
-         }
-       } else {
-         Animated.spring(this.state.pan, {
-           toValue: {x: 0, y: 0},
-           friction: 4
-         }).start();
-       }
+  topFadeOut () {
+    return [
+      { flex: 1 },
+      {
+        opacity: this.state.pan.x.interpolate({
+          inputRange: [-200, 0, 200],
+          outputRange: [0.2, 1, 0.2]
+        })
       }
-    });
+    ];
   }
 
-  getTopCardRotation (rotateClockWise) {
-    this.setState({rotateTop3: rotateClockWise});
+  getMiddleCardRotation() {
+    return [
+      {
+        transform: [
+          {
+            rotate: this.state.pan.x.interpolate({
+              inputRange: [-201, -200, 0, 200, 201],
+              outputRange: ['0deg', '0deg', '-4deg', '0deg', '0deg']
+            })
+          }
+        ]
+      }
+    ];
+  }
+  /*Animations for top card. Deals with rotation, change in border size and colour.
+  * rotateClockWise changes the direction of the rotation dependent on user pressing on the top/bottom of card
+  * NB: if (rotateClockWise) negative = '-', positive = ''; slows animations.
+  * NB: width: deckWidth + (deckWideBorder - deckBorderWidth) * 2.1 is a hack. Setting multiplier to 2 causes bug
+  */
+  getTopCardAnimation(deckWideBorder, rotateClockWise) {
+    this.setState({rotateOnAuto: rotateClockWise});
     var negative,
         positive
     if (rotateClockWise) negative = '-', positive = '';
     else negative = '', positive = '-';
     this.setState({topcard: [
-      styles.normalCardContainer,
       {
         transform: [{translateX: this.state.pan.x},{translateY: this.state.pan.y},
           {
@@ -84,49 +133,76 @@ export default class Deck extends Component {
             })
           }
         ]
+      },
+      {
+        borderWidth: deckWideBorder,
+        width: deckWidth + (deckWideBorder - deckBorderWidth) * 2.1,
+        height: deckHeight + (deckWideBorder - deckBorderWidth) * 2,
+        marginTop: -deckWideBorder,
+      },
+      {
+        borderColor: this.state.pan.x.interpolate({
+          inputRange: this.props.balance ? [-320, 0, 320] : [-320, 0, 50] ,
+          outputRange: ['rgb(220,20,60)', 'rgb(221, 221, 221)', 'rgb(204,204,0)']
+        })
       }
     ]})
   }
 
-  getCardFadeOut () {
-    return [
-      { flex: 1 },
-      {
-        opacity: this.state.pan.x.interpolate({
-          inputRange: [-200, 0, 200],
-          outputRange: [0.5, 1, 0.5]
-        })
-      }
-    ];
-  }
-
-  swipeLeft () {
-    this.props.swipeLeft()
-  }
-  swipeRight () {
-    this.props.swipeRight();
-  }
-
   render () {
     return (
-      <View style={styles.container}>
-        <Animated.View {...this._panResponder.panHandlers} style={this.state.topcard} shouldRasterizeIOS={true}>
-          <Animated.View style={ this.getCardFadeOut() }>
-            <Card />
+      <View style={styles.superContainer}>
+        <QuickSwipe no={this.autoSwipe.bind(this, 'left')} yes={this.autoSwipe.bind(this, 'right')} contacts={this.getContacts}/>
+        <View onStartShouldSetResponder={this._onStartShouldSetResponder} style={styles.container}>
+          <View style={styles.backgroundCard} shouldRasterizeIOS={true}>
+            <Blank/>
+          </View>
+          <Animated.View style={[styles.middleCardContainer, styles.normalCardContainer, this.getMiddleCardRotation()]} shouldRasterizeIOS={true}>
+            <CardContainer card = {this.props.deck.nextCard}/>
           </Animated.View>
-        </Animated.View>
+          <Animated.View {...this._panResponder.panHandlers} style={[styles.normalCardContainer, this.state.topcard]} shouldRasterizeIOS={true}>
+            <Animated.View style={this.topFadeOut()}>
+              <CardContainer card = {this.state.currentCard} />
+            </Animated.View>
+          </Animated.View>
+        </View>
       </View>
     );
   }
 }
 
-var deckWidth = width - 70;
-var deckHeight = 419;
-
-const styles = StyleSheet.create({
+var styles = StyleSheet.create({
+  superContainer: {
+    height: screeHeight - 78 * iPhone.scale - 67,
+  },
   container: {
-    flex: 1,
-    backgroundColor: '#999',
+    marginTop: 32 * iPhone.scale,
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+  },
+  backgroundCard: {
+    position: 'absolute',
+    left: 70/2 * iPhone.width,
+    width: deckWidth,
+    height: deckHeight,
+    marginTop: -0.5,
+    transform: [
+      {
+        rotate: '-4degrees',
+      }
+    ],
+    shadowRadius: 8,
+    shadowColor: 'black',
+    shadowOpacity: 0.5,
+    shadowOffset: {
+      height: 0,
+      width: 0,
+    },
+  },
+  middleCardContainer: {
+    position: 'absolute',
+    left: 70/2 * iPhone.width,
   },
   normalCardContainer: {
     flexDirection: 'column',
@@ -138,16 +214,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'stretch',
     marginTop: -0.5,
+    borderWidth: 0.5,
   },
-  backgroundCard: {
-    position: 'absolute',
-    left: 70/2,
-    width: 200,
-    height: 300,
-    transform: [
-      {
-        rotate: '-4degrees',
-      }
-    ],
-  },
-})
+});
