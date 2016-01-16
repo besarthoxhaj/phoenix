@@ -21,6 +21,8 @@ const routes = [
   'login',
   'pin',
   'home',
+  'confirm_bet',
+  'deck',
   'modal/show',
   'profile',
   'chat',
@@ -43,11 +45,11 @@ export default function reducer (state = initialState, action) {
      * Some recursion going on here! OMG!
      */
     case REHYDRATE_COMPLETE:
-      const redirectRoute = check({name:'home'}, action._store.getState());
-      return reducer(state, {
-        type: 'CHANGE_ROUTE',
-        newRoute: {name: redirectRoute}
-      });
+    const redirectRoute = check({name:'home'}, action._store.getState());
+    return reducer(state, {
+      type: 'CHANGE_ROUTE',
+      newRoute: {name: redirectRoute}
+    });
     case CHANGE_ROUTE:
       const { route, history, stack } = state;
       if (action.newRoute.name !== route.name) {

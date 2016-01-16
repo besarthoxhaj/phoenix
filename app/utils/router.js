@@ -13,6 +13,9 @@ const routeList = {
   'home': {
     auth: 'login',
   },
+  'deck': {
+    auth: 'login',
+  },
   'chat': {
     auth: 'login',
   },

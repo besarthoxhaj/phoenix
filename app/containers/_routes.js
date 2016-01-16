@@ -4,8 +4,12 @@
 import empty from '../components/_empty.js';
 import defaultFooter from '../components/footer/default.js';
 import chatFooter from '../components/footer/chat.js';
+import blankSpaceFooter from '../components/header/blank_space.js'
 import defaultHeader from '../components/header/default.js';
+import blankSpaceHeader from '../components/header/blank_space.js'
 import home from './home.js';
+import deck from './deck.js';
+import confirm_bet from './confirm_bet.js';
 import login from './login.js';
 import chat from './chat.js';
 import profile from './profile.js';
@@ -40,6 +44,20 @@ const routeList = {
     config: {
       footer: defaultFooter,
       header: defaultHeader,
+    }
+  },
+  'deck': {
+    component: deck,
+    config: {
+      footer: defaultFooter,
+      header: defaultHeader,
+    }
+  },
+  'confirm_bet': {
+    component: confirm_bet,
+    config: {
+      footer: blankSpaceFooter,
+      header: blankSpaceHeader,
     }
   },
   'chat': {

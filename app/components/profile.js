@@ -10,6 +10,8 @@ import React, {
   TouchableHighlight,
 } from 'react-native';
 
+import Deck from './deck/deck.js';
+
 export default class Profile extends Component {
   render(){
     return (

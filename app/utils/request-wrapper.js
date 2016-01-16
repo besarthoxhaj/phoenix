@@ -40,10 +40,10 @@ import { NetInfo } from 'react-native';
 
 const retryIntervals = [
   1000,
-  2000,
-  3000,
-  4000,
-  5000,
+  1000,
+  1000,
+  1000,
+  1000,
 ]
 
 /**
@@ -75,7 +75,6 @@ export function sendRequest(options, attempt=0) {
 **/
 
 const onError = async (options, attempt, error) => {
-  console.log("ERROR")
   if (retryIntervals[attempt]) {
     setTimeout(
       () => sendRequest(options, ++attempt),
@@ -89,7 +88,6 @@ const onError = async (options, attempt, error) => {
 }
 
 const onComplete = async (options, res) => {
-  console.log("COMPLETE")
   if (res.status == 200 && res.ok) {
     let data = await res.json();
      options.onSuccess(data)

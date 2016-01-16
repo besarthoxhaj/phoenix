@@ -1,3 +1,11 @@
+/**
+*
+* LOCATION ACTION
+* Geonames.org is being used to get the country code for the latitude and longitude of the device's current location
+* THE ADDITION OF US: LOCATION IS USED IN DEVELOPMENT AS SIMULATOR LOCATION IS SET TO USA
+*
+**/
+
 'use strict';
 
 import * as types from '../action_types.js';
@@ -6,13 +14,7 @@ import * as alert from './alert.js';
 export const correctCountry = correct_country => {
   return { type: types.CORRECT_COUNTRY, correct_country }
 }
-/**
-*
-* LOCATION ACTION
-* Geonames.org is being used to get the country code for the latitude and longitude of the device's current location
-* THE ADDITION OF US: LOCATION IS USED IN DEVELOPMENT AS SIMULATOR LOCATION IS SET TO USA
-*
-**/
+
 export const isGB = (navigator) => {
   return (dispatch, getState) => {
     navigator.geolocation.getCurrentPosition((position) => {
