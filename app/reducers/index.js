@@ -10,6 +10,7 @@ import chat from './chat.js';
 import deck from './deck.js';
 import ui   from './ui.js';
 import history from './history.js';
+import actionSheet from './action_sheet.js';
 
 const rootReducer = combineReducers({
   store,
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   chat,
   deck,
   ui,
-  history
+  history,
+  actionSheet,
 });
 
 export default rootReducer;

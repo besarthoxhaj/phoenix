@@ -9,12 +9,14 @@ import * as NavigationActions from '../actions/router.js';
 import * as NotificationsActions from '../actions/notifications.js';
 import * as AlertActions from '../actions/alert.js';
 import * as ModalActions from '../actions/modal.js';
+import * as ActionSheetActions from '../actions/action_sheet.js';
 
 const actionCreators = {
   ...NavigationActions,
   ...NotificationsActions,
   ...AlertActions,
   ...ModalActions,
+  ...ActionSheetActions,
 }
 
 class HomeContainer extends Component {

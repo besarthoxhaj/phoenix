@@ -3,20 +3,14 @@
 import { AlertIOS } from 'react-native';
 
 export default {
-  initialise:    (state, actionCreatorBinder) => {},
+  initialise: (state, actionCreatorBinder) => {},
   onStateUpdate: (state) => {
-      const { alert : {
-      isVisible,
-      title,
-      message,
-      buttons,
-    } }                  = state;
 
-    if (isVisible) {
+    if (state.alert.isVisible) {
       AlertIOS.alert(
-        title,
-        message,
-        buttons
+        state.alert.title,
+        state.alert.message,
+        state.alert.buttons
       );
     }
   }

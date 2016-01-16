@@ -11,32 +11,31 @@ import React, {
   View,
 } from 'react-native';
 
-import { Provider }          from 'react-redux/native';
-import configureStore        from './app/configure_store.js';
-import App                   from './app/containers/app.js';
+import { Provider } from 'react-redux/native';
+import configureStore from './app/configure_store.js';
+import App from './app/containers/app.js';
 
 import { subscribeServices } from './app/services/'
-import alert                 from './app/services/alert.js';
-import netinfo               from './app/services/netinfo.js';
+import alert from './app/services/alert.js';
+import netinfo from './app/services/netinfo.js';
+import actionsheet from './app/services/action_sheet.js';
 
 const store = configureStore();
 
 class phoenix extends Component {
 
   componentDidMount () {
-    subscribeServices(store, [alert, netinfo]);
+    subscribeServices(store, [alert,netinfo,actionsheet]);
   }
 
   render(){
     return (
       <Provider store={store}>
-        {
-          () => {
-            return (
-              <App />
-            );
-          }
-        }
+        {() => {
+          return (
+            <App />
+          );
+        }}
       </Provider>
     )
   }

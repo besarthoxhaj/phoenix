@@ -14,6 +14,9 @@ export const REGISTER_DEVICE_TOKEN = 'REGISTER_DEVICE_TOKEN';
 // alert
 export const SHOW_ALERT = 'SHOW_ALERT';
 export const RESET_ALERT = 'RESET_ALERT';
+// actionSheet
+export const SHOW_ACTION_SHEET = 'SHOW_ACTION_SHEET';
+export const RESET_ACTION_SHEET = 'RESET_ACTION_SHEET';
 // modal
 export const SHOW_MODAL = 'SHOW_MODAL';
 export const RESET_MODAL = 'RESET_MODAL';

@@ -19,6 +19,8 @@ export default class Home extends Component {
         <Button onPress={this.props.testAlert.bind(null)} text={'Show Alert'} />
         <View style={{marginTop:10}}/>
         <Button onPress={this.props.testModal.bind(null)} text={'Show Modal'} />
+        <View style={{marginTop:10}}/>
+        <Button onPress={this.props.showLogOutActionSheet.bind(null)} text={'Show Action Sheet'} />
       </View>
     )
   }
