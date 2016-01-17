@@ -28,6 +28,7 @@ class phoenix extends Component {
   componentDidMount () {
     subscribeServices(store, [alert,netinfo,actionsheet]);
     NativeModules.HelloWorld.greeting('Bes');
+    NativeModules.HelloSwift.greeting('Bes');
   }
 
   render(){
