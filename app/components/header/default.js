@@ -8,6 +8,8 @@ import React, {
   Text,
   Dimensions,
   TouchableHighlight,
+  TouchableOpacity,
+  Image,
 } from 'react-native';
 
 import H1 from '../helpers/_h1.js';
@@ -31,7 +33,7 @@ export default class Header extends Component {
         {
           !this.props.showBackButton &&  (<View style = { styles.arrowBalancer }/>)
         }
-        <H1>{this.props.router.route.name}</H1>
+        <H1>{this.props.headerTitle}</H1>
       </View>
     )
   }

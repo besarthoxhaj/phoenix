@@ -6,7 +6,7 @@ import React, { Component, PropTypes } from 'react-native';
 // actions
 import * as NavigationActions from '../actions/router.js';
 // routes
-import _routes from './_routes.js';
+import _routes from '../utils/routing/list.js';
 
 const actionCreators = {
   ...NavigationActions,

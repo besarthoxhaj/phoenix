@@ -6,7 +6,7 @@ import React, { Component, PropTypes } from 'react-native';
 // actions
 import * as NavigationActions from '../actions/router.js';
 // routes
-import _routes from './_routes.js';
+import _routes from '../utils/routing/list.js';
 
 const actionCreators = {
   ...NavigationActions,
@@ -14,9 +14,22 @@ const actionCreators = {
 
 class HeaderContainer extends Component {
   render(){
-    const Header = _routes[this.props.router.route.name].config.header;
+    const {
+      header: Header,
+      ...rest
+    } = _routes[this.props.router.route.name].config;
+
+    const props = {
+      ...this.props,
+      ...rest,
+    };
+
+    console.log('props',props);
+    console.log('rest',rest);
+    console.log('_routes[this.props.router.route.name].config',_routes[this.props.router.route.name].config);
+
     return (
-      <Header {...this.props} />
+      <Header {...props} />
     );
   }
 }

@@ -10,7 +10,7 @@ import Footer from './footer.js';
 import * as StartActions from '../actions/start.js';
 import * as NavigationActions from '../actions/router.js';
 // utils
-import _routes from './_routes.js';
+import _routes from '../utils/routing/list.js';
 
 const actionCreators = {
   ...StartActions,

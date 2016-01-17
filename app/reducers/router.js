@@ -2,6 +2,7 @@
 
 import { findIndex, propEq } from 'ramda';
 import check from '../utils/router.js';
+import createRouteList from '../utils/routing/create_list.js';
 
 import {
   CHANGE_ROUTE,
@@ -16,18 +17,7 @@ import {
   REHYDRATE,
 } from 'redux-persist/constants';
 
-const routes = [
-  '_splash',
-  'login',
-  'pin',
-  'home',
-  'confirm_bet',
-  'deck',
-  'modal/show',
-  'profile',
-  'chat',
-  'history'
-];
+const routes = Object.keys(createRouteList({}));;
 
 const initialRouteStack = routes.map((name, index) => {return {name, index}});
 
