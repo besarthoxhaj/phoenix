@@ -9,6 +9,7 @@ import React, {
   StyleSheet,
   Text,
   View,
+  NativeModules,
 } from 'react-native';
 
 import { Provider } from 'react-redux/native';
@@ -26,6 +27,7 @@ class phoenix extends Component {
 
   componentDidMount () {
     subscribeServices(store, [alert,netinfo,actionsheet]);
+    NativeModules.HelloWorld.greeting('Bes');
   }
 
   render(){
