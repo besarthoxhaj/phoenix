@@ -63,16 +63,8 @@ var iconArray = [
     image: 'home'
   },
   {
-    name: 'login',
-    image: 'anchor'
-  },
-  {
     name: 'deck',
     image: 'stack-overflow'
-  },
-  {
-    name: 'profile',
-    image: 'reddit-alien'
   },
   {
     name: 'chat',
@@ -81,6 +73,10 @@ var iconArray = [
   {
     name: 'history',
     image: 'envelope'
+  },
+  {
+    name: 'profile',
+    image: 'reddit-alien'
   },
 ];
 
