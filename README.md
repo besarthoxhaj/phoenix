@@ -134,6 +134,6 @@ In this example the currentState of the app is also used to respond to the push 
 Run this app on your phone and log the device token. Then send yourself a test push notification by sending a request to the /push endpoint with your device token:
 
 ```js
-curl localhost:/9009/push --data 'device_token=your_token_here'
+curl localhost:9009/push --data 'device_token=your_token_here'
 
 ```
