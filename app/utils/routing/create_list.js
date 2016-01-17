@@ -52,7 +52,7 @@ function createRouteList (components) {
     'chat': {
       component: components.chat,
       config: {
-        footer: components.defaultFooter,
+        footer: components.chatFooter,
         header: components.defaultHeader,
         headerTitle: 'Chat',
         showBackButton: true,
