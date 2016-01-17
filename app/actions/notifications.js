@@ -2,6 +2,7 @@
 
 import * as types from '../action_types.js';
 import { navigateTo } from './router.js';
+import * as alert from './alert.js';
 /**
 *
 * NOTIFICATIONS actions
@@ -11,6 +12,11 @@ import { navigateTo } from './router.js';
 
 export const registerDeviceToken = device_token => {
   return { type: types.REGISTER_DEVICE_TOKEN, device_token };
+};
+
+export const presentInternalAlert = (message, type) => dispatch => {
+
+  dispatch(alert.show('Notification',message));
 };
 
 // Action should save the device token in the the database and call sync to update the store reducer
