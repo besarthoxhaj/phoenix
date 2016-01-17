@@ -1,7 +1,5 @@
 'use strict';
 
-import { bindActionCreators } from 'redux';
-
 /**
  * A service is an object with properties.
  * `initialise`: function that takes initialState (i.e. your store)
@@ -14,12 +12,12 @@ import { bindActionCreators } from 'redux';
  * @services
  * 
  */
+
 export const subscribeServices = (store, services) => {
 
-  const actionCreatorBinder = actionCreators => bindActionCreators(actionCreators, store.dispatch);
   const initialState = store.getState();
 
-  services.forEach(service => service.initialise(initialState, actionCreatorBinder));
+  services.forEach(service => service.initialise(initialState, store.dispatch));
 
   store.subscribe(() => {
 
@@ -27,4 +25,3 @@ export const subscribeServices = (store, services) => {
     services.forEach(service => service.onStateUpdate(state));
   })
 }
-
