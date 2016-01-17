@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
     paddingTop: 36 * iPhoneScale,
     paddingHorizontal: 20*iPhoneScale,
     backgroundColor: '#333',
-    justifyContent: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'stretch',

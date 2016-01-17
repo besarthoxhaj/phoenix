@@ -31,7 +31,6 @@ export const saveDeviceToken = device_token => {
   };
 };
 
-
 /**
 * use appState to check if the user has entered the app from the background i.e. by swiping a push notification
 * can redirect the user to a different route instead of home by dispatching navigateTo
@@ -43,7 +42,6 @@ export const onReceiveNotification = (appState, notification) => {
 
     // entering the app from a push notification navigate to a page
     // if in app then don't change the page, just dispatch an action
-    console.log('hey', notification);
     if (appState === 'background') {
       return dispatch(navigateTo({name:'Home'}));
     } else {

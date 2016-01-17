@@ -18,24 +18,6 @@ const actionCreators = {
 
 class AppContainer extends Component {
 
-  componentWillMount(){
-    PushNotificationIOS.addEventListener('register', this.props.saveDeviceToken);
-    PushNotificationIOS.addEventListener('notification', this.props.onReceiveNotification.bind(null, AppStateIOS.currentState));
-    PushNotificationIOS.setApplicationIconBadgeNumber(this.props.unreadNotificationCount);
-    PushNotificationIOS.requestPermissions();
-  }
-
-  componentWillUpdate(props){
-    if( this.props.unreadNotificationCount !== props.unreadNotificationCount) {
-      PushNotificationIOS.setApplicationIconBadgeNumber(props.unreadNotificationCount);
-    }
-  }
-
-  componentWillUnmount(){
-    PushNotificationIOS.removeEventListener('register');
-    PushNotificationIOS.removeEventListener('notification');
-  }
-
   componentDidMount() {
     this.props.isGB(navigator);
   }

@@ -4,11 +4,13 @@ import { NetInfo } from 'react-native';
 // actions
 import * as ConnectionActions from '../actions/netinfo.js';
 
-export default {
-  initialise:    (state, actionCreatorBinder) => {
-    const { setConnectionStatus } = actionCreatorBinder(ConnectionActions);
-
-    NetInfo.isConnected.addEventListener('change', setConnectionStatus);
+const NetInfoService = {
+  initialise: (state,dispatch) => {
+    const changeListener = NetInfoService.onNetInfoChange.bind(NetInfoService,state,dispatch);
+    NetInfo.isConnected.addEventListener('change', changeListener);
   },
+  onNetInfoChange: (state,dispatch,info) => {},
   onStateUpdate: state => {}
 }
+
+export default NetInfoService;

@@ -24,10 +24,6 @@ class HeaderContainer extends Component {
       ...rest,
     };
 
-    console.log('props',props);
-    console.log('rest',rest);
-    console.log('_routes[this.props.router.route.name].config',_routes[this.props.router.route.name].config);
-
     return (
       <Header {...props} />
     );

@@ -20,13 +20,14 @@ import { subscribeServices } from './app/services/'
 import alert from './app/services/alert.js';
 import netinfo from './app/services/netinfo.js';
 import actionsheet from './app/services/action_sheet.js';
+import notification from './app/services/notification.js';
 
 const store = configureStore();
 
 class phoenix extends Component {
 
   componentDidMount () {
-    subscribeServices(store, [alert,netinfo,actionsheet]);
+    subscribeServices(store, [alert,netinfo,actionsheet,notification]);
     NativeModules.HelloWorld.greeting('Bes');
     NativeModules.HelloSwift.greeting('Bes');
   }

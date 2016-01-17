@@ -23,7 +23,7 @@ import reducer from './reducers';
  *          You can see the full api on github: https://github.com/rt2zz/redux-persist
  */
 const finalCreateStore = compose(
-  applyMiddleware(thunk, createLogger(), passFullStoreMiddleware),
+  applyMiddleware(thunk, passFullStoreMiddleware),
   autoRehydrate()
 )(createStore);
 

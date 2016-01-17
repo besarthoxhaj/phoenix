@@ -35,14 +35,12 @@ export const testAlert = () => {
       style: 'destructive',
       onPress: () => {
         dispatch(reset());
-        console.log('Agree');
       }
     },{
       text: 'Cancel',
       style: 'cancel',
       onPress: () => {
         dispatch(reset());
-        console.log('Cancel');
       }
     }]));
   }
