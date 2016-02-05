@@ -35,6 +35,7 @@ export default class Home extends Component {
   }
 
   runLoopInObjectiveC () {
+
     console.log('runLoopInObjectiveC -> start');
 
     NativeModules.HelloSwift.greeting('Cool!', function (name) {
