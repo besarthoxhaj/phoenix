@@ -9,7 +9,8 @@
 @objc(HelloSwift)
 class HelloSwift: NSObject {
 
-  @objc func greeting(name: String) -> Void {
-    print("Hello, from Swift,", name,"!");
+  @objc func greeting(name: String, callback: (String: [String]) -> Void) {
+    let someArray = [name]
+    callback(String: someArray)
   }
 }

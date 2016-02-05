@@ -24,11 +24,9 @@ export default class Chat extends Component {
         />
         <Button onPress={this.props.dispatchSend.bind(null)} text={'Submit'}/>
       </View>
-    )
+    );
   }
-}
-
-Chat.propTypes = {};
+};
 
 const styles = StyleSheet.create({
   container: {

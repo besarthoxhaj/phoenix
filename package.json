@@ -5,8 +5,7 @@
   "scripts": {
     "bundle": "react-native bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest /res",
     "test": "tape test/runner.js",
-    "p:s": "node_modules/react-native/packager/packager.sh",
-    "rn:init": "./init_component.sh"
+    "p:s": "node_modules/react-native/packager/packager.sh"
   },
   "dependencies": {
     "apn": "^1.7.5",

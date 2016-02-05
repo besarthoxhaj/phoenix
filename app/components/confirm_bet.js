@@ -30,9 +30,9 @@ export default class ConfirmBet extends Component {
       </View>
     );
   }
-}
+};
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',

@@ -9,7 +9,6 @@ import React, {
   StyleSheet,
   Text,
   View,
-  NativeModules,
 } from 'react-native';
 
 import { Provider } from 'react-redux/native';
@@ -28,8 +27,6 @@ class phoenix extends Component {
 
   componentDidMount () {
     subscribeServices(store, [alert,netinfo,actionsheet,notification]);
-    NativeModules.HelloWorld.greeting('Bes');
-    NativeModules.HelloSwift.greeting('Bes');
   }
 
   render(){
@@ -41,8 +38,8 @@ class phoenix extends Component {
           );
         }}
       </Provider>
-    )
+    );
   }
-}
+};
 
 AppRegistry.registerComponent('phoenix', () => phoenix);

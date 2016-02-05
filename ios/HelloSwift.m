@@ -11,6 +11,6 @@
 
 @interface RCT_EXTERN_MODULE(HelloSwift, NSObject)
 
-RCT_EXTERN_METHOD(greeting:(NSString *)name)
+RCT_EXTERN_METHOD(greeting:(NSString *)name callback:(RCTResponseSenderBlock)callback)
 
 @end
