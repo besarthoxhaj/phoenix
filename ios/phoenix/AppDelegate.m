@@ -15,8 +15,8 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
   NSURL *jsCodeLocation;
 
   /**
@@ -56,15 +56,15 @@
   return YES;
 }
 
-// Required for the register event.
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
- [RCTPushNotificationManager application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-}
-// Required for the notification event.
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification
-{
- [RCTPushNotificationManager application:application didReceiveRemoteNotification:notification];
-}
+// // Required for the register event.
+// - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+
+//   [RCTPushNotificationManager application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+// }
+// // Required for the notification event.
+// - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification {
+
+//   [RCTPushNotificationManager application:application didReceiveRemoteNotification:notification];
+// }
 
 @end

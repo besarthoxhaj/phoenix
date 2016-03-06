@@ -1,27 +1,19 @@
 'use strict';
 
 import { connect } from 'react-redux/native';
-
-import React, { Component, PropTypes } from 'react-native';
-// components
+import React, { Component } from 'react-native';
 import Splash from '../components/splash.js';
 
 const actionCreators = {};
 
 class SplashContainer extends Component {
-  render(){
+  render () {
     return (
       <Splash {...this.props} />
     );
   }
 }
 
-SplashContainer.propTypes = {};
-
-const mapStateToProps = state => {
-  return {
-    ...state,
-  };
-};
+const mapStateToProps = state => ({...state});
 
 export default connect(mapStateToProps, actionCreators)(SplashContainer);

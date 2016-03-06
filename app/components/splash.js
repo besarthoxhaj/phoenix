@@ -3,14 +3,12 @@
 import React, {
   Component,
   StyleSheet,
-  PropTypes,
   View,
   Text,
-  TouchableHighlight,
 } from 'react-native';
 
 export default class Profile extends Component {
-  render(){
+  render () {
     return (
       <View style={styles.container}>
         <Text>Splash</Text>
@@ -19,13 +17,11 @@ export default class Profile extends Component {
   }
 }
 
-Profile.propTypes = {};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
+  }
 });

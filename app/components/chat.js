@@ -3,7 +3,6 @@
 import React, {
   Component,
   StyleSheet,
-  PropTypes,
   View,
   Text,
   TextInput,
@@ -13,7 +12,8 @@ import React, {
 import Button from './helpers/_button.js';
 
 export default class Chat extends Component {
-  render(){
+  render () {
+        // <Button onPress={this.props.dispatchSend.bind(null)} text={'Submit'}/>
     return (
       <View style={styles.container}>
         <TextInput
@@ -22,7 +22,6 @@ export default class Chat extends Component {
           value={this.props.text}
           onChangeText={text => this.props.updateInput(text)}
         />
-        <Button onPress={this.props.dispatchSend.bind(null)} text={'Submit'}/>
       </View>
     );
   }

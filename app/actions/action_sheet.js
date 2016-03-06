@@ -1,20 +1,11 @@
 'use strict';
 
 import * as types from '../action_types.js';
-
 import { navigateTo } from './router.js';
 import { logOutAndClearStorage } from './login.js';
 
-export const showActionSheet = (options) => {
-  return {
-    type: types.SHOW_ACTION_SHEET,
-    options
-  };
-};
-
-export const resetActionSheet = () => {
-  return { type: types.RESET_ACTION_SHEET };
-};
+export const showActionSheet = (options) => ({type:types.SHOW_ACTION_SHEET,options});
+export const resetActionSheet = () => ({type:types.RESET_ACTION_SHEET});
 
 export const showLogOutActionSheet = () => (dispatch) => {
   return dispatch(showActionSheet({

@@ -1,27 +1,19 @@
 'use strict';
 
 import { connect } from 'react-redux/native';
-
-import React, { Component, PropTypes } from 'react-native';
-// components
+import React, { Component } from 'react-native';
 import Profile from '../components/profile.js';
 
 const actionCreators = {};
 
 class ProfileContainer extends Component {
-  render(){
+  render () {
     return (
       <Profile {...this.props} />
     );
   }
 }
 
-ProfileContainer.propTypes = {};
-
-const mapStateToProps = state => {
-  return {
-    ...state,
-  };
-};
+const mapStateToProps = state => ({...state});
 
 export default connect(mapStateToProps, actionCreators)(ProfileContainer);

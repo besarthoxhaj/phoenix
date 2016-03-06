@@ -1,10 +1,8 @@
 'use strict';
 
 import { connect } from 'react-redux/native';
-import React, { Component, PropTypes } from 'react-native';
-// components
+import React, { Component } from 'react-native';
 import Home from '../components/home.js';
-// actions
 import * as NavigationActions from '../actions/router.js';
 import * as NotificationsActions from '../actions/notifications.js';
 import * as AlertActions from '../actions/alert.js';
@@ -20,20 +18,13 @@ const actionCreators = {
 }
 
 class HomeContainer extends Component {
-  render(){
+  render () {
     return (
       <Home {...this.props} />
     );
   }
 }
 
-HomeContainer.propTypes = {
-  testAlert: PropTypes.func.isRequired,
-  testModal: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = state => {
-  return { ...state };
-};
+const mapStateToProps = state => ({...state});
 
 export default connect(mapStateToProps, actionCreators)(HomeContainer);

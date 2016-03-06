@@ -2,76 +2,33 @@
 
 import { connect } from 'react-redux/native';
 import { bindActionCreators } from 'redux';
-import React, { Component, PropTypes, Navigator, View } from 'react-native';
-// container
+import React, { Component, View } from 'react-native';
 import Header from './header.js';
 import Footer from './footer.js';
-// actions
-import * as StartActions from '../actions/start.js';
 import * as NavigationActions from '../actions/router.js';
-// utils
 import _routes from '../utils/routing/list.js';
 
 const actionCreators = {
-  ...StartActions,
   ...NavigationActions,
 };
 
 class Router extends Component {
 
-  constructor(props){
-    super(props);
-    this.renderScene = this.renderScene.bind(this);
-  }
+  render () {
 
-  componentWillUpdate(nextProps) {
+    const Component = _routes[this.props.router.route.name].component;
+    const fullProps = { ...this.props, routeProps: { ...this.props.router.route.props } };
 
-    const { route : newRoute, stack: newStack} = nextProps;
-    const { route } = this.props;
-
-    if (newRoute.name !== route.name){
-      this.refs.navigator.jumpTo(newStack[newRoute.index]);
-    }
-  }
-
-  renderScene(route){
-    const Component = _routes[route.name].component;
-    return (<Component />);
-  }
-
-  render(){
     return (
       <View style={{flex:1}}>
-        <Header />
-        <Navigator
-        // use Navigator to transition between different scenes in your app.
-          ref='navigator'
-          initialRoute={this.props.stack[this.props.route.index]}
-          initialRouteStack={this.props.stack}
-          renderScene={this.renderScene}
-          history={this.props.history}
-          configureScene={route => {
-            if (route.sceneConfig) {
-              return route.sceneConfig;
-            } else {
-              return Navigator.SceneConfigs.FadeAndroid;
-            }
-          }}
-        />
+        <Header back={_routes[this.props.router.route.name].config.back} deckBorder={_routes[this.props.router.route.name].config.deckBorder}/>
+        <Component />
         <Footer />
       </View>
     );
   }
 }
 
-Router.propTypes = {
-  route: PropTypes.object.isRequired,
-  history: PropTypes.array.isRequired,
-  stack: PropTypes.array.isRequired,
-};
-
-const mapStateToProps = state => {
-  return { ...state.router, state };
-}
+const mapStateToProps = state => ({...state});
 
 export default connect(mapStateToProps, actionCreators)(Router);

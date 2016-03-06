@@ -36,7 +36,7 @@ export default class Footer extends Component {
     });
   }
 
-  render(){
+  render () {
 
     const {
       props: { router: { route: { name }}},
@@ -52,10 +52,6 @@ export default class Footer extends Component {
     )
   }
 }
-
-Footer.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
-};
 
 var iconArray = [
   {

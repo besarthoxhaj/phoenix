@@ -10,10 +10,8 @@ import React, {
   TouchableHighlight,
 } from 'react-native';
 
-import Deck from './deck/deck.js';
-
 export default class Profile extends Component {
-  render(){
+  render () {
     return (
       <View style={styles.container}>
         <Text>Profile</Text>
@@ -21,8 +19,6 @@ export default class Profile extends Component {
     )
   }
 }
-
-Profile.propTypes = {};
 
 const styles = StyleSheet.create({
   container: {

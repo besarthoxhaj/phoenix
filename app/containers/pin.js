@@ -1,11 +1,8 @@
 'use strict';
 
 import { connect } from 'react-redux/native';
-
-import React, { Component, PropTypes } from 'react-native';
-// actions
+import React, { Component } from 'react-native';
 import * as NavigationActions from '../actions/router.js';
-// components
 import Pin from '../components/pin.js';
 
 const actionCreators = {
@@ -13,19 +10,13 @@ const actionCreators = {
 };
 
 class PinContainer extends Component {
-  render(){
+  render () {
     return (
       <Pin {...this.props} />
     );
   }
 }
 
-PinContainer.propTypes = {};
-
-const mapStateToProps = state => {
-  return {
-    ...state,
-  };
-};
+const mapStateToProps = state => ({...state});
 
 export default connect(mapStateToProps, actionCreators)(PinContainer);

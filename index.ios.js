@@ -1,42 +1,37 @@
-
 'use strict';
-
-require('regenerator/runtime')
 
 import React, {
   AppRegistry,
   Component,
-  StyleSheet,
-  Text,
-  View,
 } from 'react-native';
 
 import { Provider } from 'react-redux/native';
 import configureStore from './app/configure_store.js';
 import App from './app/containers/app.js';
 
-import { subscribeServices } from './app/services/'
+import { subscribeServices } from './app/services/index.js';
 import alert from './app/services/alert.js';
-import netinfo from './app/services/netinfo.js';
 import actionsheet from './app/services/action_sheet.js';
 import notification from './app/services/notification.js';
+import socket from './app/services/socket.js';
 
 const store = configureStore();
 
 class phoenix extends Component {
 
   componentDidMount () {
-    subscribeServices(store, [alert,netinfo,actionsheet,notification]);
+    subscribeServices(store, [
+      alert,
+      actionsheet,
+      notification,
+      socket
+    ]);
   }
 
-  render(){
+  render () {
     return (
       <Provider store={store}>
-        {() => {
-          return (
-            <App />
-          );
-        }}
+        {() => <App />}
       </Provider>
     );
   }

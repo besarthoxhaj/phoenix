@@ -25,7 +25,6 @@ function createRouteList (components) {
       config: {
         footer: components.blankSpaceFooter,
         header: components.blankSpaceHeader,
-        showBalance: true,
       },
       auth: false
     },
@@ -35,17 +34,6 @@ function createRouteList (components) {
         footer: components.defaultFooter,
         header: components.defaultHeader,
         headerTitle: 'Home',
-        showBalance: true,
-      },
-      auth: 'login',
-    },
-    'deck': {
-      component: components.deck,
-      config: {
-        footer: components.defaultFooter,
-        header: components.defaultHeader,
-        headerTitle: 'Deck',
-        showBalance: true,
       },
       auth: 'login',
     },
@@ -56,7 +44,6 @@ function createRouteList (components) {
         header: components.defaultHeader,
         headerTitle: 'Chat',
         showBackButton: true,
-        showBalance: true,
       },
       auth: 'login'
     },
@@ -66,19 +53,8 @@ function createRouteList (components) {
         footer: components.defaultFooter,
         header: components.defaultHeader,
         headerTitle: 'Profile',
-        showBalance: true,
       },
       auth: 'login',
-    },
-    'history': {
-      component: components.history,
-      config: {
-        footer: components.defaultFooter,
-        header: components.defaultHeader,
-        headerTitle: 'History',
-        showBalance: true,
-      },
-      auth: 'login',
-    },
+    }
   };
 };

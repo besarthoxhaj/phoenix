@@ -1,13 +1,18 @@
 'use strict';
 
-export const subscribeServices = (store, services) => {
+import { bindActionCreators } from 'redux';
 
-  const initialState = store.getState();
+export function subscribeServices (store, services) {
 
-  services.forEach(service => service.initialise(initialState, store.dispatch));
+  const actionCreatorBinder = actionCreators => bindActionCreators(actionCreators, store.dispatch);
+  const getState = store.getState;
+
+  services.forEach(service => service.initialise(actionCreatorBinder, getState));
 
   store.subscribe(() => {
+
     const state = store.getState();
-    services.forEach(service => service.onStateUpdate(state,store.dispatch));
+
+    services.forEach(service => service.onStateUpdate(state, actionCreatorBinder ));
   });
-}
+};

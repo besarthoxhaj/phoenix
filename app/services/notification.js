@@ -1,44 +1,43 @@
 'use strict';
 
-import * as alert from '../actions/alert.js';
-import * as notification from '../actions/notifications.js';
-import * as router from '../actions/router.js';
+import { AppStateIOS, PushNotificationIOS } from 'react-native';
+import * as NotificationActions from '../actions/notifications.js';
 
-import { PushNotificationIOS, AppStateIOS } from 'react-native';
+export default {
 
-const service = {
-  initialise: (state,dispatch) => {
-    const registerListener = service.onRegister.bind(service,state,dispatch);
-    const notificationListener = service.onNotification.bind(service,state,dispatch);
-    PushNotificationIOS.addEventListener('register', registerListener);
-    PushNotificationIOS.addEventListener('notification', notificationListener);
+  initialise: actionCreatorBinder => {
 
-    // 
-    const initalNotification = PushNotificationIOS.popInitialNotification();
-    if (initalNotification) {
-      service.onPopInitialNotification(state,dispatch,initalNotification);
-    }
+    // const {
+    //   saveDeviceToken,
+    //   onReceiveNotification,
+    //   popInitialNotification,
+    // } = actionCreatorBinder(NotificationActions);
 
-    PushNotificationIOS.requestPermissions();
+    // let callOnce = false;
+
+    // PushNotificationIOS.addEventListener('register', token => {
+
+    //   // for some reason sometimes 'register' event get called twice
+    //   if (!callOnce) {
+    //     callOnce = !callOnce;
+    //     saveDeviceToken(token);
+    //   }
+    // });
+
+    // PushNotificationIOS.addEventListener('notification', onReceiveNotification.bind(undefined,AppStateIOS));
+
+    // const initalNotification = PushNotificationIOS.popInitialNotification();
+
+    // if (initalNotification) {
+    //   popInitialNotification(initalNotification);
+    // }
+
+    // PushNotificationIOS.checkPermissions(permissions => {
+    //   PushNotificationIOS.requestPermissions();
+    // });
   },
-  onRegister: (state,dispatch,token) => {
-    console.log('token',token);
-  },
-  onNotification: (state,dispatch,notification) => {
-    if (AppStateIOS.currentState === 'active') {
-      dispatch(alert.show('Notification', '...while app active'));
-    } else {
-      dispatch(router.navigateTo({name:'profile'}));
-    }
-  },
-  onPopInitialNotification: (state,dispatch,notification) => {
-    setTimeout(() => {
-      dispatch(router.navigateTo({name:'history'}));
-    }, 1000);
-  },
-  onStateUpdate: (state, dispatch) => {
+  onStateUpdate: (state, actionCreatorBinder) => {
 
+    // PushNotificationIOS.setApplicationIconBadgeNumber(state.store.notificationBadge);
   }
 }
-
-export default service;

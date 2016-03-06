@@ -5,7 +5,7 @@ import React, {
 } from 'react-native';
 
 export default class Empty extends Component {
-  render(){
-    return (null)
+  render () {
+    return (null);
   }
 }

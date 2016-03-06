@@ -3,7 +3,6 @@
 import React, {
   Component,
   StyleSheet,
-  PropTypes,
   View,
   Text,
   TextInput,
@@ -13,7 +12,9 @@ import React, {
 import Button from './helpers/_button.js';
 
 export default class Login extends Component {
-  render(){
+
+  render () {
+
     return (
       <View style={styles.container}>
         <Text>Login</Text>
@@ -37,10 +38,6 @@ export default class Login extends Component {
     )
   }
 }
-
-Login.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
-};
 
 const styles = StyleSheet.create({
   container: {

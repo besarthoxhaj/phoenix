@@ -3,7 +3,6 @@
 import React, {
   Component,
   StyleSheet,
-  PropTypes,
   View,
   Text,
   TextInput,
@@ -11,7 +10,7 @@ import React, {
 } from 'react-native';
 
 export default class Feader extends Component {
-  render(){
+  render () {
     return (
       <View style={styles.container}>
         <TextInput
@@ -22,8 +21,6 @@ export default class Feader extends Component {
     )
   }
 }
-
-Feader.propTypes = {};
 
 const styles = StyleSheet.create({
   container: {

@@ -3,16 +3,9 @@
 import React, {
   Component,
   StyleSheet,
-  PropTypes,
   View,
-  Text,
-  Dimensions,
-  TouchableHighlight,
-  TouchableOpacity,
-  Image,
+  TouchableOpacity
 } from 'react-native';
-
-import Icon from 'react-native-vector-icons/FontAwesome'
 
 import H1 from '../helpers/_h1.js';
 import iPhone from '../helpers/_iphone.js';
@@ -27,28 +20,21 @@ export default class Header extends Component {
     return (
       <View style={styles.container}>
         { this.props.showBackButton && (
-          <TouchableOpacity onPress={this.props.back ? () => this.props.navigateTo({name: this.props.back}) : this.props.goBack} style = { styles.arrowTouch }>
-            <View style={styles.arrowBox}>
-              <Icon name={'chevron-left'} size={30} color={'white'} />
-            </View>
+          <TouchableOpacity onPress={this.props.back ? () => this.props.navigateTo({name:this.props.back}) : this.props.goBack} style={styles.arrowTouch} >
+            <View style={styles.arrowBox}></View>
           </TouchableOpacity>
         )}
         {
-          !this.props.showBackButton &&  (<View style = { styles.arrowBalancer }/>)
+          !this.props.showBackButton &&  (<View style={styles.arrowBalancer}/>)
         }
         <View style={styles.middle}>
           <H1>{this.props.headerTitle}</H1>
         </View>
-        <View style = { styles.arrowBalancer }/>
+        <View style={styles.arrowBalancer}/>
       </View>
     )
   }
 }
-
-Header.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
-  style: PropTypes.object
-};
 
 const styles = StyleSheet.create({
   container: {
