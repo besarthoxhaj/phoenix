@@ -14,12 +14,18 @@ export const openConnection = () => (dispatch,getState) => {
     console.log('connection opened!');
   };
 
+  ws.onmessage = (e) => {
+    console.log('receiveMessage',e.data);
+  };
+
   ws.onerror = (e) => {
     console.log('error',e.message);
   };
 };
 
 export const closeConnection = () => (dispatch,getState) => {
+
+  ws.close();
 
   ws.onclose = function () {
     console.log('connection closed!');
@@ -35,7 +41,4 @@ export const sendMessage = () => (dispatch,getState) => {
 
 export const receiveMessage = () => (dispatch,getState) => {
 
-  ws.onmessage = (e) => {
-    console.log(e.data);
-  }; 
 }

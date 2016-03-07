@@ -13,8 +13,10 @@ import Button from './helpers/_button.js';
 
 export default class Chat extends Component {
   componentWillMount () {
-
     this.props.openConnection();
+  }
+  componentWillUnmount () {
+    this.props.closeConnection();
   }
   render () {
     return (
