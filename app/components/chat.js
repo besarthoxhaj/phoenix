@@ -12,8 +12,11 @@ import React, {
 import Button from './helpers/_button.js';
 
 export default class Chat extends Component {
+  componentWillMount () {
+
+    this.props.openConnection();
+  }
   render () {
-        // <Button onPress={this.props.dispatchSend.bind(null)} text={'Submit'}/>
     return (
       <View style={styles.container}>
         <TextInput
@@ -21,7 +24,9 @@ export default class Chat extends Component {
           placeholder='Message'
           value={this.props.text}
           onChangeText={text => this.props.updateInput(text)}
+          onEndEditing={text => this.props.sendMessage(text)}
         />
+        <Button onPress={this.props.sendMessage} text={'Submit'}/>
       </View>
     );
   }
